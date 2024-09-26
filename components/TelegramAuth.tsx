@@ -1,22 +1,27 @@
 'use client'
-
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function TelegramAuth() {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [showSplash, setShowSplash] = useState(true) // State to control splash visibility
     const router = useRouter()
 
     useEffect(() => {
-        checkAuth()
+        // Show the splash screen for 30 seconds
+        const splashTimer = setTimeout(() => {
+            setShowSplash(false) // Hide splash screen after 30 seconds
+            authenticateUser()    // Start authentication after splash
+        }, 30000)
+
+        return () => clearTimeout(splashTimer) // Clear timer on component unmount
     }, [])
 
-    const checkAuth = async () => {
-        const response = await fetch('/api/session')
-        if (response.ok) {
-            setIsAuthenticated(true)
+    useEffect(() => {
+        if (isAuthenticated) {
+            router.push('/protected') // Automatically redirect to '/protected' once authenticated
         }
-    }
+    }, [isAuthenticated, router])
 
     const authenticateUser = async () => {
         const WebApp = (await import('@twa-dev/sdk')).default
@@ -33,8 +38,7 @@ export default function TelegramAuth() {
                 })
 
                 if (response.ok) {
-                    setIsAuthenticated(true)
-                    router.refresh()
+                    setIsAuthenticated(true) // Set authenticated state
                 } else {
                     console.error('Authentication failed')
                     setIsAuthenticated(false)
@@ -47,27 +51,13 @@ export default function TelegramAuth() {
     }
 
     return (
-        <div className="flex flex-col items-center space-y-4 p-8">
-            {isAuthenticated ? (
-                <>
-                    <p>Authenticated!</p>
-                    <button
-                        onClick={() => router.push('/protected')}
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    >
-                        Access Protected Page
-                    </button>
-                </>
+        <div className="flex flex-col items-center justify-center h-screen p-8">
+            {showSplash ? (
+                <p className="text-2xl font-bold">Welcome! Please wait...</p> // Splash screen message
+            ) : isAuthenticated ? (
+                <p>Authenticated! Redirecting...</p> // Message while redirecting
             ) : (
-                <div>
-                    <p>You need to be an owner of this account</p>
-                    <button
-                        onClick={authenticateUser}
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    >
-                        Authenticate
-                    </button>
-                </div>
+                <p>Authenticating...</p> // Message during authentication
             )}
         </div>
     )
