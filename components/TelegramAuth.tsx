@@ -1,6 +1,8 @@
 'use client'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import mountains from '../public/image/melaImage.jpg'
 
 export default function TelegramAuth() {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -12,7 +14,7 @@ export default function TelegramAuth() {
         const splashTimer = setTimeout(() => {
             setShowSplash(false) // Hide splash screen after 30 seconds
             authenticateUser()    // Start authentication after splash
-        }, 30000)
+        }, 2000)
 
         return () => clearTimeout(splashTimer) // Clear timer on component unmount
     }, [])
@@ -51,9 +53,19 @@ export default function TelegramAuth() {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen p-8">
+        <div className="flex  items-center justify-center  w-full h-screen ">
             {showSplash ? (
-                <p className="text-2xl font-bold">Welcome! Please wait...</p> // Splash screen message
+              <Image
+              alt="Mountains"
+              src={mountains}
+              placeholder="blur"
+              quality={100}
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: 'cover',
+              }}
+            />
             ) : isAuthenticated ? (
                 <p>Authenticated! Redirecting...</p> // Message while redirecting
             ) : (
