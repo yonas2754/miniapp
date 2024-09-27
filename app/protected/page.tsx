@@ -81,11 +81,8 @@ export default async function ProtectedPage() {
             <Image
       src="/image/lottery_winning3.png"
       alt="Picture of the author"
-      fill
-      sizes="(min-width: 808px) 50vw, 100vw"
-      style={{
-        objectFit: 'cover', // cover, contain, none
-      }}
+      width={100}
+      height={100}
     />
             </CardDescription>
           </CardHeader>
@@ -105,11 +102,8 @@ export default async function ProtectedPage() {
             <Image
       src="/image/lottery_winning3.png"
       alt="Picture of the author"
-      fill
-      sizes="(min-width: 808px) 50vw, 100vw"
-      style={{
-        objectFit: 'cover', // cover, contain, none
-      }}
+      width={100}
+      height={100}
     />
             </CardDescription>
           </CardHeader>
