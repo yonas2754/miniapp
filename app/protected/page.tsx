@@ -65,10 +65,11 @@ export default async function ProtectedPage() {
 
 <div>
 
-<Tabs defaultValue="own" className="w-full grow">
+<Tabs defaultValue="own" className="w-full grow bg-ethLightBlue-950 text-white">
       <TabsList className="grid w-full grid-cols-2  bg-ethBlack-400">
         <TabsTrigger value="own" className='bg-ethBlack-500'>own</TabsTrigger>
         <TabsTrigger value="available" className='bg-ethBlack-500'>available</TabsTrigger>
+        <TabsTrigger value="end" className='bg-ethBlack-500'>End</TabsTrigger>
       </TabsList>
       <TabsContent value="own">
          <div className=' grid grid-cols-2 gap-2 '>
@@ -76,7 +77,7 @@ export default async function ProtectedPage() {
 
          <Card>
           <CardHeader>
-            <CardTitle>Account</CardTitle>
+            <CardTitle>Day at 9/24/2021</CardTitle>
             <CardDescription>
             <Image
       src="/image/lottery_winning3.png"
@@ -95,16 +96,13 @@ export default async function ProtectedPage() {
           <CardContent className="space-y-2">
           <div className="flex items-center justify-center space-x-1">
 
-
-
-
 <Image
       src="/image/dollar-coin.png"
       alt="Picture of the author"
-      width={18}
-      height={18}
+      width={24}
+      height={24}
     />
-                  <p className="text-sm">2000</p>
+                  <p className="text-lg">2000</p>
                  
                 </div>
            
@@ -119,7 +117,7 @@ export default async function ProtectedPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Account</CardTitle>
+            <CardTitle>Day at 9/24/2021</CardTitle>
             <CardDescription>
             <Image
       src="/image/lottery_winning3.png"
@@ -141,10 +139,10 @@ export default async function ProtectedPage() {
 <Image
       src="/image/dollar-coin.png"
       alt="Picture of the author"
-      width={18}
-      height={18}
+      width={24}
+      height={24}
     />
-                  <p className="text-sm">4000</p>
+                  <p className="text-lg">4000</p>
                  
                 </div>
            
@@ -157,20 +155,91 @@ export default async function ProtectedPage() {
          </div>
         
       </TabsContent>
+
+
+
       <TabsContent value="available">
         <Card>
           <CardHeader>
-            <CardTitle>Password</CardTitle>
+            <CardTitle>Day at 10/27/2024</CardTitle>
             <CardDescription>
-              Change your password here. After saving, you will be logged out.
+            <Image
+      src="/image/lottery_winning2.png"
+      alt="Picture of the author"
+      sizes="100vw"
+      style={{
+        objectFit: 'cover',
+      }}
+
+      
+    />
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
+
+
+          <div className="flex items-center justify-center space-x-1">
+
+<Image
+      src="/image/dollar-coin.png"
+      alt="Picture of the author"
+      width={24}
+      height={24}
+    />
+                  <p className="text-lg">10000</p>
+                 
+                </div>
            
           </CardContent>
-         
+          <CardFooter>
+          <p className="text-sm"> price 500</p>
+          </CardFooter>
         </Card>
       </TabsContent>
+
+
+
+
+      <TabsContent value="end">
+        <Card>
+          <CardHeader>
+            <CardTitle>Day at 10/27/2025</CardTitle>
+            <CardDescription>
+            <Image
+      src="/image/lottery_winning1.png"
+      alt="Picture of the author"
+      sizes="100vw"
+      style={{
+        objectFit: 'cover',
+      }}
+
+      
+    />
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+
+
+          <div className="flex items-center justify-center space-x-1">
+
+<Image
+      src="/image/dollar-coin.png"
+      alt="Picture of the author"
+      width={24}
+      height={24}
+    />
+                  <p className="text-lg">10000</p>
+                 
+                </div>
+           
+          </CardContent>
+          <CardFooter>
+          <p className="text-sm"> price 500</p>
+          </CardFooter>
+        </Card>
+      </TabsContent>
+
+
     </Tabs>
 </div>
 
