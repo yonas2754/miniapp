@@ -71,11 +71,11 @@ export default async function ProtectedPage() {
         <TabsTrigger value="available" className='bg-ethBlack-500'>available</TabsTrigger>
         <TabsTrigger value="end" className='bg-ethBlack-500'>End</TabsTrigger>
       </TabsList>
-      <TabsContent value="own" className='bg-ethLightBlue-950 text-white'>
+      <TabsContent value="own" >
          <div className=' grid grid-cols-2 gap-2 '>
 
 
-         <Card>
+         <Card className='bg-ethLightBlue-950 text-white'>
           <CardHeader>
             <CardTitle>Day at 9/24/2021</CardTitle>
             <CardDescription>
@@ -115,7 +115,7 @@ export default async function ProtectedPage() {
 
 
 
-        <Card>
+        <Card className='bg-ethLightBlue-950 text-white'>
           <CardHeader>
             <CardTitle>Day at 9/24/2021</CardTitle>
             <CardDescription>
@@ -159,7 +159,7 @@ export default async function ProtectedPage() {
 
 
       <TabsContent value="available">
-        <Card>
+        <Card className='bg-ethLightBlue-950 text-white'>
           <CardHeader>
             <CardTitle>Day at 10/27/2024</CardTitle>
             <CardDescription>
@@ -201,7 +201,7 @@ export default async function ProtectedPage() {
 
 
       <TabsContent value="end">
-        <Card>
+        <Card className='bg-ethLightBlue-950 text-white'>
           <CardHeader>
             <CardTitle>Day at 10/27/2025</CardTitle>
             <CardDescription>
@@ -249,7 +249,7 @@ export default async function ProtectedPage() {
                 /* onClick={#handleCardClick} */
               >
                 <div className="w-full h-full rounded-full circle-inner">
-              <p>12</p>
+              <p className=' text-center  font-bold text-lg text-ethYellow-600'>1200</p>
                 </div>
               </div>
             </div>
