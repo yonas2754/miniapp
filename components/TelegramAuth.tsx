@@ -31,6 +31,22 @@ export default function TelegramAuth() {
     const authenticateUser = async () => {
         const WebApp = (await import('@twa-dev/sdk')).default
         WebApp.ready()
+
+
+  // Optionally, change the background color of the Mini App
+  WebApp.setBackgroundColor('#000000') // Set the entire app's background color to black
+
+  // Customize the main button color if used
+  WebApp.MainButton.setParams({
+    color: '#FFD700', // Set the main button color to yellow
+    text_color: '#000000', // Set the main button text color to black
+  })
+
+  WebApp.MainButton.show() // Make the main button visible
+
+
+
+
         const initData = WebApp.initData
         if (initData) {
             try {
