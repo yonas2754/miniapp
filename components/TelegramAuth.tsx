@@ -73,7 +73,7 @@ export default function TelegramAuth() {
                 <p>Authenticated! Redirecting...</p> // Message while redirecting
             ) : (<>
                
-                <div className=' fixed w-full  h-screen '>
+                <div className='flex items-center justify-center w-full  h-screen '>
 
 
                 <Image
