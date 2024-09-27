@@ -1,7 +1,7 @@
 import { getSession } from '@/utils/session';
 import Image from 'next/image'
 import profilePic from '../public/image/lottery_winning3.png'
-
+import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -77,7 +77,10 @@ export default async function ProtectedPage() {
 
          <Card className='bg-ethLightBlue-950 text-white'>
           <CardHeader>
-            <CardTitle>Day at 9/24/2021</CardTitle>
+            <CardTitle>
+              <p className=' text-center '>Day At</p>
+              <p> 9/24/2021</p>
+              </CardTitle>
             <CardDescription>
             <Image
       src="/image/lottery_winning3.png"
@@ -250,6 +253,7 @@ export default async function ProtectedPage() {
               >
                 <div className="w-full h-full rounded-full circle-inner">
               <p className=' text-center  font-bold text-lg text-ethYellow-600'>1200</p>
+              <Link href="/protected/protectedlist">Dash</Link>
                 </div>
               </div>
             </div>
