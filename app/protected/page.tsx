@@ -253,7 +253,9 @@ export default async function ProtectedPage() {
               >
                 <div className="w-full h-full rounded-full circle-inner">
               <p className=' text-center  font-bold text-lg text-ethYellow-600'>1200</p>
-              <Link href="/protected/protectedlist">Dash</Link>
+              <Link href="/protected/protectedlist">
+                  <Button variant="secondary">Dash</Button>
+                </Link>
                 </div>
               </div>
             </div>
