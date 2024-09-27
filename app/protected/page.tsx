@@ -65,7 +65,7 @@ export default async function ProtectedPage() {
 
 <div>
 
-<Tabs defaultValue="account" className="w-full grow">
+<Tabs defaultValue="own" className="w-full grow">
       <TabsList className="grid w-full grid-cols-2  bg-ethBlack-400">
         <TabsTrigger value="own" className='bg-ethBlack-500'>own</TabsTrigger>
         <TabsTrigger value="available" className='bg-ethBlack-500'>available</TabsTrigger>
@@ -85,7 +85,24 @@ export default async function ProtectedPage() {
       style={{
         objectFit: 'cover',
       }}
+
+      
     />
+
+<div className="flex items-center justify-center space-x-1">
+
+
+
+
+<Image
+      src="/image/dollarCoin.png"
+      alt="Picture of the author"
+      width={18}
+      height={18}
+    />
+                  <p className="text-sm">2000</p>
+                 
+                </div>
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
@@ -109,6 +126,20 @@ export default async function ProtectedPage() {
         objectFit: 'cover',
       }}
     />
+    <div className="flex items-center justify-center space-x-1">
+
+
+
+
+<Image
+      src="/image/dollarCoin.png"
+      alt="Picture of the author"
+      width={18}
+      height={18}
+    />
+                  <p className="text-sm">4000</p>
+                 
+                </div>
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
