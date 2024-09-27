@@ -1,50 +1,46 @@
-'use client';
-import React, { useEffect, useCallback } from 'react';
-import { useRouter } from 'next/router';
+'use client'
+import { useEffect } from "react";
+import Head from "next/head";
 
-// Define a functional component with TypeScript
-const MiniAppWithBackButton: React.FC = () => {
-  const router = useRouter();
-
+const TelegramPage = () => {
   useEffect(() => {
-    let backButtonHandler: () => void;
+    const initTelegramWebApp = async () => {
+      const WebApp = (await import('@twa-dev/sdk')).default;
 
-    async function initializeTelegram() {
-      // Dynamically import the WebApp SDK
-      const { default: WebApp } = await import('@twa-dev/sdk');
+      // Initialize the WebApp
+      WebApp.ready()
 
-      WebApp.ready(); // Ensure the WebApp is fully initialized
+      // Check if the back button is available and customize it
+      if (WebApp.BackButton.isVisible) {
+        WebApp.BackButton.show();
+        WebApp.BackButton.onClick(() => {
+          // Handle the back button click, for example: navigate back
+          window.history.back();
+        });
 
-      // Define the back button click handler using useCallback to maintain reference
-      backButtonHandler = () => {
-        router.back(); // Navigate back to the previous page
-      };
-
-      // Show the back button and set its behavior
-      WebApp.BackButton.show();
-      WebApp.BackButton.onClick(backButtonHandler);
-
-      // Optional: hide the main button
-      WebApp.MainButton.hide();
-    }
-
-    initializeTelegram(); // Call the function to initialize the WebApp
-
-    // Clean up the back button listener on component unmount
-    return () => {
-      if (backButtonHandler) {
-        const { default: WebApp } = require('@twa-dev/sdk');
-        WebApp.BackButton.offClick(backButtonHandler); // Remove the registered handler
+        // Hide the default close button if visible
+        if (WebApp.MainButton.isVisible) {
+          WebApp.MainButton.hide();
+        }
       }
     };
-  }, [router]);
+
+    if (typeof window !== "undefined") {
+      initTelegramWebApp();
+    }
+  }, []);
 
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center bg-gray-100">
-      <h1 className="text-2xl font-bold">Telegram MiniApp with Back Button</h1>
-      <p className="mt-4 text-gray-700">Click the back button in the MiniApp header to go back!</p>
-    </div>
+    <>
+      <Head>
+        <title>Telegram Mini App</title>
+      </Head>
+      <div style={{ padding: "20px", textAlign: "center" }}>
+        <h1>Telegram Mini App</h1>
+        <p>Welcome to your custom Telegram Mini App with a Back Button!</p>
+      </div>
+    </>
   );
 };
 
-export default MiniAppWithBackButton;
+export default TelegramPage;
