@@ -14,8 +14,8 @@ export default async function ProtectedPage() {
 
       <>
 
-<div className=' bg-ethBlack-950 flex justify-center'>
-<div className="w-full bg-black text-white h-screen font-bold flex flex-col max-w-xl">
+<div className=' '>
+<div className=" absolute w-full bg-ethBlack-950 text-white h-screen font-bold flex flex-col max-w-xl">
 <div className="px-4 z-10">
 
 
@@ -41,30 +41,11 @@ export default async function ProtectedPage() {
     </div>
     </div>
     
-    <div className="flex-grow mt-4 bg-[#f3ba2f] rounded-t-[48px] relative top-glow z-0">
-          <div className="absolute top-[2px] left-0 right-0 bottom-0 bg-[#1d2025] rounded-t-[46px]">
-            <div className="px-4 mt-6 flex justify-between gap-2">
-              <div className="bg-[#272a2f] rounded-lg px-4 py-2 w-full relative">
-                <div className="dot"></div>
-                <img src="/image/lottery_winning3.png" alt="Daily Reward" className="mx-auto w-12 h-12" />
-                <p className="text-[10px] text-center text-white mt-1">Daily reward</p>
-                <p className="text-[10px] font-medium text-center text-gray-400 mt-2">dailyRewardTimeLeft</p>
-              </div>
-              <div className="bg-[#272a2f] rounded-lg px-4 py-2 w-full relative">
-                <div className="dot"></div>
-                <img src="/image/lottery_winning3.png" alt="Daily Cipher" className="mx-auto w-12 h-12" />
-                <p className="text-[10px] text-center text-white mt-1">Daily cipher</p>
-                <p className="text-[10px] font-medium text-center text-gray-400 mt-2">dailyCipherTimeLeft</p>
-              </div>
-              <div className="bg-[#272a2f] rounded-lg px-4 py-2 w-full relative">
-                <div className="dot"></div>
-                <img src="/image/lottery_winning3.png" alt="Daily Combo" className="mx-auto w-12 h-12" />
-                <p className="text-[10px] text-center text-white mt-1">Daily combo</p>
-                <p className="text-[10px] font-medium text-center text-gray-400 mt-2">dailyComboTimeLeft</p>
-              </div>
-              </div>
-              </div>
-              </div>
+
+<div className=' relative  bottom-10 bg-ethBlack-500 grow border-t-2  border-ethYellow-500 w-full '>
+
+</div>
+
 
 </div>
 
