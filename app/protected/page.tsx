@@ -249,13 +249,7 @@ export default async function ProtectedPage() {
                 /* onClick={#handleCardClick} */
               >
                 <div className="w-full h-full rounded-full circle-inner">
-                <Image 
-  src="/image/lottery_winning1.png" 
-  alt="Main Character" 
-  layout="responsive" 
-  width={500} 
-  height={500} 
-/>
+              <p>12</p>
                 </div>
               </div>
             </div>
