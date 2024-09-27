@@ -245,7 +245,7 @@ export default async function ProtectedPage() {
 
 <div className="px-4 mt-4 flex justify-center">
               <div
-                className="w-80 h-80 p-4 rounded-full circle-outer"
+                className="w-12 h-12 p-4 rounded-full circle-outer"
                 /* onClick={#handleCardClick} */
               >
                 <div className="w-full h-full rounded-full circle-inner">
