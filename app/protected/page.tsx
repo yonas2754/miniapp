@@ -1,6 +1,6 @@
 import { getSession } from '@/utils/session';
 import Image from 'next/image'
-import profilePic from '../public/image/lottery_winning2.png'
+import profilePic from '../public/image/lottery_winning3.png'
 
 import {
   Avatar,
@@ -18,15 +18,19 @@ export default async function ProtectedPage() {
 <div className="px-4 z-10">
 
 
-
+<Image
+      src={profilePic}
+      alt=""
+      // width={500} automatically provided
+      // height={500} automatically provided
+      // blurDataURL="data:..." automatically provided
+      // placeholder="blur" // Optional blur-up while loading
+    />
 
 
     <div className="flex items-center space-x-2 pt-4">
             <div className="p-1 rounded-lg bg-[#1d2025]">
-            <Avatar>
-      <AvatarImage src="https://github.com/yonas2754/miniapp/blob/master/public/image/lottery_winning3.png" alt="" />
-     
-    </Avatar>
+         
             </div>
             <div>
               <p className="text-sm">Nikandr (CEO)</p>
