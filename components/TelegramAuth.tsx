@@ -20,6 +20,7 @@ export default function TelegramAuth() {
       
             // Set the Mini App bar color to a custom color, e.g., dark grey
             WebApp.setHeaderColor('#1F1F1F')
+           
           }
       
           changeHeaderColor()
