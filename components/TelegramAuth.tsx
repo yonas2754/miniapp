@@ -3,6 +3,9 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import mountains from '../public/image/melaImage.jpg'
+import mountains2 from '../public/image/lottery_winning2 (2).png'
+import { LoaderCircle } from 'lucide-react'
+
 
 export default function TelegramAuth() {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -68,8 +71,33 @@ export default function TelegramAuth() {
             />
             ) : isAuthenticated ? (
                 <p>Authenticated! Redirecting...</p> // Message while redirecting
-            ) : (
-                <p>Authenticating...</p> // Message during authentication
+            ) : (<>
+               
+                <div className=' fixed w-full  h-screen '>
+
+
+                <Image
+              alt="Mountains2"
+              src={mountains}
+              placeholder="blur"
+              quality={100}
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: 'cover',
+              }}
+            />
+
+                </div>
+
+                 <div className=' flex items-center justify-center w-full h-screen'>
+                 <div className='   animate-spin'>
+                 <LoaderCircle size={48} strokeWidth={1.25} color="#141414" />
+              
+                 </div>
+                 </div>
+                </>
+
             )}
         </div>
     )
