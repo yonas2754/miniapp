@@ -78,7 +78,7 @@ export default function TelegramAuth() {
 
                 <Image
               alt="Mountains2"
-              src={mountains}
+              src={mountains2}
               placeholder="blur"
               quality={100}
               fill
