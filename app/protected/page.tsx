@@ -43,7 +43,7 @@ export default async function ProtectedPage() {
     
     
 
-<div className='  rounded-t-lg   bg-ethBlack-400 border-t-2    shadow-2xl  border-ethYellow-500 w-full grow '>
+<div className='  rounded-t-3xl   bg-ethBlack-400 border-t-2    shadow-2xl  border-ethYellow-500 w-full grow '>
 
 </div>
 
