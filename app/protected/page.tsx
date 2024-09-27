@@ -42,7 +42,7 @@ export default async function ProtectedPage() {
     </div>
     
 
-<div className=' absolute  top-1/4  rounded-t-lg bg-ethBlack-500 grow border-t-2  shadow-top-yellow  border-ethYellow-500 w-full '>
+<div className=' absolute  top-1/4  rounded-t-lg bg-ethBlack-300 grow border-t-2  shadow-top-yellow  border-ethYellow-500 w-full '>
 
 </div>
 
