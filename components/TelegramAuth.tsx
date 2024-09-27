@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import mountains from '../public/image/melaImage.jpg'
-import mountains2 from '../public/image/lottery_winning2 (2).png'
+import mountains2 from '../public/image/lottery_winning3.png'
 import { LoaderCircle } from 'lucide-react'
 
 
