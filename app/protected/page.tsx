@@ -61,7 +61,7 @@ export default async function ProtectedPage() {
     
     
 
-<div className='  rounded-t-3xl   bg-ethBlack-500 border-t-2    shadow-2xl  border-ethYellow-500 w-full grow p-8 '>
+<div className=' flex flex-col rounded-t-3xl   bg-ethBlack-500 border-t-2    shadow-2xl  border-ethYellow-500 w-full grow p-8 '>
 
 <div>
 
@@ -242,6 +242,25 @@ export default async function ProtectedPage() {
 
     </Tabs>
 </div>
+
+<div className="px-4 mt-4 flex justify-center">
+              <div
+                className="w-80 h-80 p-4 rounded-full circle-outer"
+                /* onClick={#handleCardClick} */
+              >
+                <div className="w-full h-full rounded-full circle-inner">
+                <Image 
+  src="/image/lottery_winning1.png" 
+  alt="Main Character" 
+  layout="responsive" 
+  width={500} 
+  height={500} 
+/>
+                </div>
+              </div>
+            </div>
+
+
 
 
 </div>
