@@ -2,6 +2,7 @@ import { getSession } from '@/utils/session';
 import Image from 'next/image'
 import profilePic from '../public/image/lottery_winning3.png'
 
+
 import {
   Avatar,
   AvatarFallback,
@@ -24,7 +25,7 @@ export default async function ProtectedPage() {
             <div className="p-1 rounded-lg bg-[#1d2025]">
          
 <Image
-      src={profilePic}
+     src="/image/lottery_winning3.png"
       alt=""
       width={30}
       height={30}
