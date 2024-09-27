@@ -14,6 +14,15 @@ export default function TelegramAuth() {
 
     useEffect(() => {
         // Show the splash screen for 30 seconds
+        const changeHeaderColor = async () => {
+            const WebApp = (await import('@twa-dev/sdk')).default
+            WebApp.ready()
+      
+            // Set the Mini App bar color to a custom color, e.g., dark grey
+            WebApp.setHeaderColor('#1F1F1F')
+          }
+      
+          changeHeaderColor()
         const splashTimer = setTimeout(() => {
             setShowSplash(false) // Hide splash screen after 30 seconds
             authenticateUser()    // Start authentication after splash
