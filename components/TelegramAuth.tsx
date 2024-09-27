@@ -90,7 +90,7 @@ export default function TelegramAuth() {
 
                  <div className=' flex items-center justify-center w-full h-screen'>
                  <div className='   animate-spin'>
-                 <LoaderCircle size={48} strokeWidth={1.25} color="#141414" />
+                 <LoaderCircle size={100} strokeWidth={1.25} color="#6B5000" />
               
                  </div>
                  </div>
