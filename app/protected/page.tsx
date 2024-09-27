@@ -65,13 +65,13 @@ export default async function ProtectedPage() {
 
 <div>
 
-<Tabs defaultValue="own" className="w-full grow bg-ethLightBlue-950 text-white">
-      <TabsList className="grid w-full grid-cols-2  bg-ethBlack-400">
+<Tabs defaultValue="own" className="w-full grow ">
+      <TabsList className="grid w-full grid-cols-3  bg-ethBlack-400">
         <TabsTrigger value="own" className='bg-ethBlack-500'>own</TabsTrigger>
         <TabsTrigger value="available" className='bg-ethBlack-500'>available</TabsTrigger>
         <TabsTrigger value="end" className='bg-ethBlack-500'>End</TabsTrigger>
       </TabsList>
-      <TabsContent value="own">
+      <TabsContent value="own" className='bg-ethLightBlue-950 text-white'>
          <div className=' grid grid-cols-2 gap-2 '>
 
 
