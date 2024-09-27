@@ -34,7 +34,7 @@ export default async function ProtectedPage() {
     />
             </div>
             <div>
-              <p className="text-sm">Nikandr (CEO)</p>
+              <p className="text-sm">yonas (CEO)</p>
             </div>
           </div>
 
