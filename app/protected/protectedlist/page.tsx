@@ -1,11 +1,11 @@
 import React from 'react'
 
-function page() {
+function Page() {
   return (
-    <div>
+    <div className='bg-red-500'>
       <h1>yonas yonas</h1>
     </div>
   )
 }
 
-export default page
+export default Page
