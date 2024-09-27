@@ -69,8 +69,6 @@ export default function TelegramAuth() {
                 objectFit: 'cover',
               }}
             />
-            ) : isAuthenticated ? (
-                <p>Authenticated! Redirecting...</p> // Message while redirecting
             ) : (<>
                
                 <div className='flex items-center justify-center w-full  h-screen '>
