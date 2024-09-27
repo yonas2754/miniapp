@@ -39,15 +39,15 @@ export default async function ProtectedPage() {
           </div>
 
     </div>
-    <div className='relative grow' >yonas</div>
-    </div>
+
+    
     
 
-<div className=' absolute  top-0 rounded-t-lg  bg-ethGray-500 grow border-t-2  shadow-top-yellow  border-ethYellow-500 w-full '>
+<div className='  rounded-t-lg  bg-ethGray-500  border-t-2    shadow-2xl  border-ethYellow-500 w-full grow '>
 
 </div>
 
-
+</div>
 </div>
 
     {/*   <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
