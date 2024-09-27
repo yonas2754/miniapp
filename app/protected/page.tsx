@@ -26,8 +26,8 @@ export default async function ProtectedPage() {
 <Image
       src={profilePic}
       alt=""
-      // width={500} automatically provided
-      // height={500} automatically provided
+      width={30}
+      height={30}
       // blurDataURL="data:..." automatically provided
       // placeholder="blur" // Optional blur-up while loading
     />
