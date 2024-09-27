@@ -65,27 +65,63 @@ export default async function ProtectedPage() {
 
 <div>
 
-<Tabs defaultValue="account" className="w-full">
+<Tabs defaultValue="account" className="w-full grow">
       <TabsList className="grid w-full grid-cols-2  bg-ethBlack-400">
         <TabsTrigger value="own" className='bg-ethBlack-500'>own</TabsTrigger>
         <TabsTrigger value="available" className='bg-ethBlack-500'>available</TabsTrigger>
       </TabsList>
       <TabsContent value="own">
-        <Card>
+         <div className=' grid grid-cols-2 gap-2 '>
+
+
+         <Card>
           <CardHeader>
             <CardTitle>Account</CardTitle>
             <CardDescription>
-              Make changes to your account here. Click save when you are done.
+            <Image
+      src="/image/lottery_winning3.png"
+      alt="Picture of the author"
+      fill
+      sizes="(min-width: 808px) 50vw, 100vw"
+      style={{
+        objectFit: 'cover', // cover, contain, none
+      }}
+    />
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
           
            
           </CardContent>
-          <CardFooter>
-            <Button>Save changes</Button>
-          </CardFooter>
+          
         </Card>
+
+
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Account</CardTitle>
+            <CardDescription>
+            <Image
+      src="/image/lottery_winning3.png"
+      alt="Picture of the author"
+      fill
+      sizes="(min-width: 808px) 50vw, 100vw"
+      style={{
+        objectFit: 'cover', // cover, contain, none
+      }}
+    />
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+          
+           
+          </CardContent>
+          
+        </Card>
+
+         </div>
+        
       </TabsContent>
       <TabsContent value="available">
         <Card>
@@ -98,9 +134,7 @@ export default async function ProtectedPage() {
           <CardContent className="space-y-2">
            
           </CardContent>
-          <CardFooter>
-            <Button>Save password</Button>
-          </CardFooter>
+         
         </Card>
       </TabsContent>
     </Tabs>
