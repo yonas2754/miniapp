@@ -15,7 +15,7 @@ export default async function ProtectedPage() {
       <>
 
 <div className=' '>
-<div className=" absolute w-full bg-ethBlack-950 text-white h-screen font-bold flex flex-col max-w-xl">
+<div className="  relative w-full bg-ethBlack-950 text-white h-screen font-bold flex flex-col max-w-xl">
 <div className="px-4 z-10">
 
 
@@ -42,7 +42,7 @@ export default async function ProtectedPage() {
     </div>
     
 
-<div className=' relative  bottom-10 bg-ethBlack-500 grow border-t-2  border-ethYellow-500 w-full '>
+<div className=' absolute  bottom-10 bg-ethBlack-500 grow border-t-2  shadow-top-yellow  border-ethYellow-500 w-full '>
 
 </div>
 
