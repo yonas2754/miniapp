@@ -61,16 +61,16 @@ export default async function ProtectedPage() {
     
     
 
-<div className='  rounded-t-3xl   bg-ethBlack-500 border-t-2    shadow-2xl  border-ethYellow-500 w-full grow pt-4 '>
+<div className='  rounded-t-3xl   bg-ethBlack-500 border-t-2    shadow-2xl  border-ethYellow-500 w-full grow p-8 '>
 
 <div>
 
-<Tabs defaultValue="account" className="w-full m-4">
+<Tabs defaultValue="account" className="w-full">
       <TabsList className="grid w-full grid-cols-2  bg-ethBlack-400">
-        <TabsTrigger value="account">own</TabsTrigger>
-        <TabsTrigger value="password">available</TabsTrigger>
+        <TabsTrigger value="own" className='bg-ethBlack-500'>own</TabsTrigger>
+        <TabsTrigger value="available" className='bg-ethBlack-500'>available</TabsTrigger>
       </TabsList>
-      <TabsContent value="account">
+      <TabsContent value="own">
         <Card>
           <CardHeader>
             <CardTitle>Account</CardTitle>
@@ -87,7 +87,7 @@ export default async function ProtectedPage() {
           </CardFooter>
         </Card>
       </TabsContent>
-      <TabsContent value="password">
+      <TabsContent value="available">
         <Card>
           <CardHeader>
             <CardTitle>Password</CardTitle>
