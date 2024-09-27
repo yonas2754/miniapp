@@ -33,18 +33,8 @@ export default function TelegramAuth() {
         WebApp.ready()
 
   // Change the Mini App bar color
-  WebApp.setHeaderColor('#FFD70') // Set the bar color to a yellow (#FFD700)
-
-  // Optionally, change the background color of the Mini App
-  WebApp.setBackgroundColor('#000000') // Set the entire app's background color to black
-
-  // Customize the main button color if used
-  WebApp.MainButton.setParams({
-    color: '#FFD700', // Set the main button color to yellow
-    text_color: '#000000', // Set the main button text color to black
-  })
-
-  WebApp.MainButton.show() // Make the main button visible
+  WebApp.setHeaderColor('#FFD700')
+ 
 
 
 
