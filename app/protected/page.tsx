@@ -39,7 +39,7 @@ export default async function ProtectedPage() {
           </div>
 
     </div>
-    <div className='relative grow' ></div>
+    <div className='relative grow' >yonas</div>
     </div>
     
 
