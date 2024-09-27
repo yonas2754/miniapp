@@ -88,20 +88,33 @@ export default async function ProtectedPage() {
 
       
     />
-
+<div className=' flex flex-col items-center justify-center space-y-2'>
 <div className="flex items-center justify-center space-x-1">
 
-
-
-
 <Image
-      src="/image/dollarCoin.png"
+      src="/image/dollar-coin.png"
       alt="Picture of the author"
       width={18}
       height={18}
     />
                   <p className="text-sm">2000</p>
                  
+                </div>
+
+<div>
+  
+<div className="flex items-center justify-center space-x-1">
+<p className=' text-sm'>price</p>
+
+                  <p className="text-sm">100</p>
+                 
+                </div>
+
+
+
+</div>
+
+
                 </div>
             </CardDescription>
           </CardHeader>
@@ -126,19 +139,28 @@ export default async function ProtectedPage() {
         objectFit: 'cover',
       }}
     />
+    <div className=' flex flex-col items-center justify-center space-y-2'>
     <div className="flex items-center justify-center space-x-1">
 
 
 
 
 <Image
-      src="/image/dollarCoin.png"
+      src="/image/dollar-coin.png"
       alt="Picture of the author"
       width={18}
       height={18}
     />
                   <p className="text-sm">4000</p>
                  
+                </div>
+
+                <div className="flex items-center justify-center space-x-1">
+<p className=' text-sm'>price</p>
+
+                  <p className="text-sm">200</p>
+                 
+                </div>
                 </div>
             </CardDescription>
           </CardHeader>
