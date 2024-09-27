@@ -88,8 +88,15 @@ export default async function ProtectedPage() {
 
       
     />
-<div className=' flex flex-col items-center justify-center space-y-2'>
-<div className="flex items-center justify-center space-x-1">
+
+
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+          <div className="flex items-center justify-center space-x-1">
+
+
+
 
 <Image
       src="/image/dollar-coin.png"
@@ -100,28 +107,11 @@ export default async function ProtectedPage() {
                   <p className="text-sm">2000</p>
                  
                 </div>
-
-<div>
-  
-<div className="flex items-center justify-center space-x-1">
-<p className=' text-sm'>price</p>
-
-                  <p className="text-sm">100</p>
-                 
-                </div>
-
-
-
-</div>
-
-
-                </div>
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-          
            
           </CardContent>
+          <CardFooter>
+          <p className="text-sm"> price 100</p>
+          </CardFooter>
           
         </Card>
 
@@ -139,8 +129,11 @@ export default async function ProtectedPage() {
         objectFit: 'cover',
       }}
     />
-    <div className=' flex flex-col items-center justify-center space-y-2'>
-    <div className="flex items-center justify-center space-x-1">
+  
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+          <div className="flex items-center justify-center space-x-1">
 
 
 
@@ -154,21 +147,11 @@ export default async function ProtectedPage() {
                   <p className="text-sm">4000</p>
                  
                 </div>
-
-                <div className="flex items-center justify-center space-x-1">
-<p className=' text-sm'>price</p>
-
-                  <p className="text-sm">200</p>
-                 
-                </div>
-                </div>
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-          
            
           </CardContent>
-          
+          <CardFooter>
+          <p className="text-sm"> price 100</p>
+          </CardFooter>
         </Card>
 
          </div>
