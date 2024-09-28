@@ -6,7 +6,7 @@ function Page() {
   return (
     <div>
    <BackButtonDemo/>   
-   <div className=' bg-ethDeepBlue-950 w-full  grow p-8'>
+   <div className=' bg-ethDeepBlue-950 w-full  h-full p-8'>
     <div  className=''>
     <div>
       {/* Create an array with 100 elements and map over it */}
