@@ -252,8 +252,9 @@ export default async function ProtectedPage() {
                 /* onClick={#handleCardClick} */
               >
                 <div className="w-full h-full rounded-full circle-inner">
+                <Link href="/protected/protectedlist">
               <p className=' text-center  font-bold text-lg text-ethYellow-600'>1200</p>
-              <Link href="/protected/protectedlist">
+          
                
                 </Link>
                 </div>
