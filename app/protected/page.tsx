@@ -57,7 +57,7 @@ export default async function ProtectedPage() {
   };
 
   return (
-    <div className="w-full bg-ethBlack-600 text-white h-screen font-bold flex flex-col max-w-xl">
+    <div className="w-full bg-ethBlack-600 text-white h-full font-bold flex flex-col max-w-xl">
       <div className="px-4 z-10 pt-4">
         <div className="flex items-center space-x-2">
           <div className="p-1 rounded-lg bg-[#1d2025]">
@@ -80,23 +80,17 @@ export default async function ProtectedPage() {
           {Object.entries(tabsData).map(([key, cards]) => (
             <TabsContent key={key} value={key}>
               <div className='grid grid-cols-2 gap-2'>
+              <Link href="/protected/protectedlist">
                 {cards.map((card, index) => (
                   <LotteryCard key={index} {...card} />
                 ))}
+                    </Link>
               </div>
             </TabsContent>
           ))}
         </Tabs>
 
-        <div className="px-4 mt-4 flex justify-center">
-          <div className="p-4 rounded-full circle-outer">
-            <div className="w-full h-full rounded-full circle-inner">
-              <Link href="/protected/protectedlist">
-                <p className='text-center font-bold text-lg text-ethYellow-600'>1200</p>
-              </Link>
-            </div>
-          </div>
-        </div>
+        
       </div>
 
 
