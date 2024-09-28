@@ -11,12 +11,13 @@ function Page() {
       {Array.from({ length: 100 }).map((_, index) => (
         <div className="px-4 mt-4 flex justify-center" key={index}>
           <div className="p-4 rounded-full circle-outer">
-          <Link href="/protected/protectedlist">
+    
             <div className="w-full h-full rounded-full circle-inner">
+            <Link href="/protected/protectedlist">
               <p className='text-center font-bold text-lg text-ethYellow-600'>{index + 1}</p>
-             
+              </Link>
             </div>
-            </Link>
+            
           </div>
         </div>
       ))}
