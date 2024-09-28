@@ -7,7 +7,7 @@ import React from 'react'
 
 function Page() {
   return (
-    <div className='bg-ethBlack-950  w-full h-full  flex flex-col'>
+    <div className='bg-ethBlack-950  w-full grow  flex flex-col'>
    <BackButtonDemo/>   
    <div className=" bg-ethBlack-950   pt-8 pb-13 px-4    grid grid-cols-3 gap-1 ">
       {/* Create an array with 100 elements and map over it */}

@@ -57,7 +57,7 @@ export default async function ProtectedPage() {
   };
 
   return (
-    <div className="w-full bg-ethBlack-600 text-white h-full font-bold flex flex-col max-w-xl">
+    <div className="w-full bg-ethBlack-600 text-white  grow font-bold flex flex-col max-w-xl">
       <div className="px-4 z-10 pt-4">
         <div className="flex items-center space-x-2">
           <div className="p-1 rounded-lg bg-[#1d2025]">
