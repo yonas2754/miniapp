@@ -80,11 +80,15 @@ export default async function ProtectedPage() {
           {Object.entries(tabsData).map(([key, cards]) => (
             <TabsContent key={key} value={key}>
               <div className='grid grid-cols-2 gap-2'>
-              <Link href="/protected/protectedlist">
+             
                 {cards.map((card, index) => (
+                  <>
+                   <Link href="/protected/protectedlist">
                   <LotteryCard key={index} {...card} />
+                  </Link>
+                  </>
                 ))}
-                    </Link>
+                    
               </div>
             </TabsContent>
           ))}
