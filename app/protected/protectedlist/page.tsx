@@ -4,7 +4,7 @@ import React from 'react'
 
 function Page() {
   return (
-    <div>
+    <div className='bg-ethBlack-950 '>
    <BackButtonDemo/>   
    <div className=" bg-ethBlack-950 w-full h-full p-8  grid grid-cols-2 gap-0 ">
       {/* Create an array with 100 elements and map over it */}
