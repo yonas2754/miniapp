@@ -17,19 +17,19 @@ function Footer() {
           <p className="mt-1 text-lg font-extrabold text-ethYellow-600">Mela</p>
           </Link>
         </div>
-        <div className={`text-center text-[#85827d] w-1/5  ${pathname.includes('/protected')  ? ' bg-[#1c1f24] ' : ''} `}>
+        <div className={`text-center text-[#85827d] w-1/5  ${pathname.includes('/bank')  ? ' bg-[#1c1f24] ' : ''} `}>
         <Link href="/bank">
           <Mine className="w-8 h-8 mx-auto" />
           <p className="mt-1">Bank</p>
           </Link>
         </div>
-        <div className={`text-center text-[#85827d] w-1/5  ${pathname.includes('/protected')  ? ' bg-[#1c1f24] ' : ''} `}>
+        <div className={`text-center text-[#85827d] w-1/5  ${pathname.includes('/friends')  ? ' bg-[#1c1f24] ' : ''} `}>
         <Link href="/friends">
           <Friends className="w-8 h-8 mx-auto" />
           <p className="mt-1">Friends</p>
           </Link>
         </div>
-        <div className={`text-center text-[#85827d] w-1/5  ${pathname.includes('/protected')  ? ' bg-[#1c1f24] ' : ''} `}>
+        <div className={`text-center text-[#85827d] w-1/5  ${pathname.includes('/earn')  ? ' bg-[#1c1f24] ' : ''} `}>
         <Link href="/earn">
           <Coins className="w-8 h-8 mx-auto" />
           <p className="mt-1">Earn</p>
