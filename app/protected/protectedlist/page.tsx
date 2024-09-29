@@ -17,7 +17,8 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
-import { Footer } from 'antd/es/layout/layout';
+import Footer from '@/components/footer';
+
 
 const Page: React.FC = () => {
   // TypeScript type annotation for the function
@@ -67,7 +68,8 @@ const Page: React.FC = () => {
           )
         )}
       </div>
-    <Footer/>
+  
+      <Footer/>
     </div>
   );
 };
