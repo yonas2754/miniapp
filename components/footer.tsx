@@ -11,13 +11,13 @@ function Footer() {
     <div>
       <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] max-w-xl bg-[#272a2f] flex justify-around items-center z-50 rounded-3xl text-xs p-2">
       
-        <div className={`text-center  w-1/5 ${pathname.includes('/protected')  ? ' bg-[#1c1f24]  text-ethYellow-600"' : ' text-ethYellow-300'}      m-1 p-2 rounded-2xl`}>
+        <div className={`text-center  w-1/5 ${pathname.includes('/protected')  ? ' bg-[#1c1f24]  text-ethYellow-600' : ' text-ethYellow-300'}      m-1 p-2 rounded-2xl`}>
         <Link href="/protected">
 
-          <p className="mt-1 text-lg font-extrabold >Mela</p>
+          <p className="mt-1 text-lg font-extrabold ">Mela</p>
           </Link>
         </div>
-        <div className={`text-center  w-1/5  ${pathname.includes('/bank')  ? ' bg-[#1c1f24] text-ethGray-100 ' : 'text-[#85827d]'} `}>
+        <div className={`text-center  w-1/5  ${pathname.includes('/bank')  ? ' bg-[#1c1f24] text-ethGray-100' : 'text-[#85827d]'} `}>
         <Link href="/bank">
           <Mine className="w-8 h-8 mx-auto" />
           <p className="mt-1">Bank</p>
