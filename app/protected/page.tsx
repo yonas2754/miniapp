@@ -100,7 +100,7 @@ export default async function ProtectedPage() {
 
 
 
-
+      <Footer/>
      
     </div>
   );
