@@ -42,7 +42,7 @@ const Page: React.FC = () => {
                         {ticketNumber}
                       </p>
                     </AlertDialogTrigger>
-                    <AlertDialogContent className='bg-ethGray-200 text-black fixed bottom-0  border-t-4 border-ethLightBlue-600     shadow-2xl shadow-ethYellow-600 rounded-3xl'>
+                    <AlertDialogContent className='bg- text-black   border-t-4 border-ethYellow-600   shadow-2xl shadow-ethYellow-600 rounded-3xl'>
                       <AlertDialogHeader>
                         <AlertDialogTitle>Mela Number #{ticketNumber}</AlertDialogTitle>
                         <AlertDialogDescription>
