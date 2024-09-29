@@ -3,7 +3,7 @@ import BackButtonDemo from '@/components/backButton';
 import Coins from '@/components/icons/Coins';
 import Friends from '@/components/icons/Friends';
 import Mine from '@/components/icons/Mine';
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   AlertDialog,
@@ -20,9 +20,11 @@ import { Button } from '@/components/ui/button';
 
 const Page: React.FC = () => {
   // TypeScript type annotation for the function
+  const [tickets, setTickets] = useState<number[]>(Array.from({ length: 100 }, (_, i) => i + 1));
+
   const handleContinueClick = (ticketNumber: number): void => {
-    alert(`Lottery ticket ${ticketNumber} confirmed!`);
-    // Additional logic can be added here if needed
+
+    setTickets((prevTickets) => prevTickets.filter((ticket) => ticket !== ticketNumber));
   };
 
   return (
@@ -30,9 +32,7 @@ const Page: React.FC = () => {
       <BackButtonDemo />
       <div className="bg-ethBlack-950 pt-8 pb-13 px-4 grid grid-cols-3 gap-1">
         {/* Map over 100 items, treating each as a lottery ticket */}
-        {Array.from({ length: 100 }).map((_, index) => {
-          const ticketNumber = index + 1;
-          return (
+        {tickets.map((ticketNumber) =>  (
             <div className="px-4 mt-4 flex justify-center" key={ticketNumber}>
               <div className="p-4 rounded-full circle-outer">
                 <div className="w-full h-full rounded-full circle-inner">
@@ -44,7 +44,7 @@ const Page: React.FC = () => {
                     </AlertDialogTrigger>
                     <AlertDialogContent className='bg-ethGray-200'>
                       <AlertDialogHeader>
-                        <AlertDialogTitle>Lottery Ticket #{ticketNumber}</AlertDialogTitle>
+                        <AlertDialogTitle>Mela Number #{ticketNumber}</AlertDialogTitle>
                         <AlertDialogDescription>
                           Are you sure you want to proceed with Lottery Ticket #{ticketNumber}? Once confirmed, this action cannot be undone.
                         </AlertDialogDescription>
@@ -52,8 +52,8 @@ const Page: React.FC = () => {
                       <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
                         {/* Passing ticket number to the click handler */}
-                        <AlertDialogAction onClick={() => handleContinueClick(ticketNumber)}>
-                          Confirm Ticket #{ticketNumber}
+                        <AlertDialogAction className='bg-ethGreen-400' onClick={() => handleContinueClick(ticketNumber)}>
+                          Confirm Mela #{ticketNumber}
                         </AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>
@@ -61,8 +61,8 @@ const Page: React.FC = () => {
                 </div>
               </div>
             </div>
-          );
-        })}
+          )
+        )}
       </div>
       <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] max-w-xl bg-[#272a2f] flex justify-around items-center z-50 rounded-3xl text-xs p-2">
         <div className="text-center text-[#85827d] w-1/5 bg-[#1c1f24] m-1 p-2 rounded-2xl">
