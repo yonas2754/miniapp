@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react';
 import { Dialog } from '@headlessui/react';
+import Footer from '@/components/footer';
 
 export default function BankPage() {
   const banks = ['Bank of America', 'Chase Bank', 'Wells Fargo', 'Citibank', 'HSBC'];
@@ -29,6 +30,7 @@ export default function BankPage() {
   };
 
   return (
+    <div>   
     <div className="container mx-auto p-8">
       <h1 className="text-3xl font-bold mb-6 text-center">Select Your Bank</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -94,5 +96,6 @@ export default function BankPage() {
         </div>
       </Dialog>
     </div>
+    <Footer/></div>
   );
 }
