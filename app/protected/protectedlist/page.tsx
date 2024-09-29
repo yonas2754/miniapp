@@ -35,14 +35,16 @@ const Page: React.FC = () => {
         {tickets.map((ticketNumber) =>  (
             <div className="px-4 mt-4 flex justify-center" key={ticketNumber}>
               <div className="p-4 rounded-full circle-outer">
-                <div className="w-full h-full rounded-full circle-inner">
+              
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
+                    <div className="w-full h-full rounded-full circle-inner">
                       <p className="text-center font-bold text-lg text-ethYellow-600">
                         {ticketNumber}
                       </p>
+                      </div>
                     </AlertDialogTrigger>
-                    <AlertDialogContent className='bg-ethDeepBlue-900  text-white border-t-8 border-ethYellow-600 "w-full h-full  shadow-2xl shadow-ethYellow-600 rounded-3xl'>
+                    <AlertDialogContent className='bg-ethDeepBlue-900  text-white border-t-8 border-ethYellow-600  shadow-2xl shadow-ethYellow-600 rounded-3xl'>
                       <AlertDialogHeader>
                         <AlertDialogTitle>Mela Number #{ticketNumber}</AlertDialogTitle>
                         <AlertDialogDescription>
@@ -58,7 +60,7 @@ const Page: React.FC = () => {
                       </AlertDialogFooter>
                     </AlertDialogContent>
                   </AlertDialog>
-                </div>
+             
               </div>
             </div>
           )
