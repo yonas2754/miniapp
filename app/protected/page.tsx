@@ -1,4 +1,3 @@
-'use client'
 import { getSession } from '@/utils/session';
 import Image from 'next/image';
 import Link from 'next/link';

@@ -1,3 +1,4 @@
+'use client'
 import BackButtonDemo from '@/components/backButton';
 import Coins from '@/components/icons/Coins';
 import Friends from '@/components/icons/Friends';
