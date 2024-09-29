@@ -30,7 +30,7 @@ const Page: React.FC = () => {
   return (
     <div className="bg-ethBlack-950 w-full h-full min-h-screen flex flex-col">
       <BackButtonDemo />
-      <div className="bg-ethBlack-950 pt-8 pb-13 px-4 grid grid-cols-3 gap-1">
+      <div className="bg-ethBlack-950 mb-36 pt-8 pb-13 px-4 grid grid-cols-3 gap-1">
         {/* Map over 100 items, treating each as a lottery ticket */}
         {tickets.map((ticketNumber) =>  (
             <div className="px-4 mt-4 flex justify-center" key={ticketNumber}>
@@ -50,9 +50,9 @@ const Page: React.FC = () => {
                         </AlertDialogDescription>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogCancel  className='bg-ethRed-400 rounded-lg'>Cancel</AlertDialogCancel>
                         {/* Passing ticket number to the click handler */}
-                        <AlertDialogAction className='bg-ethGreen-400' onClick={() => handleContinueClick(ticketNumber)}>
+                        <AlertDialogAction className='bg-ethGreen-400  rounded-lg' onClick={() => handleContinueClick(ticketNumber)}>
                           Confirm Mela #{ticketNumber}
                         </AlertDialogAction>
                       </AlertDialogFooter>
