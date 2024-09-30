@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+'use client'
+
 import { initUtils } from '@telegram-apps/sdk'
 
 interface ReferralSystemProps {
