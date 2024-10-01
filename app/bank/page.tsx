@@ -110,12 +110,12 @@ function BankForm({
     {isFilled && <span className="ml-2 text-lg">✔️</span>}
   </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent className="bg-ethGray-200 m-auto">
         <AlertDialogHeader>
           <AlertDialogTitle>Fill Your Name and Account Number for {bankName}</AlertDialogTitle>
           <AlertDialogDescription>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 bg-ethGray-200">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 ">
                 <FormField
                   control={form.control}
                   name="username"
