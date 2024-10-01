@@ -137,7 +137,7 @@ function BankForm({
                     <FormItem>
                       <FormLabel>Account Number</FormLabel>
                       <FormControl>
-                        <Input placeholder="Account Number" {...field} />
+                        <Input placeholder="AccountNo_" {...field} />
                       </FormControl>
                       <FormDescription>This is your account display number.</FormDescription>
                       <FormMessage />
