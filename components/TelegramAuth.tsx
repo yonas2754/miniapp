@@ -22,9 +22,7 @@ export default function TelegramAuth() {
         const changeHeaderColor = async () => {
             const WebApp = (await import('@twa-dev/sdk')).default
             WebApp.ready()
-            setInitData(WebApp.initData);
-        setUserId(WebApp.initDataUnsafe.user?.id.toString() || '');
-        setStartParam(WebApp.initDataUnsafe.start_param || '');
+           
             // Set the Mini App bar color to a custom color, e.g., dark grey
             WebApp.setHeaderColor('#1F1F1F')
            
@@ -58,6 +56,11 @@ export default function TelegramAuth() {
 
      
         if (initData&&initData!=='') {
+
+            setInitData(WebApp.initData);
+            setUserId(WebApp.initDataUnsafe.user?.id.toString() || '');
+            setStartParam(WebApp.initDataUnsafe.start_param || '');
+
             try {
                 const response = await fetch('/api/auth', {
                     method: 'POST',
