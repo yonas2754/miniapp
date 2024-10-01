@@ -2,6 +2,7 @@
 
 import { getSession } from '@/utils/session';
 import ReferralSystem from '@/components/referralSystem'
+import Footer from '@/components/footer';
 
 
 export default async function Home() {
@@ -14,6 +15,7 @@ export default async function Home() {
       <h1 className="text-4xl font-bold mb-8">Mela invitation</h1>
 
       <ReferralSystem userId={session.user.telegramId}  />
+      <Footer/>
     </main>
   )
 }

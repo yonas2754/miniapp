@@ -1,111 +1,155 @@
-'use client'
-import { useState } from 'react';
-import { Dialog } from '@headlessui/react';
-import Footer from '@/components/footer';
+"use client";
 
-export default function BankPage() {
-  // List of banks
-  const banks = ['Bank of America', 'Chase Bank', 'Wells Fargo', 'Citibank', 'HSBC'];
+import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-  // State to manage popup visibility, selected bank, and form data
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedBank, setSelectedBank] = useState('');
-  const [submittedBank, setSubmittedBank] = useState<string | null>(null);
-  const [form, setForm] = useState({ fullName: '', accountNumber: '' });
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 
-  // Handle input changes in the form
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+// Define form schema using Zod
+const formSchema = z.object({
+  username: z.string().min(2, {
+    message: "Username must be at least 2 characters.",
+  }),
+  accountNo: z.number({
+    required_error: "Account Number is required",
+    invalid_type_error: "Account Number must be a number",
+  }),
+});
+
+export function ProfileForm() {
+  const banks = ["Bank of America", "Chase Bank", "Wells Fargo", "Citibank", "HSBC"];
+  
+  // State to track the submission status of each bank form
+  const [filledBanks, setFilledBanks] = useState<Record<string, boolean>>({});
+
+  // Handler to update bank status after form submission
+  const handleFormFilled = (bankName: string) => {
+    setFilledBanks((prev) => ({ ...prev, [bankName]: true }));
   };
 
-  // Handle card click to open form popup
-  const handleCardClick = (bank: string) => {
-    setSelectedBank(bank);
-    setIsOpen(true);
-  };
-
-  // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmittedBank(selectedBank); // Set the submitted bank to track it visually
-    console.log(`Full Name: ${form.fullName}, Account Number: ${form.accountNumber} for ${selectedBank}`);
-    setIsOpen(false);
+  // Handler to reset the form status if the back button is clicked
+  const handleFormReset = (bankName: string) => {
+    setFilledBanks((prev) => ({ ...prev, [bankName]: false }));
   };
 
   return (
-    <div>  
-    <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-bold mb-6 text-center">Select Your Bank</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {banks.map((bank) => (
-          <div
-            key={bank}
-            className={`relative bg-blue-200 hover:bg-blue-300 text-center p-6 rounded-lg cursor-pointer shadow-lg ${
-              submittedBank === bank ? 'border-4 border-green-500' : ''
-            }`}
-            onClick={() => handleCardClick(bank)}
-          >
-            <h2 className="text-xl font-semibold">{bank}</h2>
-            {/* Show right check mark on the selected bank card */}
-            {submittedBank === bank && (
-              <div className="absolute top-2 right-2 text-green-600 font-bold text-2xl">✔</div>
-            )}
-          </div>
-        ))}
-      </div>
-
-      {/* Pop-up form dialog */}
-      <Dialog open={isOpen} onClose={() => setIsOpen(false)} className="fixed inset-0 z-50 overflow-y-auto">
-        <div className="flex items-center justify-center min-h-screen">
-          {/* Custom overlay */}
-          <div className="fixed inset-0 bg-black opacity-30" aria-hidden="true" />
-
-          {/* Dialog panel */}
-          <div className="bg-white rounded-lg p-8 shadow-lg max-w-sm mx-auto z-10">
-            <Dialog.Title className="text-2xl font-bold mb-4">{`Enter Details for ${selectedBank}`}</Dialog.Title>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="fullName" className="block text-sm font-medium">Full Name</label>
-                <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  value={form.fullName}
-                  onChange={handleInputChange}
-                  className="w-full border border-gray-300 rounded p-2 mt-1"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="accountNumber" className="block text-sm font-medium">Account Number</label>
-                <input
-                  type="text"
-                  id="accountNumber"
-                  name="accountNumber"
-                  value={form.accountNumber}
-                  onChange={handleInputChange}
-                  className="w-full border border-gray-300 rounded p-2 mt-1"
-                  required
-                />
-              </div>
-              <div className="text-right">
-                <button
-                  type="button"
-                  onClick={() => setIsOpen(false)}
-                  className="bg-gray-300 px-4 py-2 rounded mr-2"
-                >
-                  Cancel
-                </button>
-                <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </Dialog>
+    <div>
+      {/* Loop through each bank and generate UI elements */}
+      {banks.map((bank) => (
+        <BankForm
+          key={bank}
+          bankName={bank}
+          isFilled={filledBanks[bank] || false}
+          onFormFilled={() => handleFormFilled(bank)}
+          onFormReset={() => handleFormReset(bank)}
+        />
+      ))}
     </div>
-    <Footer/>
-    </div>
+  );
+}
+
+// Reusable component for each bank's form
+function BankForm({
+  bankName,
+  isFilled,
+  onFormFilled,
+  onFormReset,
+}: {
+  bankName: string;
+  isFilled: boolean;
+  onFormFilled: () => void;
+  onFormReset: () => void;
+}) {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: "",
+      accountNo: 0,
+    },
+  });
+
+  // Submit handler for each bank form
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(`Bank: ${bankName}, Values:`, values);
+    onFormFilled(); // Mark form as filled
+  }
+
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        {/* Button shows a checkmark if the form is filled */}
+        <Button variant="outline">
+          {bankName} {isFilled ? "✔️" : ""}
+        </Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Fill Your Name and Account Number for {bankName}</AlertDialogTitle>
+          <AlertDialogDescription>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <FormField
+                  control={form.control}
+                  name="username"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Full Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Full Name" {...field} />
+                      </FormControl>
+                      <FormDescription>This is your public display name.</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="accountNo"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Account Number</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Account Number" {...field} />
+                      </FormControl>
+                      <FormDescription>This is your account display number.</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit">Submit</Button>
+              </form>
+            </Form>
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          {/* When Cancel is clicked, reset the form status for this bank */}
+          <AlertDialogCancel onClick={onFormReset}>Back</AlertDialogCancel>
+          <AlertDialogAction>Continue</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 }
