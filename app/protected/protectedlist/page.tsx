@@ -36,8 +36,6 @@ const Page: React.FC = () => {
     const initWebApp = async () => {
       if (typeof window !== 'undefined') {
         const WebApp = (await import('@twa-dev/sdk')).default;
-        WebApp.ready();
-      
         setStartParam(WebApp.initDataUnsafe.start_param || '');
       }
     };
