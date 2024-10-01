@@ -96,7 +96,7 @@ export default function TelegramAuth() {
               }}
             />
             ) : (<>
-                     <ReferralReciver initData={initData} userId={userId} startParam={startParam} />
+                    
                 <div className='flex items-center justify-center w-full  h-screen '>
 
 
