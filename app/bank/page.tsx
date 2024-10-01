@@ -56,7 +56,7 @@ export default function Page() {
   };
 
   return (
-<div className="flex flex-col justify-center items-center  gap-4">
+<div className=" w-full h-screen flex flex-col justify-center items-center  gap-4">
       {/* Loop through each bank and generate UI elements */}
       {banks.map((bank) => (
      
