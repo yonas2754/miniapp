@@ -33,10 +33,7 @@ const formSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
-  accountNo: z.number({
-    required_error: "Account Number is required",
-    invalid_type_error: "Account Number must be a number",
-  }),
+  accountNo:  z.string(),
 });
 
 export default function Page() {
@@ -89,7 +86,7 @@ function BankForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
-      accountNo: 0,
+      accountNo:""
     },
   });
 
