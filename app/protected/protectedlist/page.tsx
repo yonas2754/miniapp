@@ -3,7 +3,7 @@ import BackButtonDemo from '@/components/backButton';
 import Coins from '@/components/icons/Coins';
 import Friends from '@/components/icons/Friends';
 import Mine from '@/components/icons/Mine';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   AlertDialog,
@@ -19,8 +19,11 @@ import {
 import { Button } from '@/components/ui/button';
 import Footer from '@/components/footer';
 
+ 
 
 const Page: React.FC = () => {
+
+    const [startParam, setStartParam] = useState('')
   // TypeScript type annotation for the function
   const [tickets, setTickets] = useState<number[]>(Array.from({ length: 100 }, (_, i) => i + 1));
 
@@ -28,6 +31,19 @@ const Page: React.FC = () => {
 
     setTickets((prevTickets) => prevTickets.filter((ticket) => ticket !== ticketNumber));
   };
+  
+  useEffect(() => {
+    const initWebApp = async () => {
+      if (typeof window !== 'undefined') {
+        const WebApp = (await import('@twa-dev/sdk')).default;
+        WebApp.ready();
+      
+        setStartParam(WebApp.initDataUnsafe.start_param || '');
+      }
+    };
+
+    initWebApp();
+  }, [])
 
   return (
     <div className="bg-ethBlack-950 w-full h-full min-h-screen flex flex-col">
@@ -50,6 +66,7 @@ const Page: React.FC = () => {
                       <AlertDialogHeader>
                         <AlertDialogTitle>Mela Number #{ticketNumber}</AlertDialogTitle>
                         <AlertDialogDescription>
+                          treferal {startParam}
                           Are you sure you want to proceed with Lottery Ticket #{ticketNumber}? Once confirmed, this action cannot be undone.
                         </AlertDialogDescription>
                       </AlertDialogHeader>
