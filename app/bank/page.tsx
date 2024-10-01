@@ -144,9 +144,9 @@ function BankForm({
                     </FormItem>
                   )}
                 />
-                   <AlertDialogAction asChild>
-                <Button type="submit">Submit</Button>
-                </AlertDialogAction>
+                
+                <Button type="submit" className="bg-ethGreen-300">Submit</Button>
+            
               </form>
             </Form>
           </AlertDialogDescription>
@@ -154,7 +154,7 @@ function BankForm({
         <AlertDialogFooter>
           {/* When Cancel is clicked, reset the form status for this bank */}
        {/*    <AlertDialogCancel onClick={onFormReset}>Back</AlertDialogCancel> */}
-       <AlertDialogCancel >Back</AlertDialogCancel> 
+       <AlertDialogCancel >close</AlertDialogCancel> 
        
         </AlertDialogFooter>
       </AlertDialogContent>
