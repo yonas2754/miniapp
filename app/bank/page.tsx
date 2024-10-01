@@ -104,7 +104,7 @@ function BankForm({
       <AlertDialogTrigger asChild>
         {/* Button shows a checkmark if the form is filled */}
         <Button 
-    className={`w-full justify-between ${isFilled ? "bg-green-500 solid text-white" : "outline border-gray-400"}`}
+    className={`w-full justify-between ${isFilled ? "bg-green-500  text-white" : "border-gray-400 bg-gray-300"}mx-auto`}
   >
     {bankName}
     {isFilled && <span className="ml-2 text-lg">✔️</span>}
@@ -115,7 +115,7 @@ function BankForm({
           <AlertDialogTitle>Fill Your Name and Account Number for {bankName}</AlertDialogTitle>
           <AlertDialogDescription>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 bg-ethGray-200">
                 <FormField
                   control={form.control}
                   name="username"
