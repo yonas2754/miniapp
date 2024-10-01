@@ -39,7 +39,7 @@ const formSchema = z.object({
   }),
 });
 
-export function ProfileForm() {
+export default function Page() {
   const banks = ["Bank of America", "Chase Bank", "Wells Fargo", "Citibank", "HSBC"];
   
   // State to track the submission status of each bank form
