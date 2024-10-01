@@ -5,11 +5,16 @@ import { useEffect, useState } from 'react'
 import mountains from '../public/image/melaImage.jpg'
 import mountains2 from '../public/image/lottery_winning3.png'
 import { LoaderCircle } from 'lucide-react'
+import ReferralReciver from './referralReciver'
 
 
 export default function TelegramAuth() {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [initData, setInitData] = useState('')
+    const [userId, setUserId] = useState('')
+    const [startParam, setStartParam] = useState('')
     const [showSplash, setShowSplash] = useState(true) // State to control splash visibility
+ 
     const router = useRouter()
 
     useEffect(() => {
@@ -17,7 +22,9 @@ export default function TelegramAuth() {
         const changeHeaderColor = async () => {
             const WebApp = (await import('@twa-dev/sdk')).default
             WebApp.ready()
-          
+            setInitData(WebApp.initData);
+        setUserId(WebApp.initDataUnsafe.user?.id.toString() || '');
+        setStartParam(WebApp.initDataUnsafe.start_param || '');
             // Set the Mini App bar color to a custom color, e.g., dark grey
             WebApp.setHeaderColor('#1F1F1F')
            
@@ -49,8 +56,8 @@ export default function TelegramAuth() {
 
 
 
-        const initData = WebApp.initData
-        if (initData) {
+     
+        if (initData&&initData!=='') {
             try {
                 const response = await fetch('/api/auth', {
                     method: 'POST',
@@ -66,6 +73,7 @@ export default function TelegramAuth() {
                     console.error('Authentication failed')
                     setIsAuthenticated(false)
                 }
+                const startParam =WebApp.initDataUnsafe.start_param || '';
             } catch (error) {
                 console.error('Error during authentication:', error)
                 setIsAuthenticated(false)
@@ -88,7 +96,7 @@ export default function TelegramAuth() {
               }}
             />
             ) : (<>
-               
+                     <ReferralReciver initData={initData} userId={userId} startParam={startParam} />
                 <div className='flex items-center justify-center w-full  h-screen '>
 
 
