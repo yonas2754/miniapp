@@ -56,9 +56,10 @@ export default function Page() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-start space-y-4">
       {/* Loop through each bank and generate UI elements */}
       {banks.map((bank) => (
+     
         <BankForm
           key={bank}
           bankName={bank}
@@ -66,6 +67,7 @@ export default function Page() {
           onFormFilled={() => handleFormFilled(bank)}
           onFormReset={() => handleFormReset(bank)}
         />
+        
       ))}
     </div>
   );
@@ -101,9 +103,12 @@ function BankForm({
     <AlertDialog>
       <AlertDialogTrigger asChild>
         {/* Button shows a checkmark if the form is filled */}
-        <Button variant="outline">
-          {bankName} {isFilled ? "✔️" : ""}
-        </Button>
+        <Button 
+    className={`w-full justify-between ${isFilled ? "bg-green-500 solid text-white" : "outline border-gray-400"}`}
+  >
+    {bankName}
+    {isFilled && <span className="ml-2 text-lg">✔️</span>}
+  </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
@@ -139,7 +144,9 @@ function BankForm({
                     </FormItem>
                   )}
                 />
+                   <AlertDialogAction asChild>
                 <Button type="submit">Submit</Button>
+                </AlertDialogAction>
               </form>
             </Form>
           </AlertDialogDescription>
@@ -147,7 +154,7 @@ function BankForm({
         <AlertDialogFooter>
           {/* When Cancel is clicked, reset the form status for this bank */}
           <AlertDialogCancel onClick={onFormReset}>Back</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+       
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
