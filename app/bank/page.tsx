@@ -153,7 +153,8 @@ function BankForm({
         </AlertDialogHeader>
         <AlertDialogFooter>
           {/* When Cancel is clicked, reset the form status for this bank */}
-          <AlertDialogCancel onClick={onFormReset}>Back</AlertDialogCancel>
+       {/*    <AlertDialogCancel onClick={onFormReset}>Back</AlertDialogCancel> */}
+       <AlertDialogCancel >Back</AlertDialogCancel> 
        
         </AlertDialogFooter>
       </AlertDialogContent>
