@@ -26,6 +26,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import Footer from "@/components/footer";
 
 // Define form schema using Zod
 const formSchema = z.object({
@@ -47,7 +48,8 @@ export default function Page() {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center gap-4">
+    <div> 
+    <div className="w-full h-screen flex flex-col justify-center items-start mt-4 gap-4">
       {/* Loop through each bank and generate UI elements */}
       {banks.map((bank) => (
         <BankForm
@@ -57,6 +59,8 @@ export default function Page() {
           onFormFilled={() => handleFormFilled(bank)}
         />
       ))}
+    </div>
+    <Footer/>
     </div>
   );
 }
