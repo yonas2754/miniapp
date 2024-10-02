@@ -63,7 +63,7 @@ export default async function ProtectedPage() {
 
     <div className=" bg-ethBlack-600 text-white  w-full h-full min-h-screen font-bold flex flex-col max-w-xl">
       <div className="px-4 z-10 pt-4">
-        <div className="flex items-center justify-between space-x-4 mt-1">
+        <div className="flex items-center justify-between space-x-4  my-1">
         <div className="flex items-center space-x-2">
           <div className="p-1 rounded-lg bg-[#1d2025]"> 
             <Image src="/image/lottery_winning3.png" alt="Profile Pic" width={30} height={30} />
@@ -82,7 +82,7 @@ export default async function ProtectedPage() {
       
       <div className="h-[32px] w-[2px] bg-[#43433b] mx-2"></div>
       <div className="flex-1 text-center">
-        <p className="text-xs text-[#85827d] font-medium">Profit per hour</p>
+        <p className="text-xs text-[#85827d] font-medium">wining price</p>
         <div className="flex items-center justify-center space-x-1">
         <Image
       src="/image/dollar-coin.png"
@@ -105,7 +105,7 @@ export default async function ProtectedPage() {
         
       </div>
 
-      <div className='flex flex-col rounded-t-3xl bg-ethBlack-500 border-t-2 shadow-2xl border-ethYellow-500 w-full grow p-8'>
+      <div className='flex flex-col rounded-t-[48px] bg-ethBlack-500 border-t-2 shadow-2xl border-ethYellow-500 w-full grow p-8'>
         <Tabs defaultValue="own" className="w-full grow">
           <TabsList className="grid w-full grid-cols-3 bg-ethBlack-400">
             {Object.keys(tabsData).map(key => (
