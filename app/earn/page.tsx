@@ -16,7 +16,7 @@ const ticket =[{'name':'yonas','ticketNum':4},{'name':'yonas2','ticketNum':1},{'
 ]
   return (
     <section className='py-12'>
-      <div className='container'>
+      <div className='container h-screen'>
         <Swiper
           
           pagination={{ type: 'fraction' }}
