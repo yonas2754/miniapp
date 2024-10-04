@@ -15,9 +15,9 @@ export default function Page() {
     <section className='py-12'>
       <div className='container'>
         <Swiper
-          navigation
+          
           pagination={{ type: 'fraction' }}
-          autoplay={{ delay: 3000, disableOnInteraction: false }} // Autoplay configuration
+          autoplay={{ delay: 30, disableOnInteraction: false }} // Autoplay configuration
           modules={[Navigation, Pagination, Autoplay]}
           onSwiper={swiper => console.log(swiper)}
           className='h-96 w-full rounded-lg'
