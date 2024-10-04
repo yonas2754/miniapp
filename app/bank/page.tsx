@@ -102,7 +102,7 @@ function BankForm({
           {isSelected && <span className="ml-2 text-lg">✔️</span>}
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="bg-ethGray-200 mx-auto mb-4 ">
+      <AlertDialogContent className="bg-ethGray-200 mx-auto mt-[20%]">
         <AlertDialogHeader>
           <AlertDialogTitle>Fill Your Name and Account Number for {bankName}</AlertDialogTitle>
           <AlertDialogDescription>
