@@ -18,7 +18,7 @@ export default function Page() {
           
           pagination={{ type: 'fraction' }}
           autoplay={{ delay: 30, disableOnInteraction: false }} // Autoplay configuration
-          modules={[Navigation, Pagination, Autoplay]}
+          modules={[ Autoplay]}
           onSwiper={swiper => console.log(swiper)}
           className='h-96 w-full rounded-lg'
         >
