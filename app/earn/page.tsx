@@ -15,7 +15,7 @@ export default function Home() {
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
       autoplay={{ delay: 3000 }} // Auto play slides every 3 seconds
-    
+      loop={true} 
     >
       <SwiperSlide>Slide 1</SwiperSlide>
       <SwiperSlide>Slide 2</SwiperSlide>
