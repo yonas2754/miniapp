@@ -66,7 +66,7 @@ const Page: React.FC = () => {
         </Swiper>
      
 
-      <div className='w-1/2  h-fit p-2 bg-ethDeepBlue-700 flex justify-center items-center rounded-3xl '>
+      <div className='w-fit  h-fit m-4 p-4 bg-ethDeepBlue-700 flex justify-center items-center rounded-3xl '>
 
  <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-white lg:text-5xl">
       2 day: 5 hr : 50 min: 6 sec
