@@ -39,6 +39,7 @@ const Page: React.FC = () => {
   ];
 
   return (
+    <div>
     <section className='py-12 w-full  h-full bg-ethBlack-500'>
       <div className='container h-screen'>
         <Swiper
@@ -74,8 +75,10 @@ const Page: React.FC = () => {
     </h1>
       </div>
       </div>
-      <Footer/>
+      
     </section>
+    <Footer/>
+    </div>
   );
 };
 
