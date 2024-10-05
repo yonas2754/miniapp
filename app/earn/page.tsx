@@ -18,17 +18,26 @@ const ticket =[{'name':'yonas','ticketNum':4},{'name':'yonas2','ticketNum':1},{'
     <section className='py-12'>
       <div className='container h-screen'>
         <Swiper
-          
+          navigation
           pagination={{ type: 'fraction' }}
           autoplay={{ delay: 30, disableOnInteraction: false }} // Autoplay configuration
-          modules={[ Autoplay]}
+          modules={[Navigation, Autoplay]}
           onSwiper={swiper => console.log(swiper)}
           className='h-1/2 bg-ethLightBlue-400  w-full rounded-lg'
         >
             {ticket.map((t, index) => (
             <SwiperSlide key={index}>
               <div className='flex flex-col h-full w-full items-center justify-center'>
-              <p className='circle-inner'>{t.ticketNum}</p>
+            
+
+              <div className="p-4 rounded-full circle-outer">
+                <div className="w-full h-full rounded-full circle-inner">
+                  <p className="text-center font-bold text-lg text-ethYellow-600">
+                  {t.ticketNum}
+                  </p>
+                  </div>
+
+                  </div>
                <p>{t.name}</p>
              
 
