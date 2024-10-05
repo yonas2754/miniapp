@@ -74,7 +74,7 @@ export default function TelegramAuth() {
     }
 
     return (
-        <div className=" ">
+        <div className="flex  items-center justify-center  w-full h-screen ">
             {showSplash ? (
               <Image
               alt="Mountains"
@@ -89,7 +89,7 @@ export default function TelegramAuth() {
             />
             ) : (<>
                
-                <div className='flex items-center justify-center w-full  h-screen '>
+                <div className=' fixed  top-0 flex items-center justify-center w-full  h-screen '>
 
 
                 <Image
