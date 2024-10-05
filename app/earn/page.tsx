@@ -52,7 +52,7 @@ const Page: React.FC = () => {
               <div className='grid grid-cols-2 gap-4 items-center justify-start'>
                 {tickets.slice(i * 10, (i + 1) * 10).map((ticket, index) => (
                   <div key={index} className='flex flex-col items-center justify-center'>
-                    <div className='w-[10vw] h-[10vw] bg-ethLightBlue-500s rounded-full flex items-center justify-center'>
+                    <div className='w-[10vw] h-[10vw] bg-ethLightBlue-500 rounded-full flex items-center justify-center'>
                       <p className='text-center font-bold text-lg text-ethYellow-600'>
                         {ticket.ticketNum}
                       </p>
