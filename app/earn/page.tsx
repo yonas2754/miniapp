@@ -45,10 +45,10 @@ const Page: React.FC = () => {
               autoplay={{ delay: 3000, disableOnInteraction: false }} // Autoplay configuration
               modules={[Navigation, Autoplay]}
               onSwiper={swiper => console.log(swiper)}
-              className='h-1/2 bg-ethDeepBlue-900  w-full rounded-lg'
+              className='h-1/2 bg-ethDeepBlue-900  w-full rounded-lg m-2 border-2 border-ethLightBlue-950 shadow-2xl  shadow-ethDeepBlue-800'
         >
           {Array.from({ length: Math.ceil(tickets.length / 10) }).map((_, i) => (
-            <SwiperSlide key={i}>
+            <SwiperSlide key={i}> 
               <div className='grid grid-cols-2 gap-4 items-center justify-start'>
                 {tickets.slice(i * 10, (i + 1) * 10).map((ticket, index) => (
                   <div key={index} className='flex flex-col items-center justify-center'>
