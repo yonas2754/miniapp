@@ -38,7 +38,7 @@ const Page: React.FC = () => {
   ];
 
   return (
-    <section className='py-12 w-full h-full bg-ethBlack-600'>
+    <section className='py-12 w-full  grow bg-ethBlack-600'>
       <div className='container h-screen'>
         <Swiper
               navigation          
@@ -47,9 +47,9 @@ const Page: React.FC = () => {
               onSwiper={swiper => console.log(swiper)}
               className=' h-fit bg-ethDeepBlue-900  w-full rounded-[48px] border-2 border-ethLightBlue-950 shadow-2xl  shadow-ethDeepBlue-800  p-8'
         >
-          {Array.from({ length: Math.ceil(tickets.length / 10) }).map((_, i) => (
+          {Array.from({ length: Math.ceil(tickets.length / 5) }).map((_, i) => (
             <SwiperSlide key={i}> 
-              <div className='grid grid-cols-2 gap-4 items-center justify-start'>
+              <div className='grid grid-cols-3 gap-4 items-center justify-start'>
                 {tickets.slice(i * 10, (i + 1) * 10).map((ticket, index) => (
                   <div key={index} className='flex flex-col items-center justify-center'>
                     <div className='w-[10vw] h-[10vw] bg-ethLightBlue-500 rounded-full flex items-center justify-center'>
@@ -64,6 +64,13 @@ const Page: React.FC = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+      </div>
+
+      <div className='w-1/2  h-fit p-2 bg-ethDeepBlue-700'>
+
+ <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-white lg:text-5xl">
+      2 day: 5 hr : 50 min: 6 sec
+    </h1>
       </div>
     </section>
   );
