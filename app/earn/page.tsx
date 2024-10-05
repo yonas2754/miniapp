@@ -39,7 +39,7 @@ const Page: React.FC = () => {
   ];
 
   return (
-    <section className='py-12 w-full  h-full bg-ethBlack-600'>
+    <section className='py-12 w-full  h-full bg-ethBlack-500'>
       <div className='container h-screen'>
         <Swiper
               navigation          

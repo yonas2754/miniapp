@@ -9,7 +9,7 @@ function Footer() {
     const pathname = usePathname()
   return (
     <div>
-      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] max-w-xl bg-[#272a2f] flex justify-around items-center z-50 rounded-3xl text-xs p-2">
+      <div className="fixed bottom-0  w-full  bg-[#272a2f] flex justify-around items-center z-50 rounded-3xl text-xs p-2">
       
         <div className={`text-center  w-1/5 ${pathname.includes('/protected')  ? ' bg-[#1c1f24]  text-ethYellow-600' : ' text-ethYellow-300'}      m-1 p-2 rounded-2xl`}>
         <Link href="/protected">
