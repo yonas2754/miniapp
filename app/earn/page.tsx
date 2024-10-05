@@ -27,10 +27,9 @@ const ticket =[{'name':'yonas','ticketNum':4},{'name':'yonas2','ticketNum':1},{'
         >
             {ticket.map((t, index) => (
             <SwiperSlide key={index}>
-              <div className='flex flex-col h-full w-full items-center justify-center'>
-            
+              <div className='flex flex-col h-full w-full items-center justify-center'>         
 
-              <div className="p-4 rounded-full circle-outer">
+              <div className=" rounded-full circle-outer w-[15vw] h-[15vw]">
                 <div className="w-full h-full rounded-full circle-inner">
                   <p className="text-center font-bold text-lg text-ethYellow-600">
                   {t.ticketNum}
