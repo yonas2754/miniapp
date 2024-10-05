@@ -20,7 +20,7 @@ const ticket =[{'name':'yonas','ticketNum':4},{'name':'yonas2','ticketNum':1},{'
         <Swiper
           navigation
           pagination={{ type: 'fraction' }}
-          autoplay={{ delay: 30, disableOnInteraction: false }} // Autoplay configuration
+          autoplay={{ delay: 3000, disableOnInteraction: false }} // Autoplay configuration
           modules={[Navigation, Autoplay]}
           onSwiper={swiper => console.log(swiper)}
           className='h-1/2 bg-ethLightBlue-400  w-full rounded-lg'
