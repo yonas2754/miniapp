@@ -50,7 +50,7 @@ const Page: React.FC = () => {
           {Array.from({ length: Math.ceil(tickets.length / 5) }).map((_, i) => (
             <SwiperSlide key={i}> 
               <div className='grid grid-cols-3 gap-4 items-center justify-start'>
-                {tickets.slice(i * 10, (i + 1) * 10).map((ticket, index) => (
+                {tickets.slice(i * 5, (i + 1) * 5).map((ticket, index) => (
                   <div key={index} className='flex flex-col items-center justify-center'>
                     <div className='w-[10vw] h-[10vw] bg-ethLightBlue-500 rounded-full flex items-center justify-center'>
                       <p className='text-center font-bold text-lg text-ethYellow-600'>
@@ -69,7 +69,7 @@ const Page: React.FC = () => {
       <div className='w-fit  h-fit m-4 p-4 bg-ethDeepBlue-700 flex justify-center items-center rounded-3xl '>
 
  <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-white lg:text-5xl">
-      2 day: 5 hr : 50 min: 6 sec
+      2 <span className='text-2xl'>day</span>: 5 <span className='text-2xl'>hr</span> : 50 <span className='text-2xl'>min</span>: 6 <span className='text-2xl'>sec</span>
     </h1>
       </div>
       </div>
