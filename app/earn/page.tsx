@@ -45,7 +45,7 @@ const Page: React.FC = () => {
               autoplay={{ delay: 3000, disableOnInteraction: false }} // Autoplay configuration
               modules={[Navigation, Autoplay]}
               onSwiper={swiper => console.log(swiper)}
-              className='h-1/2 bg-ethDeepBlue-900  w-full p-8 m-8   rounded-[48px] border-2 border-ethLightBlue-950 shadow-2xl  shadow-ethDeepBlue-800'
+              className=' h-fit bg-ethDeepBlue-900  w-full rounded-[48px] border-2 border-ethLightBlue-950 shadow-2xl  shadow-ethDeepBlue-800  p-8'
         >
           {Array.from({ length: Math.ceil(tickets.length / 10) }).map((_, i) => (
             <SwiperSlide key={i}> 
