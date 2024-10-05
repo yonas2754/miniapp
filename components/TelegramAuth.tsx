@@ -89,7 +89,7 @@ export default function TelegramAuth() {
             />
             ) : (<>
                
-                <div className=' fixed  top-0 flex items-center justify-center w-full  h-screen '>
+                <div className='  flex items-center justify-center w-full  h-screen '>
 
 
                 <Image
@@ -106,7 +106,7 @@ export default function TelegramAuth() {
 
                 </div>
 
-                 <div className=' flex items-center justify-center w-full h-full'>
+                 <div className='fixed  top-0 flex items-center justify-center w-full h-full'>
                  <div className='   animate-spin'>
                  <LoaderCircle size={100} strokeWidth={1.25} color="#6B5000" />
               
