@@ -9,6 +9,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import Footer from '@/components/footer'
 
 
 
@@ -47,10 +48,10 @@ const Page: React.FC = () => {
               onSwiper={swiper => console.log(swiper)}
               className=' h-fit bg-ethDeepBlue-900  w-full rounded-[48px] border-2 border-ethLightBlue-950 shadow-2xl  shadow-ethDeepBlue-800  p-8'
         >
-          {Array.from({ length: Math.ceil(tickets.length / 5) }).map((_, i) => (
+          {Array.from({ length: Math.ceil(tickets.length / 10) }).map((_, i) => (
             <SwiperSlide key={i}> 
               <div className='grid grid-cols-3 gap-4 items-center justify-start'>
-                {tickets.slice(i * 5, (i + 1) * 5).map((ticket, index) => (
+                {tickets.slice(i * 10, (i + 1) * 10).map((ticket, index) => (
                   <div key={index} className='flex flex-col items-center justify-center'>
                     <div className='w-[10vw] h-[10vw] bg-ethLightBlue-500 rounded-full flex items-center justify-center'>
                       <p className='text-center font-bold text-lg text-ethYellow-600'>
@@ -73,6 +74,7 @@ const Page: React.FC = () => {
     </h1>
       </div>
       </div>
+      <Footer/>
     </section>
   );
 };
