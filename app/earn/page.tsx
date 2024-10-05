@@ -1,16 +1,19 @@
-'use client';
+'use client'
 
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
+import Image from 'next/image'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
-// Import Swiper styles
-import 'swiper/swiper.min.css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
-// Install Swiper modules
-SwiperCore.use([Navigation, Pagination, Autoplay]);
+
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
+
+
+
+
 
 // Define the type for each ticket item
 type Ticket = {
@@ -38,10 +41,11 @@ const Page: React.FC = () => {
     <section className='py-12 w-full h-full bg-ethBlack-600'>
       <div className='container h-screen'>
         <Swiper
-          navigation
-          pagination={{ type: 'fraction' }}
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          className='h-1/2 bg-ethDeepBlue-900 w-full rounded-lg'
+              navigation          
+              autoplay={{ delay: 3000, disableOnInteraction: false }} // Autoplay configuration
+              modules={[Navigation, Autoplay]}
+              onSwiper={swiper => console.log(swiper)}
+              className='h-1/2 bg-ethDeepBlue-900  w-full rounded-lg'
         >
           {Array.from({ length: Math.ceil(tickets.length / 10) }).map((_, i) => (
             <SwiperSlide key={i}>
