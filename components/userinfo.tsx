@@ -4,21 +4,12 @@ import { useQuery } from '@tanstack/react-query';
 
 // Define the fetchList function to call an API endpoint
 const fetchList = async (chatID: string) => {
-  try {
-    const response = await fetch(`https://a29c-146-70-246-141.ngrok-free.app/users/${chatID}`);
-    
-    // Check if the response is okay
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
 
+    const response = await fetch(`https://a29c-146-70-246-141.ngrok-free.app/users/7277258087`);
+    
     // Parse the JSON response
     return await response.json();
-  } catch (error) {
-    // Handle errors
-    console.error('Failed to fetch user data:', error);
-    throw error;
-  }
+
 };
 
 function UserInfo({ chatID }: { chatID: string }) {
