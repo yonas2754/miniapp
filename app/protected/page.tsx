@@ -9,6 +9,8 @@ import Mine from '@/components/icons/Mine';
 import Footer from '@/components/footer';
 import Info from '@/components/icons/Info';
 import Settings from '@/components/icons/Settings';
+import { useQuery } from '@tanstack/react-query';
+import Loading from '../loading';
 
 // Define types for the Lottery Card props
 interface LotteryCardProps {
@@ -42,6 +44,17 @@ const LotteryCard: React.FC<LotteryCardProps> = ({ date, imageSrc, amount, price
 // Define a type for the tabsData structure
 type TabsData = Record<string, LotteryCardProps[]>;
 
+
+
+const fetchList = async (chatId: string) => {
+
+  let res = await fetch(`https://a29c-146-70-246-141.ngrok-free.app/users/${chatId}`)
+  let data = await res.json()
+    return data;
+  
+};
+
+
 export default async function ProtectedPage() {
   const session = await getSession();
 
@@ -58,6 +71,25 @@ export default async function ProtectedPage() {
       { date: "10/27/2025", imageSrc: "/image/lottery_winning1.png", amount: 10000, price: 500 }
     ]
   };
+
+
+  const { isPending, isError, data, error} = useQuery({
+    queryKey: ['userinfo'],
+    queryFn: () => fetchList(session.user.telegramId.toString()),
+  });
+
+  if (isPending) {
+    return <Loading/>;
+  }
+
+  if (isError) {
+    return <span>Error: {error.message}</span>;
+  }
+
+  if(data.message){
+    return <h1>data.message</h1>
+  }
+
 
   return (
 
