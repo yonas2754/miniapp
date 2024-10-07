@@ -84,11 +84,20 @@ export default async function ProtectedPage() {
   }
 
   if (isError) {
-    return <span>Error: {error.message}</span>;
+    
+    return (
+    <div>
+       <h1>{session.user.telegramId.toString()}</h1>
+    </div>
+    )
   }
 
   if(data.message){
-    return <h1>data.message</h1>
+    return (<div className='bg-red-500 w-full h-screen '>
+ <h1>data.message</h1>
+    </div>
+    
+    )
   }
 
 

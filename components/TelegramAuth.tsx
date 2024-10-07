@@ -100,7 +100,7 @@ export default function TelegramAuth() {
               fill
               sizes="100vw"
               style={{
-                objectFit:  'contain',
+                objectFit: 'cover',
               }}
             />
 
