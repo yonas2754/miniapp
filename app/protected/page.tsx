@@ -9,6 +9,7 @@ import Mine from '@/components/icons/Mine';
 import Footer from '@/components/footer';
 import Info from '@/components/icons/Info';
 import Settings from '@/components/icons/Settings';
+import UserInfo from '@/components/userinfo';
 
 // Define types for the Lottery Card props
 interface LotteryCardProps {
@@ -45,6 +46,8 @@ type TabsData = Record<string, LotteryCardProps[]>;
 export default async function ProtectedPage() {
   const session = await getSession();
 
+
+
   // Centralized card data
   const tabsData: TabsData = {
     own: [
@@ -59,6 +62,9 @@ export default async function ProtectedPage() {
     ]
   };
 
+
+  
+
   return (
 
     <div className=" bg-ethBlack-600 text-white  w-full h-full min-h-screen font-bold flex flex-col max-w-xl">
@@ -68,7 +74,8 @@ export default async function ProtectedPage() {
           <div className="p-1 rounded-lg bg-[#1d2025]"> 
             <Image src="/image/lottery_winning3.png" alt="Profile Pic" width={30} height={30} />
           </div>
-          <p className="text-sm">yonas (CEO)</p>
+          <UserInfo chatID="7277258087" />
+         {/*  <p className="text-sm">yonas (CEO)</p> */}
         </div>
 
 
