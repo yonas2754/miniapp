@@ -28,7 +28,7 @@ function UserInfo({ chatID }: { chatID: string }) {
       {data && (
         <div>
        
-          <p className=' text-sm'>{data.message}</p>
+          <p className=' text-sm'>yonas</p>
         
         </div>
       )}
