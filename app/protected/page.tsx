@@ -9,7 +9,8 @@ import Mine from '@/components/icons/Mine';
 import Footer from '@/components/footer';
 import Info from '@/components/icons/Info';
 import Settings from '@/components/icons/Settings';
-import UserInfo from '@/components/userinfo';
+import Posts  from '@/components/userinfo';
+import React from 'react';
 
 // Define types for the Lottery Card props
 interface LotteryCardProps {
@@ -75,6 +76,7 @@ export default async function ProtectedPage() {
             <Image src="/image/lottery_winning3.png" alt="Profile Pic" width={30} height={30} />
           </div>
         {/*   <UserInfo chatID="7277258087"/> */}
+        <Posts/>
           <p className="text-sm">yonas (CEO)</p> 
         </div>
 

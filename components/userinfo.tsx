@@ -1,39 +1,34 @@
-"use client";
-import React from 'react';
-import { useQuery } from '@tanstack/react-query';
+'use client';
 
-// Define the fetchList function to call an API endpoint
-const fetchList = async (chatID: string) => {
+import { useState, useEffect } from 'react';
 
-    const response = await fetch(`https://a29c-146-70-246-141.ngrok-free.app/users/7277258087`);
-    
-    // Parse the JSON response
-    return await response.json();
-
-};
-
-function UserInfo({ chatID }: { chatID: string }) {
-  // Use the useQuery hook to fetch the user data
-  const { isLoading, isError, data, error, refetch } = useQuery({
-    queryKey: ['userinfo', chatID],
-    queryFn: () => fetchList(chatID),
-    enabled: !!chatID, // Ensure the query only runs if chatID is not empty
-  });
-
-  // Handle loading, error, and display data states
-  return (
-    <div>
-      {isLoading && <p>Loading...</p>}
-      {isError && <p>Error: {error?.message}</p>}
-      {data && (
-        <div>
-       
-          <p className=' text-sm'>yonas</p>
-        
-        </div>
-      )}
-    </div>
-  );
+// Define the expected shape of the posts data
+interface Post {
+  message: string;
 }
 
-export default UserInfo;
+export default function Posts() {
+  const [posts, setPosts] = useState<Post | null>(null);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await fetch('https://d673-89-33-8-62.ngrok-free.app/users/7277258087');
+        const data: Post = await res.json();
+        setPosts(data);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      }
+    };
+    
+    fetchPosts();
+  }, []);
+
+  if (!posts) return <div>Loading...</div>;
+
+  return (
+    <ul>
+      <li>{posts.message}</li>
+    </ul>
+  );
+}
