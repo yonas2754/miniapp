@@ -8,7 +8,9 @@ interface Post {
 }
 
 export default function Posts() {
-  const [posts, setPosts] = useState<Post | null>(null);
+  const [posts, setPosts] = useState<Post>( {
+    message: 'yonas'
+  });
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -24,7 +26,7 @@ export default function Posts() {
     fetchPosts();
   }, []);
 
-  if (!posts) return <div>Loading...</div>;
+  if (!posts) return <div>Loading..</div>;
 
   return (
     <ul>
