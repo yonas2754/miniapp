@@ -15,7 +15,7 @@ export default function Posts() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch('https://d673-89-33-8-62.ngrok-free.app/users/7277258087');
+        const res = await fetch('https://d673-89-33-8-62.ngrok-free.app/users/7277258087', { cache: 'no-store' });
         const data: Post = await res.json();
         setPosts(data);
       } catch (error) {
