@@ -49,7 +49,7 @@ export function InputForm({chatId}:{chatId:string}) {
 
             console.log(data)
 
-            const response =   await fetch(Backend_URL + `/users/register`, {
+            const response =   await fetch(Backend_URL + `/users`, {
                 method: "POST",
                 
                 body: JSON.stringify(data ) 
