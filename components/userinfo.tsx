@@ -3,6 +3,7 @@
 import Footer from '@/components/footer';
 import { Backend_URL } from '@/lib/Constants';
 import { useState, useEffect } from 'react';
+import { InputForm } from './registor';
 
 // Define the expected shape of the posts data
 interface Post {
@@ -34,7 +35,7 @@ export default function Posts({chatId}:any) {
   if (!posts) return <div>Loading..</div>;
   if(!posts.user){
     return (<div>
-      <h1>no</h1>
+      <InputForm chatId={chatId}/>
     </div>)
   
   }
