@@ -83,11 +83,11 @@ console.log("data"+data)
         
 
    
-    
+  
   }
 
   return (
-     <div className=" fixed top-0  left-0 w-full h-screen  z-40 bg-ethBlack-600">
+     <div className=" fixed top-0  left-0 w-full h-screen  z-40 bg-ethBlack-600  flex  justify-center items-center">
     
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className=" flex flex-1 flex-col min-w-2/3  w-full space-y-6">
