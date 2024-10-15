@@ -17,7 +17,7 @@ export default function Posts({chatId}:any) {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch(Backend_URL +`/users/${chatId}`);
+        const res = await fetch(Backend_URL+`/users/${chatId}`);
         
         const data = await res.json()
         console.log("*******************"+data)
