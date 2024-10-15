@@ -75,8 +75,8 @@ export default async function ProtectedPage() {
           <div className="p-1 rounded-lg bg-[#1d2025]"> 
             <Image src="/image/lottery_winning3.png" alt="Profile Pic" width={30} height={30} />
           </div>
-        {/*   <UserInfo chatID="7277258087"/> */}
-        <Posts/>
+         <Posts chatID="7277258087"/> 
+     
           <p className="text-sm">yonas (CEO)</p> 
         </div>
 

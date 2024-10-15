@@ -1,23 +1,28 @@
 'use client';
 
+import Footer from '@/components/footer';
+import { Backend_URL } from '@/lib/Constants';
 import { useState, useEffect } from 'react';
 
 // Define the expected shape of the posts data
 interface Post {
-  message: string;
+  user: any;
 }
 
-export default function Posts() {
+export default function Posts({chatId}:any) {
   const [posts, setPosts] = useState<Post>( {
-    message: 'yonas'
+    user: 'yonas'
   });
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await fetch('https://d673-89-33-8-62.ngrok-free.app/users/7277258087', { cache: 'no-store' });
-        const data: Post = await res.json();
-        setPosts(data);
+        const res = await fetch(Backend_URL +`/users/${chatId}`);
+        
+        const data = await res.json()
+        console.log("*******************"+data)
+        setPosts(data)
+       
       } catch (error) {
         console.error('Error fetching posts:', error);
       }
@@ -27,10 +32,20 @@ export default function Posts() {
   }, []);
 
   if (!posts) return <div>Loading..</div>;
+  if(!posts.user){
+    return (<div>
+      <h1>no</h1>
+    </div>)
+  
+  }
 
   return (
+    <div>
+        
     <ul>
-      <li>{posts.message}</li>
+      <li>{posts.user}</li>
     </ul>
+   
+    </div>
   );
 }
