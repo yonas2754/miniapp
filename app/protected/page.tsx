@@ -77,7 +77,7 @@ export default async function ProtectedPage() {
           </div>
          <Posts chatID="7277258087"/> 
      
-          <p className="text-sm">yonas (CEO)</p> 
+   {/*        <p className="text-sm">yonas (CEO)</p>  */}
         </div>
 
 
