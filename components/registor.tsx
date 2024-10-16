@@ -1,5 +1,5 @@
 "use client";
-
+import axios from 'axios';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -26,16 +26,26 @@ const FormSchema = z.object({
 });
 
 export function InputForm({ chatId }: { chatId: string }) {
+
   const mutation = useMutation({
-    mutationFn: async (data: { chatId: string; username: string }) => {
-      console.log(data);
-      const response = await fetch(Backend_URL+`/users`, {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
-      return response.json();
+
+    mutationFn: (newTodo: Object) => {
+     
+
+      const headers = {
+     
+        "Content-Type": "application/json",
+      };
+
+      return axios.post(Backend_URL+`/users`, newTodo, { headers });
     },
+
+
+   
   });
+
+
+
 
   const [error, setError] = useState("");
   const form = useForm<z.infer<typeof FormSchema>>({
