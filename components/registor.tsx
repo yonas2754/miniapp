@@ -3,20 +3,17 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useMutation } from "@tanstack/react-query";
 import { Backend_URL } from "@/lib/Constants";
 
 const FormSchema = z.object({
@@ -26,18 +23,10 @@ const FormSchema = z.object({
 });
 
 export function InputForm({ chatId }: { chatId: string }) {
-  const mutation = useMutation({
-    mutationFn: async (data: { chatId: string; username: string }) => {
-      console.log(data);
-      const response = await fetch(Backend_URL+`/users`, {
-        method: "POST",
-        body: JSON.stringify(data),
-      });
-      return response.json();
-    },
-  });
-
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -45,11 +34,33 @@ export function InputForm({ chatId }: { chatId: string }) {
     },
   });
 
-  async function onSubmit(data: z.infer<typeof FormSchema>) {
+  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     const { username } = data;
-    console.log("data" + data);
-    mutation.mutate({ chatId, username });
-  }
+    setIsLoading(true);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch(`${Backend_URL}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ chatId, username }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      const result = await response.json();
+      console.log(result); // Handle success (e.g., show a success message or clear the form)
+    } catch (error) {
+      setSubmitError("An error occurred while submitting the form.");
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="fixed top-0 left-0 w-full h-screen z-40 bg-ethBlack-600 flex justify-center items-center">
@@ -58,9 +69,9 @@ export function InputForm({ chatId }: { chatId: string }) {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-1 flex-col min-w-2/3 w-full space-y-6"
         >
-          {error && (
+          {submitError && (
             <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
-              {error}
+              {submitError}
             </div>
           )}
           <FormField
@@ -79,8 +90,9 @@ export function InputForm({ chatId }: { chatId: string }) {
           <Button
             className="bg-[#BCDD8D] hover:bg-[#567A24] flex"
             type="submit"
+            disabled={isLoading}
           >
-            {mutation.isPending && (
+            {isLoading && (
               <div className="animate-spin">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +110,6 @@ export function InputForm({ chatId }: { chatId: string }) {
                 </svg>
               </div>
             )}
-            {mutation.error &&( <div>error</div>)}
             Submit
           </Button>
         </form>
