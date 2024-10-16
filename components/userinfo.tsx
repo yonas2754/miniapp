@@ -61,7 +61,7 @@ else{
     <div>
         
     <ul>
-      <li>{data.user}</li>
+      <li>{data.user.username}</li>
     </ul>
    
     </div>
