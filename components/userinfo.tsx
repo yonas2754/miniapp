@@ -20,14 +20,14 @@ export default function Posts({chatId}:{chatId:string}) {
 
 
 
-  const fetchList = async ( { queryKey }: any ) => {
+  const fetchList = async ( chatId: string ) => {
   
-     const t = queryKey[1];
+    
      const headers = {
        
          "Content-Type": "application/json",
        };
-       const response = await fetch(Backend_URL+`/users/${t}`, {headers});
+       const response = await fetch(Backend_URL+`/users/${chatId}`, { method: "GET",headers});
        const data = await response.json();
        console.log(data)
        return data;
@@ -35,8 +35,8 @@ export default function Posts({chatId}:{chatId:string}) {
      }
 
   const { isPending, isError, data, error } = useQuery({
-    queryKey: ['requst',chatId],
-    queryFn: fetchList,
+    queryKey: ['username',chatId],
+    queryFn: () =>fetchList(chatId),
   })
 
   if (isPending) {
