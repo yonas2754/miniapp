@@ -10,7 +10,7 @@ interface Post {
   user: any;
 }
 
-export default function Posts({chatId}:any) {
+export default function Posts({chatId}:{chatId:string}) {
   const [posts, setPosts] = useState<Post>( {
     user: 'yonas'
   });
