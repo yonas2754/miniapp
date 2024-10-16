@@ -16,7 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Backend_URL } from "@/lib/Constants";
 
 const FormSchema = z.object({
@@ -26,7 +26,7 @@ const FormSchema = z.object({
 });
 
 export function InputForm({ chatId }: { chatId: string }) {
-
+  const queryClient = useQueryClient()
   const mutation = useMutation({
 
     mutationFn: (newTodo: Object) => {
@@ -42,6 +42,7 @@ export function InputForm({ chatId }: { chatId: string }) {
 
    onSuccess: async () => {
       console.log("DONE");
+      queryClient.invalidateQueries({ queryKey: ['username',chatId] })
       form.reset(); // Reset the form after successful submission
     },
    
