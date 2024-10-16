@@ -56,9 +56,9 @@ export function InputForm({ chatId }: { chatId: string }) {
   });
 
   async function onSubmit(data: z.infer<typeof FormSchema>) {
-    const { username } = data;
+   
     console.log("data" + data);
-    mutation.mutate({username});
+    mutation.mutate(data);
   }
 
   return (
