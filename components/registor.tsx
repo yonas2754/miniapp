@@ -31,13 +31,13 @@ export function InputForm({ chatId }: { chatId: string }) {
 
     mutationFn: (newTodo: Object) => {
      
-
+     
       const headers = {
      
         "Content-Type": "application/json",
       };
 
-      return axios.post(Backend_URL+`/users`, newTodo, { headers });
+      return axios.post(Backend_URL+`/users`,{chatId,...newTodo}, { headers });
     },
 
 
@@ -58,7 +58,7 @@ export function InputForm({ chatId }: { chatId: string }) {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     const { username } = data;
     console.log("data" + data);
-    mutation.mutate({ chatId, username });
+    mutation.mutate({username});
   }
 
   return (
