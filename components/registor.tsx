@@ -29,7 +29,7 @@ export function InputForm({ chatId }: { chatId: string }) {
   const mutation = useMutation({
     mutationFn: async (data: { chatId: string; username: string }) => {
       console.log(data);
-      const response = await fetch(Backend_URL + `/users`, {
+      const response = await fetch(Backend_URL+`/users`, {
         method: "POST",
         body: JSON.stringify(data),
       });
