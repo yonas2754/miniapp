@@ -40,7 +40,10 @@ export function InputForm({ chatId }: { chatId: string }) {
       return axios.post(Backend_URL+`/users`,{chatId,...newTodo}, { headers });
     },
 
-
+   onSuccess: async () => {
+      console.log("DONE");
+      form.reset(); // Reset the form after successful submission
+    },
    
   });
 
