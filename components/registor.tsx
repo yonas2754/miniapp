@@ -45,18 +45,24 @@ export function InputForm({ chatId }: { chatId: string }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ chatId, username }),
+        body: JSON.stringify({ chatId, username }), // Ensure the payload is formatted correctly
       });
 
       if (!response.ok) {
-        throw new Error("Failed to submit form");
+        const errorData = await response.json(); // Try to get more info from the response
+        throw new Error(
+          `Error: ${response.status} ${response.statusText} - ${JSON.stringify(
+            errorData
+          )}`
+        );
       }
 
       const result = await response.json();
       console.log(result); // Handle success (e.g., show a success message or clear the form)
-    } catch (error) {
-      setSubmitError("An error occurred while submitting the form.");
-      console.error(error);
+    } catch (error: any) {
+      // Log the full error for debugging
+      console.error("Error submitting form:", error);
+      setSubmitError(error.message || "An unknown error occurred.");
     } finally {
       setIsLoading(false);
     }
