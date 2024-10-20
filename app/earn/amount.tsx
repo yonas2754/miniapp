@@ -49,9 +49,8 @@ export function AmountForm() {
               <Input
   type="number"
   placeholder="Enter amount"
-  min={10}
-  step="1"
   {...field}
+  valueAsNumber
 />
 
               </FormControl>
