@@ -50,7 +50,7 @@ export function AmountForm() {
   type="number"
   placeholder="Enter amount"
   {...field}
-  valueAsNumber
+  onChange={(e) => field.onChange(e.target.value ? parseFloat(e.target.value) : '')}
 />
 
               </FormControl>
