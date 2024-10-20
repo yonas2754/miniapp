@@ -18,9 +18,9 @@ import { Input } from "@/components/ui/input"
 
 const FormSchema = z.object({
   amount: z.number({
-    required_error: "amount is required",
-    invalid_type_error: "amount must be a number",
-  }).gte(10),
+    required_error: "Amount is required",
+    invalid_type_error: "Amount must be a number",
+  }).gte(10, "Amount must be greater than or equal to 10"),
 })
 
 export function AmountForm() {
@@ -32,7 +32,8 @@ export function AmountForm() {
   })
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-   
+    // Submit the form data, handle the amount logic, and potentially call NestJS API here
+    console.log(data)
   }
 
   return (
@@ -45,10 +46,10 @@ export function AmountForm() {
             <FormItem>
               <FormLabel>Amount</FormLabel>
               <FormControl>
-                <Input placeholder="amount" {...field} />
+                <Input placeholder="Enter amount" {...field} />
               </FormControl>
               <FormDescription>
-                amount has to greate than 10 
+                The amount must be greater than or equal to 10.
               </FormDescription>
               <FormMessage />
             </FormItem>
