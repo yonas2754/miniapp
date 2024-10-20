@@ -1,51 +1,85 @@
-'use client';
+import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { AmountForm } from "./amount"
 
-import Footer from '@/components/footer';
-import { Backend_URL } from '@/lib/Constants';
-import { useState, useEffect } from 'react';
 
-// Define the expected shape of the posts data
-interface Post {
-  user: any;
-}
-
-export default function Posts() {
-  const [posts, setPosts] = useState<Post>( {
-    user: 'yonas'
-  });
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const res = await fetch(Backend_URL +' https://2ff6b412d6c9d3e246e9acfca976d203.serveo.net/users/7277258087', { cache: 'no-store' });
-        
-        const data = await res.json()
-        console.log("*******************"+data)
-        setPosts(data)
-       
-      } catch (error) {
-        console.error('Error fetching posts:', error);
-      }
-    };
-    
-    fetchPosts();
-  }, []);
-
-  if (!posts) return <div>Loading..</div>;
-  if(!posts.user){
-    return (<div>
-      
-    </div>)
-  
-  }
-
+export default function TabsDemo() {
   return (
-    <div>
+    <Tabs defaultValue="Deposit" className="w-[400px]">
+      <TabsList className="grid w-full grid-cols-2">
+        <TabsTrigger value="Deposit">Deposit</TabsTrigger>
+        <TabsTrigger value="password">windrow</TabsTrigger>
+      </TabsList>
+      <TabsContent value="Deposit">
+        <Card>
+          <CardHeader>
+            <CardTitle>Deposit</CardTitle>
+            <CardDescription>
+              Make changes to your account here. Click save when youre done.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+
+          <Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Chapa</AccordionTrigger>
+    <AccordionContent>
+   <AmountForm/>
+
+
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+           
+          </CardContent>
         
-    <ul>
-      <li>{posts.user}</li>
-    </ul>
-   
-    </div>
-  );
+        </Card>
+      </TabsContent>
+
+      <TabsContent value="password">
+        <Card>
+          <CardHeader>
+            <CardTitle>Password</CardTitle>
+            <CardDescription>
+              add.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <div className="space-y-1">
+              <Label htmlFor="current">Current password</Label>
+              <Input id="current" type="password" />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="new">New password</Label>
+              <Input id="new" type="password" />
+            </div>
+          </CardContent>
+          <CardFooter>
+            <Button>Save password</Button>
+          </CardFooter>
+        </Card>
+      </TabsContent>
+    </Tabs>
+  )
 }
