@@ -46,7 +46,14 @@ export function AmountForm() {
             <FormItem>
               <FormLabel>Amount</FormLabel>
               <FormControl>
-                <Input placeholder="Enter amount" {...field} />
+              <Input
+  type="number"
+  placeholder="Enter amount"
+  min={10}
+  step="1"
+  {...field}
+/>
+
               </FormControl>
               <FormDescription>
                 The amount must be greater than or equal to 10.
