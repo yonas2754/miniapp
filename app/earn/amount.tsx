@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Backend_URL } from "@/lib/Constants"
 
 const FormSchema = z.object({
   amount: z.number({
@@ -23,7 +24,7 @@ const FormSchema = z.object({
   }).gte(10, "Amount must be greater than or equal to 10"),
 })
 
-export function AmountForm() {
+export function AmountForm({chatId}:{chatId:string}) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -31,9 +32,35 @@ export function AmountForm() {
     },
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
     // Submit the form data, handle the amount logic, and potentially call NestJS API here
     console.log(data)
+
+    try {
+        // Add the phone number to the payment data
+  
+        // Send the payment data to your NestJS backend
+        const response = await fetch(Backend_URL+`/users/amount`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({chatId,...data}),
+        });
+  
+        const result = await response.json();
+  
+        // Redirect the user to the Chapa payment page if the checkout URL is returned
+        if (result.data && result.data.checkout_url) {
+          window.location.href = result.data.checkout_url;
+        } else {
+          console.error('Failed to initialize payment:', result);
+        }
+      } catch (error) {
+        console.error('Error initializing payment:', error);
+      }
+
+
   }
 
   return (

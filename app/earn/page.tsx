@@ -45,7 +45,7 @@ export default function TabsDemo() {
   <AccordionItem value="item-1">
     <AccordionTrigger>Chapa</AccordionTrigger>
     <AccordionContent>
-   <AmountForm/>
+   <AmountForm chatId="7277258087"/>
 
 
     </AccordionContent>
