@@ -20,9 +20,13 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Backend_URL } from "@/lib/Constants";
 
 const FormSchema = z.object({
-  username: z.string().min(2, {
+  first_name: z.string().min(2, {
     message: "User Name must be at least 2 characters.",
   }),
+  last_name: z.string().min(2, {
+    message: "User Name must be at least 2 characters.",
+  }),
+
 });
 
 export function InputForm({ chatId }: { chatId: string }) {
@@ -55,7 +59,9 @@ export function InputForm({ chatId }: { chatId: string }) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: "",
+      first_name: "",
+      last_name:""
+
     },
   });
 
@@ -66,7 +72,7 @@ export function InputForm({ chatId }: { chatId: string }) {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full h-screen z-40 bg-ethBlack-600 flex justify-center items-center">
+    <div className="fixed top-0 left-0 w-full h-screen  bg-ethBlack-600 flex justify-center items-center z-50">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -79,12 +85,28 @@ export function InputForm({ chatId }: { chatId: string }) {
           )}
           <FormField
             control={form.control}
-            name="username"
+            name="first_name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>User Name</FormLabel>
+                <FormLabel>First Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="User Name" {...field} />
+                  <Input placeholder="First Name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+
+
+<FormField
+            control={form.control}
+            name="last_name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Last Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Last Name" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
