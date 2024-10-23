@@ -22,6 +22,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { AmountForm } from "./amount"
+import { WithdrawForm } from "./withdraw"
 
 
 export default function TabsDemo() {
@@ -29,7 +30,7 @@ export default function TabsDemo() {
     <Tabs defaultValue="Deposit" className="w-[400px]">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="Deposit">Deposit</TabsTrigger>
-        <TabsTrigger value="password">windrow</TabsTrigger>
+        <TabsTrigger value="withdrawd">withdraw</TabsTrigger>
       </TabsList>
       <TabsContent value="Deposit">
         <Card>
@@ -57,27 +58,19 @@ export default function TabsDemo() {
         </Card>
       </TabsContent>
 
-      <TabsContent value="password">
+      <TabsContent value="withdraw">
         <Card>
           <CardHeader>
-            <CardTitle>Password</CardTitle>
+            <CardTitle>withdraw</CardTitle>
             <CardDescription>
-              add.
+            withdraw from your account
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="current">Current password</Label>
-              <Input id="current" type="password" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="new">New password</Label>
-              <Input id="new" type="password" />
-            </div>
+          <WithdrawForm chatId="7277258087"/>
+          
           </CardContent>
-          <CardFooter>
-            <Button>Save password</Button>
-          </CardFooter>
+         
         </Card>
       </TabsContent>
     </Tabs>

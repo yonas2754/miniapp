@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Backend_URL } from "@/lib/Constants"
+import { useMutation } from "@tanstack/react-query"
 
 const FormSchema = z.object({
   amount: z.number({
@@ -32,36 +33,41 @@ export function AmountForm({chatId}:{chatId:string}) {
     },
   })
 
-  async function onSubmit(data: z.infer<typeof FormSchema>) {
-    // Submit the form data, handle the amount logic, and potentially call NestJS API here
-    console.log(data)
+    const mutation = useMutation({
 
-    try {
-        // Add the phone number to the payment data
-  
-        // Send the payment data to your NestJS backend
-        const response = await fetch(Backend_URL+`/users/amount`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({chatId,...data}),
-        });
-  
-        const result = await response.json();
-  
-        // Redirect the user to the Chapa payment page if the checkout URL is returned
+        mutationFn: async (data: Object) => {
+      const response = await fetch(`${Backend_URL}/users/amount`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ chatId, ...data }),
+      });
+
+      const result = await response.json();
+      return result;
+    },
+      onSuccess: (result) => {
         if (result.data && result.data.checkout_url) {
           window.location.href = result.data.checkout_url;
         } else {
-          console.error('Failed to initialize payment:', result);
+          console.error("Failed to initialize payment:", result);
         }
-      } catch (error) {
-        console.error('Error initializing payment:', error);
-      }
+      },
+      onError: (error) => {
+        console.error("Error initializing payment:", error);
+      },
+    });
 
 
+
+  async function onSubmit(data: z.infer<typeof FormSchema>) {
+   
+    console.log("data" + data);
+    mutation.mutate(data);
   }
+ 
+ 
 
   return (
     <Form {...form}>
