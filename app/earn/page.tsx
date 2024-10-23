@@ -30,7 +30,7 @@ export default function TabsDemo() {
     <Tabs defaultValue="Deposit" className="w-[400px]">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="Deposit">Deposit</TabsTrigger>
-        <TabsTrigger value="withdrawd">withdraw</TabsTrigger>
+        <TabsTrigger value="withdraw">withdraw</TabsTrigger>
       </TabsList>
       <TabsContent value="Deposit">
         <Card>
@@ -67,7 +67,7 @@ export default function TabsDemo() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            yonas
+     
           <WithdrawForm chatId="7277258087"/>
           
           </CardContent>
