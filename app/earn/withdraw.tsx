@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select"; // Import Select UI component
 import { Backend_URL } from "@/lib/Constants";
 import { useMutation } from "@tanstack/react-query";
+import { Half1Icon } from "@radix-ui/react-icons";
 
 // Define the schema for the withdraw form using Zod
 const FormSchema = z.object({
@@ -84,6 +85,8 @@ export function WithdrawForm({ chatId }: { chatId: string }) {
   }
 
   return (
+    <div>
+    {mutation.data.massage && (<h1>{mutation.data.massage}</h1>)}
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
         {/* Account Number Field */}
@@ -164,5 +167,6 @@ export function WithdrawForm({ chatId }: { chatId: string }) {
         <Button type="submit">Submit Withdrawal</Button>
       </form>
     </Form>
+    </div>
   );
 }

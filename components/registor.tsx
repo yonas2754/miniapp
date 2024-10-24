@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -30,6 +30,7 @@ const FormSchema = z.object({
 });
 
 export function InputForm({ chatId }: { chatId: string }) {
+  const [startParam, setStartParam] = useState<string|null>(null)
   const queryClient = useQueryClient()
   const mutation = useMutation({
 
@@ -40,8 +41,13 @@ export function InputForm({ chatId }: { chatId: string }) {
      
         "Content-Type": "application/json",
       };
-
-      return axios.post(Backend_URL+`/users`,{chatId,...newTodo}, { headers });
+if(startParam){
+  return axios.post(Backend_URL+`/users`,{chatId,startParam,...newTodo}, { headers });
+}
+else{
+  return axios.post(Backend_URL+`/users`,{chatId,...newTodo}, { headers });
+}
+    
     },
 
    onSuccess: async () => {
@@ -70,6 +76,20 @@ export function InputForm({ chatId }: { chatId: string }) {
     console.log("data" + data);
     mutation.mutate(data);
   }
+
+
+  useEffect(() => {
+    const initWebApp = async () => {
+      if (typeof window !== 'undefined') {
+        const WebApp = (await import('@twa-dev/sdk')).default;
+        setStartParam(WebApp.initDataUnsafe.start_param || '');
+      }
+    };
+
+    initWebApp();
+  }, [])
+
+
 
   return (
     <div className="fixed top-0 left-0 w-full h-screen  bg-ethBlack-600 flex justify-center items-center z-50">
