@@ -6,6 +6,7 @@ import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+
 import {
   Form,
   FormControl,
@@ -31,6 +32,7 @@ const FormSchema = z.object({
 
 export function InputForm({ chatId }: { chatId: string }) {
   const [startParam, setStartParam] = useState<string|null>(null)
+  const router = useRouter()
   const queryClient = useQueryClient()
   const mutation = useMutation({
 
@@ -54,6 +56,7 @@ else{
       console.log("DONE");
       queryClient.invalidateQueries({ queryKey: ['username',chatId] })
       form.reset(); // Reset the form after successful submission
+      router.push('/protected')
     },
    
   });
