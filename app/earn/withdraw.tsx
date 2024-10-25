@@ -3,36 +3,34 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
+  FormDescription,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select"; // Import Select UI component
 import { Backend_URL } from "@/lib/Constants";
 import { useMutation } from "@tanstack/react-query";
-import { Half1Icon } from "@radix-ui/react-icons";
 
-// Define the schema for the withdraw form using Zod
+// Zod schema for the withdraw form
 const FormSchema = z.object({
-  accountNumber: z.string().min(3, "Account number must be at least 5 digits"),
+  amount: z.number().gte(0, "Amount must be greater than or equal to 0"),
+  accountNumber: z.string().min(5, "Account number must be at least 5 digits"),
   confirmAccountNumber: z
     .string()
-    .min(3, "Confirmation account number must be at least 3 digits"),
+    .min(5, "Confirmation account number must be at least 5 digits"),
   bankName: z.string().min(1, "Bank name is required"),
 }).refine((data) => data.accountNumber === data.confirmAccountNumber, {
   message: "Account numbers must match",
   path: ["confirmAccountNumber"],
 });
 
-// Mock list of banks (You can replace this with your dynamic bank list)
+// Bank list (can be dynamic if needed)
 const bankList = [
   { value: "Tele Birr", label: "Tele Birr" },
   { value: "Commercial Bank of Ethiopia", label: "Commercial Bank of Ethiopia" },
@@ -43,19 +41,19 @@ const bankList = [
 ];
 
 export function WithdrawForm({ chatId }: { chatId: string }) {
-  // Initialize the form using React Hook Form and Zod Resolver
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
+      amount: 0,
       accountNumber: "",
       confirmAccountNumber: "",
       bankName: "",
     },
   });
 
-  // Define the mutation function to send data to the backend
+  // Mutation for handling the form submission
   const mutation = useMutation({
-    mutationFn: async (data: Object) => {
+    mutationFn: async (data: z.infer<typeof FormSchema>) => {
       const response = await fetch(`${Backend_URL}/users/withdraw`, {
         method: "POST",
         headers: {
@@ -63,14 +61,11 @@ export function WithdrawForm({ chatId }: { chatId: string }) {
         },
         body: JSON.stringify({ chatId, ...data }),
       });
-
-      const result = await response.json();
-      return result;
+      return response.json();
     },
     onSuccess: (result) => {
-      if (result.data && result.data.success) {
+      if (result.success) {
         console.log("Withdrawal successful:", result);
-        // Handle success (e.g., redirect or display success message)
       } else {
         console.error("Failed to process withdrawal:", result);
       }
@@ -80,91 +75,115 @@ export function WithdrawForm({ chatId }: { chatId: string }) {
     },
   });
 
-  // Handle form submission
-  async function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log("Form data:", data);
+  const onSubmit = (data: z.infer<typeof FormSchema>) => {
     mutation.mutate(data);
-  }
+  };
 
   return (
-    <div>
-    {mutation.data?.massage && (<h1>{mutation.data.massage}</h1>)}
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
-        {/* Account Number Field */}
-        <FormField
-          control={form.control}
-          name="accountNumber"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Account Number/Phone</FormLabel>
-              <FormControl>
-                <Input
-                  type="text"
-                  placeholder="Enter your account number"
-                  {...field}
-                />
-              </FormControl>
-             
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+    <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
+      {mutation.data?.message && (
+        <div className="bg-red-200 text-red-800 p-2 rounded mb-4">
+          {mutation.data.message}
+        </div>
+      )}
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          {/* Amount Field */}
+          <FormField
+            control={form.control}
+            name="amount"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Amount</FormLabel>
+                <FormControl>
+                  <Input
+                    type="number"
+                    placeholder="Enter amount"
+                    {...field}
+                    className="input input-bordered w-full"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        {/* Confirm Account Number Field */}
-        <FormField
-          control={form.control}
-          name="confirmAccountNumber"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Confirm Account Number</FormLabel>
-              <FormControl>
-                <Input
-                  type="text"
-                  placeholder="Confirm your account number"
-                  {...field}
-                />
-              </FormControl>
-             
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+          {/* Account Number Field */}
+          <FormField
+            control={form.control}
+            name="accountNumber"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Account Number/Phone</FormLabel>
+                <FormControl>
+                  <Input
+                    type="text"
+                    placeholder="Enter your account number"
+                    {...field}
+                    className="input input-bordered w-full"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        {/* Bank Name Dropdown Field */}
-        <FormField
-          control={form.control}
-          name="bankName"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Bank Name</FormLabel>
-              <FormControl>
-                <select
-                  {...field}
-                  className="border rounded-md p-2 w-full"
-                >
-                  <option value="" disabled>
-                    Select your bank
-                  </option>
-                  {bankList.map((bank) => (
-                    <option key={bank.value} value={bank.value}>
-                      {bank.label}
+          {/* Confirm Account Number Field */}
+          <FormField
+            control={form.control}
+            name="confirmAccountNumber"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Confirm Account Number</FormLabel>
+                <FormControl>
+                  <Input
+                    type="text"
+                    placeholder="Confirm your account number"
+                    {...field}
+                    className="input input-bordered w-full"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          {/* Bank Name Dropdown Field */}
+          <FormField
+            control={form.control}
+            name="bankName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Bank Name</FormLabel>
+                <FormControl>
+                  <select
+                    {...field}
+                    className="border border-gray-300 rounded-md p-2 w-full"
+                  >
+                    <option value="" disabled>
+                      Select your bank
                     </option>
-                  ))}
-                </select>
-              </FormControl>
-              <FormDescription>
-                Please select your bank from the list.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+                    {bankList.map((bank) => (
+                      <option key={bank.value} value={bank.value}>
+                        {bank.label}
+                      </option>
+                    ))}
+                  </select>
+                </FormControl>
+                <FormDescription>
+                  Please select your bank from the list.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        {/* Submit Button */}
-        <Button type="submit">Submit Withdrawal</Button>
-      </form>
-    </Form>
+          {/* Submit Button */}
+          <Button type="submit" className="w-full bg-blue-600 text-white">
+            Submit Withdrawal
+          </Button>
+        </form>
+      </Form>
     </div>
   );
 }
