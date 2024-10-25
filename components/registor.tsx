@@ -56,7 +56,7 @@ else{
       console.log("DONE");
       queryClient.invalidateQueries({ queryKey: ['username',chatId] })
       form.reset(); // Reset the form after successful submission
-      router.push('/protected')
+    
     },
    
   });
