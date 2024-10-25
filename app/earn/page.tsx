@@ -23,10 +23,12 @@ import {
 } from "@/components/ui/accordion"
 import { AmountForm } from "./amount"
 import { WithdrawForm } from "./withdraw"
+import Footer from "@/components/footer"
 
 
 export default function TabsDemo() {
   return (
+    <div>     
     <Tabs defaultValue="Deposit" className="w-[400px]">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="Deposit">Deposit</TabsTrigger>
@@ -75,5 +77,7 @@ export default function TabsDemo() {
         </Card>
       </TabsContent>
     </Tabs>
+    <Footer/>
+    </div>
   )
 }
