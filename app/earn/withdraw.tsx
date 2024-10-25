@@ -22,10 +22,10 @@ import { Half1Icon } from "@radix-ui/react-icons";
 
 // Define the schema for the withdraw form using Zod
 const FormSchema = z.object({
-  accountNumber: z.string().min(10, "Account number must be at least 10 digits"),
+  accountNumber: z.string().min(3, "Account number must be at least 5 digits"),
   confirmAccountNumber: z
     .string()
-    .min(10, "Confirmation account number must be at least 10 digits"),
+    .min(3, "Confirmation account number must be at least 3 digits"),
   bankName: z.string().min(1, "Bank name is required"),
 }).refine((data) => data.accountNumber === data.confirmAccountNumber, {
   message: "Account numbers must match",
@@ -34,10 +34,12 @@ const FormSchema = z.object({
 
 // Mock list of banks (You can replace this with your dynamic bank list)
 const bankList = [
-  { value: "chase", label: "Chase Bank" },
-  { value: "boa", label: "Bank of America" },
-  { value: "wellsfargo", label: "Wells Fargo" },
-  { value: "citi", label: "Citi Bank" },
+  { value: "Tele Birr", label: "Tele Birr" },
+  { value: "Commercial Bank of Ethiopia", label: "Commercial Bank of Ethiopia" },
+  { value: "Awash Bank", label: "Awash Bank" },
+  { value: "Dashen Bank", label: "Dashen Bank" },
+  { value: "Bank of Abyssinia", label: "Bank of Abyssinia" },
+  { value: "Nib International Bank", label: "Nib International Bank" },
 ];
 
 export function WithdrawForm({ chatId }: { chatId: string }) {
@@ -86,7 +88,7 @@ export function WithdrawForm({ chatId }: { chatId: string }) {
 
   return (
     <div>
-    {mutation.data.massage && (<h1>{mutation.data.massage}</h1>)}
+    {mutation.data?.massage && (<h1>{mutation.data.massage}</h1>)}
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
         {/* Account Number Field */}
@@ -95,7 +97,7 @@ export function WithdrawForm({ chatId }: { chatId: string }) {
           name="accountNumber"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Account Number</FormLabel>
+              <FormLabel>Account Number/Phone</FormLabel>
               <FormControl>
                 <Input
                   type="text"
