@@ -100,6 +100,7 @@ export function WithdrawForm({ chatId }: { chatId: string }) {
                     type="number"
                     placeholder="Enter amount"
                     {...field}
+                    onChange={(e) => field.onChange(e.target.value ? parseFloat(e.target.value) : '')}
                     className="input input-bordered w-full"
                   />
                 </FormControl>
