@@ -69,51 +69,7 @@ export default async function ProtectedPage() {
   return (
 
     <div className=" bg-ethBlack-600 text-white  w-full h-full min-h-screen font-bold flex flex-col max-w-xl">
-      <div className="px-4 z-10 pt-4">
-        <div className="flex items-center justify-between space-x-4  my-1">
-        <div className="flex items-center space-x-2">
-          <div className="p-1 rounded-lg bg-[#1d2025]"> 
-            <Image src="/image/lottery_winning3.png" alt="Profile Pic" width={30} height={30} />
-          </div>
-         <Posts chatId="7277258087"/> 
-     
-   {/*        <p className="text-sm">yonas (CEO)</p>  */}
-        </div>
-
-
-        <div className="flex items-center w-2/3 border-2 border-[#43433b] rounded-full px-4 py-[2px] bg-[#43433b]/[0.6] max-w-64">
-        <Image
-      src="/image/lottery_winning1.png"
-      width={32}
-      height={32}
-      alt="Picture"
-    />
-      
-      <div className="h-[32px] w-[2px] bg-[#43433b] mx-2"></div>
-      <div className="flex-1 text-center">
-        <p className="text-xs text-[#85827d] font-medium">wining price</p>
-        <div className="flex items-center justify-center space-x-1">
-        <Image
-      src="/image/dollar-coin.png"
-      width={18}
-      height={18}
-      alt="Picture"
-    />
-      
-          <p className="text-sm">1000</p>
-          <Info size={20} className="text-[#43433b]" />
-        </div>
-      </div>
-      <div className="h-[32px] w-[2px] bg-[#43433b] mx-2"></div>
-      <Settings className="text-white" />
-    </div>
- 
-
-
-        </div>
-        
-      </div>
-
+          <Posts chatId="7277258087"/> 
       <div className='flex flex-col rounded-t-[48px] bg-ethBlack-500 border-t-2 shadow-2xl border-ethYellow-500 w-full grow p-8'>
         <Tabs defaultValue="own" className="w-full grow">
           <TabsList className="grid w-full grid-cols-3 bg-ethBlack-400">
