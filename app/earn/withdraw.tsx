@@ -105,9 +105,7 @@ export function WithdrawForm({ chatId }: { chatId: string }) {
                   {...field}
                 />
               </FormControl>
-              <FormDescription>
-                Enter your account number (at least 10 digits).
-              </FormDescription>
+             
               <FormMessage />
             </FormItem>
           )}
@@ -127,9 +125,7 @@ export function WithdrawForm({ chatId }: { chatId: string }) {
                   {...field}
                 />
               </FormControl>
-              <FormDescription>
-                Confirm your account number.
-              </FormDescription>
+             
               <FormMessage />
             </FormItem>
           )}
