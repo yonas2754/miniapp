@@ -16,7 +16,7 @@ import LotteryCard from './lotteryCard';
 // Define types for the Lottery Card props
 interface LotteryCardProps {
   date: string;
-  imageSrc: string;
+
   amount: number;
   price: number;
 }
@@ -34,14 +34,14 @@ export default async function ProtectedPage() {
   // Centralized card data
   const tabsData: TabsData = {
     own: [
-      { date: "9/24/2021", imageSrc: "/image/lottery_winning3.png", amount: 2000, price: 100 },
-      { date: "9/24/2021", imageSrc: "/image/lottery_winning3.png", amount: 4000, price: 100 }
+      { date: "9/24/2021", amount: 2000, price: 100 },
+      { date: "9/24/2021", amount: 4000, price: 100 }
     ],
     available: [
-      { date: "10/27/2024", imageSrc: "/image/lottery_winning2.png", amount: 10000, price: 500 }
+      { date: "10/27/2024", amount: 10000, price: 500 }
     ],
     end: [
-      { date: "10/27/2025", imageSrc: "/image/lottery_winning1.png", amount: 10000, price: 500 }
+      { date: "10/27/2025", amount: 10000, price: 500 }
     ]
   };
 

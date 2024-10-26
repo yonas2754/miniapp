@@ -18,12 +18,12 @@ const getRandomEmoji = (): string => emojiSet[Math.floor(Math.random() * emojiSe
 // Define the props type
 interface LotteryCardProps {
   date: string;
-  imageSrc: string;
+ 
   amount: number;
   price: number;
 }
 
-const LotteryCard: React.FC<LotteryCardProps> = ({ date, imageSrc, amount, price }) => {
+const LotteryCard: React.FC<LotteryCardProps> = ({ date, amount, price }) => {
   // Get a random emoji
   const randomEmoji = getRandomEmoji();
 
@@ -40,7 +40,7 @@ const LotteryCard: React.FC<LotteryCardProps> = ({ date, imageSrc, amount, price
       </CardHeader>
       <CardContent className="space-y-2">
         <div className="flex items-center justify-center space-x-1">
-          <Image src={imageSrc} alt="Dollar Icon" width={24} height={24} />
+          <Image src="/image/lottery_winning3.png" alt="Dollar Icon" width={24} height={24} />
           <p className="text-lg">{amount}</p>
         </div>
       </CardContent>
