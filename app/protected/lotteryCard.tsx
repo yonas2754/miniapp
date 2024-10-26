@@ -40,7 +40,7 @@ const LotteryCard: React.FC<LotteryCardProps> = ({ date, amount, price, initialE
           <p className="text-xl font-semibold">{amount}</p>
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between p-4 bg-opacity-50 bg-black ">
+      <CardFooter className="flex justify-between p-4 bg-opacity-50 bg-black rounded-b-2xl ">
         <p className="text-sm">Price: <span className="font-bold">{price}</span></p>
       </CardFooter>
     </Card>
