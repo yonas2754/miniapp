@@ -68,7 +68,7 @@ export default async function ProtectedPage() {
           </TabsList>
 
           {Object.entries(tabsData).map(([key, cards]) => (
-            <TabsContent key={key} value={key} className="p-4">
+            <TabsContent key={key} value={key} className=" pt-4">
               <div className='grid grid-cols-2 gap-2'>
              
                 {cards.map((card, index) => (
