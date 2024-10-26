@@ -53,7 +53,7 @@ const ProfileForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 bg-white">
       <div>
         <Label htmlFor="gameType">Game Type</Label>
         <Input id="gameType" {...register("gameType")} />
