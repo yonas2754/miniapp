@@ -33,6 +33,7 @@ export default function TabsDemo() {
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="Deposit">Deposit</TabsTrigger>
         <TabsTrigger value="withdraw">withdraw</TabsTrigger>
+        <TabsTrigger value="history">history</TabsTrigger>
       </TabsList>
       <TabsContent value="Deposit">
         <Card>
@@ -76,6 +77,27 @@ export default function TabsDemo() {
          
         </Card>
       </TabsContent>
+
+
+
+      <TabsContent value="history">
+        <Card>
+          <CardHeader>
+            <CardTitle>history</CardTitle>
+            <CardDescription>
+            withdraw history from your account
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-2">
+     
+          <HistoryForm chatId="7277258087"/>
+          
+          </CardContent>
+         
+        </Card>
+      </TabsContent>
+
+
     </Tabs>
     <Footer/>
     </div>
