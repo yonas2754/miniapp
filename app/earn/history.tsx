@@ -23,7 +23,38 @@ interface HistoryProps {
 function History({ chatId }: HistoryProps) {
     const queryClient = useQueryClient()
   // TanStack Query for fetching data
-  const data:any = queryClient.getQueryData(['username',chatId])
+ // const data:any = queryClient.getQueryData(['username',chatId])
+ const fetchList = async ( chatId: string ) => {
+  
+    
+    const headers = {
+      
+        "Content-Type": "application/json",
+      };
+      const response = await fetch(Backend_URL+`/users/${chatId}`, { method: "GET",headers});
+      const data = await response.json();
+      console.log(data)
+      return data;
+      
+    }
+
+ const { isPending, isError, data, error } = useQuery({
+   queryKey: ['userhistory',chatId],
+   queryFn: () =>fetchList(chatId),
+ })
+
+ if (isPending) {
+   return <span>Loading...</span>
+
+ }
+
+ if (isError) {
+   return <span>Error: {error.message}</span>
+ }
+
+
+
+ 
   return (
     <Table>
       <TableCaption>A list of your recent transactions.</TableCaption>
@@ -36,12 +67,12 @@ function History({ chatId }: HistoryProps) {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data?.watingBalance?.map((item: { accountNumber: string, bankName: string, balance: number, available: boolean }) => (
+        {data?.watingBalance?.map((item: { accountNumber: string, bankName: string, balance: number,  avelible: boolean }) => (
           <TableRow key={item.accountNumber}>
             <TableCell className="font-medium">{item.accountNumber}</TableCell>
             <TableCell>{item.bankName}</TableCell>
             <TableCell>{item.balance}</TableCell>
-            <TableCell>{item.available ? "Padding" : "Paid"}</TableCell>
+            <TableCell>{item.avelible ? "Padding" : "Paid"}</TableCell>
           </TableRow>
         ))}
       </TableBody>
