@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Backend_URL } from "@/lib/Constants"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 const FormSchema = z.object({
   amount: z.number({
@@ -32,7 +32,7 @@ export function AmountForm({chatId}:{chatId:string}) {
       amount: 100,
     },
   })
-
+  const queryClient = useQueryClient()
     const mutation = useMutation({
 
         mutationFn: async (data: Object) => {
@@ -49,6 +49,7 @@ export function AmountForm({chatId}:{chatId:string}) {
     },
       onSuccess: (result) => {
         if (result.data && result.data.checkout_url) {
+          queryClient.invalidateQueries({ queryKey: ['username',chatId] })
           window.location.href = result.data.checkout_url;
         } else {
           console.error("Failed to initialize payment:", result);

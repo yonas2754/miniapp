@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Backend_URL } from "@/lib/Constants";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 // Zod schema for the withdraw form
 const FormSchema = z.object({
@@ -50,6 +50,7 @@ export function WithdrawForm({ chatId }: { chatId: string }) {
       bankName: "",
     },
   });
+  const queryClient = useQueryClient()
 
   // Mutation for handling the form submission
   const mutation = useMutation({
@@ -65,6 +66,7 @@ export function WithdrawForm({ chatId }: { chatId: string }) {
     },
     onSuccess: (result) => {
       if (result.success) {
+        queryClient.invalidateQueries({ queryKey: ['username',chatId] })
         console.log("Withdrawal successful:", result);
       } else {
         console.error("Failed to process withdrawal:", result);
