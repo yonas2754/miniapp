@@ -31,7 +31,7 @@ export default function TabsDemo() {
   return (
     <div>     
     <Tabs defaultValue="Deposit" className="w-[400px]">
-      <TabsList className="grid w-full grid-cols-2">
+      <TabsList className="grid w-full grid-cols-3">
         <TabsTrigger value="Deposit">Deposit</TabsTrigger>
         <TabsTrigger value="withdraw">withdraw</TabsTrigger>
         <TabsTrigger value="history">history</TabsTrigger>
