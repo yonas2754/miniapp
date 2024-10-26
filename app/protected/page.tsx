@@ -11,6 +11,7 @@ import Info from '@/components/icons/Info';
 import Settings from '@/components/icons/Settings';
 import Posts  from '@/components/userinfo';
 import React from 'react';
+import LotteryCard from './lotteryCard';
 
 // Define types for the Lottery Card props
 interface LotteryCardProps {
@@ -20,26 +21,7 @@ interface LotteryCardProps {
   price: number;
 }
 
-// Reusable LotteryCard component with type safety
-const LotteryCard: React.FC<LotteryCardProps> = ({ date, imageSrc, amount, price }) => (
-  <Card className='bg-ethLightBlue-950 text-white'>
-    <CardHeader>
-      <CardTitle>Day at {date}</CardTitle>
-      <CardDescription>
-        <Image src={imageSrc} alt="Lottery Image" sizes="100vw" style={{ objectFit: 'cover' }} />
-      </CardDescription>
-    </CardHeader>
-    <CardContent className="space-y-2">
-      <div className="flex items-center justify-center space-x-1">
-        <Image src="/image/dollar-coin.png" alt="Dollar Icon" width={24} height={24} />
-        <p className="text-lg">{amount}</p>
-      </div>
-    </CardContent>
-    <CardFooter>
-      <p className="text-sm">Price: {price}</p>
-    </CardFooter>
-  </Card>
-);
+
 
 // Define a type for the tabsData structure
 type TabsData = Record<string, LotteryCardProps[]>;
@@ -62,6 +44,10 @@ export default async function ProtectedPage() {
       { date: "10/27/2025", imageSrc: "/image/lottery_winning1.png", amount: 10000, price: 500 }
     ]
   };
+
+
+
+
 
 
   
