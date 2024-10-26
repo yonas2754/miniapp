@@ -1,40 +1,30 @@
-import React from 'react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"; // ShadCN UI components
+import React, { useMemo } from 'react';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"; 
 import Image from 'next/image';
+import { emojiSet } from '@/lib/Constants';
 
-// Expanded emoji set
-const emojiSet = [
-  '🎉', '🎁', '🎲', '🎯', '🎮', '🎵', '🎶', '🎤', '🎧', '🎸', '🎷', '🎹',
-  '🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', '🐨', '🐯', '🦁', '🐮', '🐷', '🐸', '🐵', '🐥', '🦄', '🐍',
-  '🍏', '🍎', '🍌', '🍒', '🍓', '🍍', '🍕', '🍔', '🍟', '🍩', '🍪', '🍫', '🍿', '🍰', '🎂', '🍻', '🍷', '🍸',
-  '⚽', '🏀', '🏈', '⚾', '🎾', '🏐', '🏉', '🎳', '⛳', '🏒', '🏓', '🏸', '🥅', '🎱', '🎯', '🎣', '🤿', '🛹',
-  '🌞', '🌝', '🌟', '🌈', '☁️', '⚡', '🔥', '❄️', '🌊', '🌪️', '🌻', '🌵', '🌴', '🌳', '🌿', '🍀', '🍁',
-  '💡', '🔦', '🕯️', '🔧', '🔨', '⚙️', '🧰', '🛠️', '🔑', '📱', '💻', '🖥️', '🖱️', '📸', '🎥', '💰', '💸'
-];
+// Utility function to get a random emoji from the expanded emojiSet
+const getRandomEmoji = (x:number): string => emojiSet[x];
 
-// Utility function to get random emoji
-const getRandomEmoji = (): string => emojiSet[Math.floor(Math.random() * emojiSet.length)];
-
-// Define the props type
 interface LotteryCardProps {
   date: string;
- 
   amount: number;
   price: number;
+  initialEmoji: number;
 }
 
-const LotteryCard: React.FC<LotteryCardProps> = ({ date, amount, price }) => {
-  // Get a random emoji
-  const randomEmoji = getRandomEmoji();
+const LotteryCard: React.FC<LotteryCardProps> = ({ date, amount, price, initialEmoji }) => {
+  // Memoize the random emoji selection to ensure it doesn't change
+  const emoji = getRandomEmoji(initialEmoji)
 
   return (
     <Card className="bg-ethLightBlue-950 text-white">
       <CardHeader>
         <CardTitle>Day at {date}</CardTitle>
         <CardDescription>
-          {/* Render a single large random emoji */}
+          {/* Display a large, constant random emoji */}
           <div className="flex justify-center my-4 text-6xl">
-            {randomEmoji}
+            {emoji}
           </div>
         </CardDescription>
       </CardHeader>

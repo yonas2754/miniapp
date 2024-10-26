@@ -19,6 +19,7 @@ interface LotteryCardProps {
 
   amount: number;
   price: number;
+  initialEmoji:number;
 }
 
 
@@ -34,14 +35,14 @@ export default async function ProtectedPage() {
   // Centralized card data
   const tabsData: TabsData = {
     own: [
-      { date: "9/24/2021", amount: 2000, price: 100 },
-      { date: "9/24/2021", amount: 4000, price: 100 }
+      { date: "9/24/2021", amount: 2000, price: 100 ,initialEmoji:100},
+      { date: "9/24/2021", amount: 4000, price: 100 ,initialEmoji:100}
     ],
     available: [
-      { date: "10/27/2024", amount: 10000, price: 500 }
+      { date: "10/27/2024", amount: 10000, price: 500 ,initialEmoji:100}
     ],
     end: [
-      { date: "10/27/2025", amount: 10000, price: 500 }
+      { date: "10/27/2025", amount: 10000, price: 500 ,initialEmoji:100}
     ]
   };
 
