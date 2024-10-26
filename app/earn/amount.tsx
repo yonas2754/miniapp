@@ -48,8 +48,9 @@ export function AmountForm({chatId}:{chatId:string}) {
       return result;
     },
       onSuccess: (result) => {
+        queryClient.invalidateQueries({ queryKey: ['username',chatId] })
         if (result.data && result.data.checkout_url) {
-          queryClient.invalidateQueries({ queryKey: ['username',chatId] })
+     
           window.location.href = result.data.checkout_url;
         } else {
           console.error("Failed to initialize payment:", result);

@@ -65,8 +65,9 @@ export function WithdrawForm({ chatId }: { chatId: string }) {
       return response.json();
     },
     onSuccess: (result) => {
+      queryClient.invalidateQueries({ queryKey: ['username',chatId] })
       if (result.success) {
-        queryClient.invalidateQueries({ queryKey: ['username',chatId] })
+    
         console.log("Withdrawal successful:", result);
       } else {
         console.error("Failed to process withdrawal:", result);
