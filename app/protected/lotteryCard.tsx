@@ -25,7 +25,7 @@ const LotteryCard: React.FC<LotteryCardProps> = ({ date, amount, price, initialE
   const emoji = getRandomEmoji(initialEmoji);
 
   return (
-    <Card className="bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
+    <Card className="bg-gradient-to-r from-ethLightBlue-700 to-ethLightBlue-900 text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl duration-300">
       <CardHeader className="p-6 text-center">
         <CardTitle className="text-2xl font-bold">{`Day at ${date}`}</CardTitle>
         <CardDescription className="mt-2">
