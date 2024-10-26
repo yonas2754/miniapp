@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import History from "./history"
 import {
   Tabs,
   TabsContent,
@@ -90,7 +91,7 @@ export default function TabsDemo() {
           </CardHeader>
           <CardContent className="space-y-2">
      
-          <HistoryForm chatId="7277258087"/>
+          <History chatId="7277258087"/>
           
           </CardContent>
          
