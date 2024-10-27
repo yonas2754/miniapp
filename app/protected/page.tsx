@@ -50,7 +50,7 @@ async function page() {
         <div key={element.id}>
         
 
-        <Link href={`/${session.user.telegramId}/${element.id}/${element.gameNumber.toString()}`}>
+        <Link href={`protected/${session.user.telegramId}/${element.id}/${element.gameNumber.toString()}`}>
             <LotteryCard element={element}/>
             </Link>
     
