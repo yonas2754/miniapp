@@ -1,4 +1,4 @@
-export const Backend_URL = "https://48faa09df6fa9d8c36c26570de535fc0.serveo.net";
+export const Backend_URL = "https://2941dbaaf1d21356f852f35efaab6810.serveo.net";
 
 export const emojiSet = [
     // Smileys & Emotion

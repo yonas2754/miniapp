@@ -43,7 +43,7 @@ export default async function ProtectedPage() {
   const userGames = await userGamesResponse.json();
 
   // Centralized card data
-  const tabsData: TabsData = {
+  const tabsData: any = {
     own: activeGames,
     available: activeGames,
     end: activeGames,
@@ -62,10 +62,10 @@ export default async function ProtectedPage() {
             ))}
           </TabsList>
 
-          {Object.entries(tabsData).map(([key, cards]) => (
+          {Object.entries(tabsData).map(([key, cards]:any) => (
             <TabsContent key={key} value={key} className="pt-4">
               <div className='grid grid-cols-2 gap-2'>
-                {cards.map((card) => (
+                {cards.map((card:any) => (
                 <Link href="/protected/protectedlist" key={card.id}>
                <LotteryCard 
       id={card.id}                // Make sure to pass the id if LotteryCard requires it
