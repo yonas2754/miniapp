@@ -43,8 +43,7 @@ async function page() {
     <TabsTrigger value="winner">Mela Winner</TabsTrigger>
   </TabsList>
   <TabsContent value="my">
-    Make changes to your account here.
-    {JSON.stringify(activeGames)}
+   
     {activeGames.map((element:ele) => (
         <div key={element.id}>
         
