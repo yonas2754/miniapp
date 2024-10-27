@@ -74,13 +74,11 @@ export default function ProfileForm() {
       });
       return response.json();
     },
-    onSuccess: (result) => {
-      queryClient.invalidateQueries({ queryKey: ["profiles"] });
-      if (result.success) {
-        console.log("Profile created successfully:", result);
-      } else {
-        console.error("Failed to create profile:", result);
-      }
+    onSuccess: () => {
+   
+    
+        console.log("Profile created successfully:");
+     
     },
     onError: (error) => {
       console.error("Error creating profile:", error);
