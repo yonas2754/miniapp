@@ -34,6 +34,7 @@ async function page() {
     
 
   return (
+    <div>
     <div className='bg-ethBlack-600  flex '>
     <div className=' text-white w-full h-full min-h-screen font-bold flex flex-col max-w-xl mb-60'>
           <Posts chatId="7277258087" />
@@ -67,8 +68,10 @@ async function page() {
 </Tabs>
 </div>
     </div>
+    </div>
     <Footer/>
     </div>
+
   )
 }
 
