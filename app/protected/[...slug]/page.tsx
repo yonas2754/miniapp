@@ -69,7 +69,7 @@ const balance=output.balance.balance;
 
   const handleContinueClick = (ticketNumber: number): void => {
    
-    if(balance<price){
+    if(balance<Number(price)){
       toast({
         title: "Insufficient balance",
         description: "Please recharge your balance",
