@@ -76,7 +76,7 @@ export default function ProfileForm() {
     },
     onSuccess: () => {
    
-    
+        form.reset();
         console.log("Profile created successfully:");
      
     },
@@ -173,9 +173,7 @@ export default function ProfileForm() {
                   />
                 </PopoverContent>
               </Popover>
-              <FormDescription>
-                Your date of birth is used to calculate your age.
-              </FormDescription>
+             
               <FormMessage />
             </FormItem>
           )}
@@ -225,9 +223,7 @@ export default function ProfileForm() {
                   />
                 </PopoverContent>
               </Popover>
-              <FormDescription>
-                Your date of birth is used to calculate your age.
-              </FormDescription>
+             
               <FormMessage />
             </FormItem>
           )}
