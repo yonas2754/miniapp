@@ -35,7 +35,7 @@ export default async function ProtectedPage() {
   const [activeGamesResponse, endedGamesResponse, userGamesResponse] = await Promise.all([
     fetch(`${Backend_URL}/profiles/activeGames`),
     fetch(`${Backend_URL}/profiles/endedGames`),
-    fetch(`${Backend_URL}/profiles/endedGames`),
+    fetch(`${Backend_URL}/profiles/${session.user.telegramId}`),
   ]);
 
   const activeGames = await activeGamesResponse.json();
@@ -44,9 +44,9 @@ export default async function ProtectedPage() {
 
   // Centralized card data
   const tabsData: TabsData = {
-    own: userGames,
+    own: activeGames,
     available: activeGames,
-    end: endedGames,
+    end: activeGames,
   };
 
   return (
