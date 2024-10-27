@@ -46,7 +46,7 @@ const ProfileSchema = z.object({
 
 type ProfileFormInputs = z.infer<typeof ProfileSchema>;
 
-export function ProfileForm() {
+export default function ProfileForm() {
   const queryClient = useQueryClient();
 
   const form = useForm<ProfileFormInputs>({
