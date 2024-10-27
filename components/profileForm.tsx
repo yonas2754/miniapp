@@ -310,6 +310,6 @@ export default function ProfileForm() {
         </form>
       </Form>
     </div>
-    <Footer/></div>
+    </div>
   );
 }
