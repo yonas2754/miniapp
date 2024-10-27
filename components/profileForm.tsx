@@ -154,6 +154,7 @@ export default function ProfileForm() {
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
                     <Calendar
+                     className="bg-white"
                       mode="single"
                       selected={field.value}
                       onSelect={field.onChange}
@@ -171,7 +172,7 @@ export default function ProfileForm() {
                     newDate.setHours(parseInt(time[0]), parseInt(time[1]));
                     field.onChange(newDate);
                   }}
-                  className="mt-2"
+                  className="mt-2 bg-white"
                 />
                 <FormMessage />
               </FormItem>
@@ -206,6 +207,7 @@ export default function ProfileForm() {
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
                     <Calendar
+                    className="bg-white"
                       mode="single"
                       selected={field.value}
                       onSelect={field.onChange}
@@ -223,7 +225,7 @@ export default function ProfileForm() {
                     newDate.setHours(parseInt(time[0]), parseInt(time[1]));
                     field.onChange(newDate);
                   }}
-                  className="mt-2"
+                  className="mt-2 bg-white"
                 />
                 <FormMessage />
               </FormItem>
