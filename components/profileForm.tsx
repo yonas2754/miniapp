@@ -25,6 +25,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { cn } from "@/lib/utils"; // for className merging
 import { Backend_URL } from "@/lib/Constants";
+import Footer from "./footer";
 
 // Zod schema for profile creation form
 const ProfileSchema = z.object({
@@ -79,6 +80,7 @@ export default function ProfileForm() {
   };
 
   return (
+    <div>
     <div className="max-w-lg mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
       {mutation.data?.message && (
         <div className="bg-red-200 text-red-800 p-2 rounded mb-4">
@@ -308,5 +310,6 @@ export default function ProfileForm() {
         </form>
       </Form>
     </div>
+    <Footer/></div>
   );
 }
