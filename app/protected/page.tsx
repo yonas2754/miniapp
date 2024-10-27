@@ -20,7 +20,7 @@ interface LotteryCardProps {
   endDate: string;
   gameNumber: number;
   gamePrice: number;
-  gameDescription?: string;
+  gameDescription: string;
   createdAt: string;
   updatedAt: string;
 }
@@ -44,9 +44,9 @@ export default async function ProtectedPage() {
 
   // Centralized card data
   const tabsData: TabsData = {
-    own: userGames,
+    own: activeGames,
     available: activeGames,
-    end: endedGames,
+    end: activeGames,
   };
 
   return (
@@ -66,9 +66,19 @@ export default async function ProtectedPage() {
             <TabsContent key={key} value={key} className="pt-4">
               <div className='grid grid-cols-2 gap-2'>
                 {cards.map((card) => (
-                  <Link key={card.id} href="/protected/protectedlist">
-                    <LotteryCard {...card} />
-                  </Link>
+                <Link href="/protected/protectedlist" key={card.id}>
+               <LotteryCard 
+      id={card.id}                // Make sure to pass the id if LotteryCard requires it
+      gameType={card.gameType}    // Passing the gameType
+      startDate={card.startDate}  // Passing the startDate
+      endDate={card.endDate}      // Passing the endDate
+      imageNum={card.imageNum}    // Passing the imageNum
+      gameDescription={card.gameDescription} // Passing the gameDescription
+      gameNumber={card.gameNumber} // Passing the gameNumber
+      gamePrice={card.gamePrice}   // Passing the gamePrice
+    />
+              </Link>
+                
                 ))}
               </div>
             </TabsContent>

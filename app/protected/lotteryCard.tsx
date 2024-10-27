@@ -21,15 +21,18 @@ interface LotteryCardProps {
   endDate: string;
   gameNumber: number;
   gamePrice: number;
-  gameDescription?: string;
-  createdAt: string;
-  updatedAt: string;
+  gameDescription: string;
+ 
 }
 
 const LotteryCard: React.FC<LotteryCardProps> = ({
+    id,
+    gameType,
+    startDate,  
   endDate,
   imageNum,
   gameDescription,
+  gameNumber,
   gamePrice,
 }) => {
   const emoji = getRandomEmoji(imageNum);
