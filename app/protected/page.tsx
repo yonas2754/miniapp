@@ -35,7 +35,7 @@ export default async function ProtectedPage() {
   const [activeGamesResponse, endedGamesResponse, userGamesResponse] = await Promise.all([
     fetch(`${Backend_URL}/profiles/activeGames`),
     fetch(`${Backend_URL}/profiles/endedGames`),
-    fetch(`${Backend_URL}/profiles/${session.user.telegramId}`),
+    fetch(`${Backend_URL}/profiles/endedGames`),
   ]);
 
   const activeGames = await activeGamesResponse.json();
