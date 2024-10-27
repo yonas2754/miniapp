@@ -1,5 +1,6 @@
 
 import React, { useMemo } from 'react';
+import { format } from "date-fns";
 import {
   Card,
   CardHeader,
@@ -36,7 +37,7 @@ const LotteryCard = ({element}:{element:ele}) => {
   return (
     <Card className="bg-gradient-to-r from-ethLightBlue-700 to-ethLightBlue-900 text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl duration-300 rounded-2xl">
       <CardHeader className="p-2 text-center">
-        <CardTitle className="text-2xl font-bold">{`At ${element.endDate}`}</CardTitle>
+        <CardTitle className="text-2xl font-bold">  {`At ${format(new Date(element.endDate), "PPP, p")}`}</CardTitle>
         <CardDescription className="mt-2">
           <div className="flex justify-center my-4 text-6xl animate-bounce">
             {emoji}
