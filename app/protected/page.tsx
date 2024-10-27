@@ -42,8 +42,8 @@ async function page() {
     <TabsTrigger value="tacket">Mela Tacket</TabsTrigger>
     <TabsTrigger value="winner">Mela Winner</TabsTrigger>
   </TabsList>
-  <TabsContent value="my">
-   
+  <TabsContent value="my" className="pt-4 grid grid-cols-2 gap-2">
+
     {activeGames.map((element:ele) => (
         <div key={element.id}>
         
