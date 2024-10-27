@@ -21,11 +21,13 @@ import Footer from '@/components/footer';
 
  
 
-const Page: React.FC = () => {
+const Page = ({ params }: { params: { slug: string[] } }) => {
+  // Destructure chatId and profileId from params.slug
+  const [chatId, profileId,length] = params.slug;
 
     const [startParam, setStartParam] = useState('')
   // TypeScript type annotation for the function
-  const [tickets, setTickets] = useState<number[]>(Array.from({ length: 100 }, (_, i) => i + 1));
+  const [tickets, setTickets] = useState<number[]>(Array.from({ length: Number(length) }, (_, i) => i + 1));
 
   const handleContinueClick = (ticketNumber: number): void => {
 

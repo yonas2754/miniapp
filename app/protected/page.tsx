@@ -49,7 +49,10 @@ async function page() {
     {activeGames.map((element:ele) => (
         <div key={element.id}>
         
+
+        <Link href={`/${session.user.telegramId}/${element.id}/${element.gameNumber.toString()}`}>
             <LotteryCard element={element}/>
+            </Link>
     
     </div>))}
     </TabsContent>
