@@ -4,14 +4,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { format } from "date-fns"
+import { format } from "date-fns";
 import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-  } from "@/components/ui/popover"
-  import { CalendarIcon } from "lucide-react"
-  import { Calendar } from "@/components/ui/calendar"
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { CalendarIcon } from "lucide-react";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -19,26 +19,19 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-  FormDescription,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { DayPicker } from 'react-day-picker';
 import { cn } from "@/lib/utils"; // for className merging
-import { useState } from "react";
 import { Backend_URL } from "@/lib/Constants";
 
 // Zod schema for profile creation form
 const ProfileSchema = z.object({
   gameType: z.string().min(1, "Game type is required"),
   imageNum: z.number().min(0, "Image number must be a positive integer"),
-  startDate:  z.date({
-    required_error: "A date of start is required.",
-  }),
-  endDate:  z.date({
-    required_error: "A date of End is required.",
-  }),
+  startDate: z.date({ required_error: "A start date and time is required." }),
+  endDate: z.date({ required_error: "An end date and time is required." }),
   gameNumber: z.number().min(1, "Game number must be at least 1"),
   gamePrice: z.number().min(0, "Game price must be a positive number"),
   gameDescription: z.string().optional(),
@@ -67,18 +60,14 @@ export default function ProfileForm() {
     mutationFn: async (data: ProfileFormInputs) => {
       const response = await fetch(`${Backend_URL}/profiles`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
       return response.json();
     },
     onSuccess: () => {
-   
-        form.reset();
-        console.log("Profile created successfully:");
-     
+      form.reset();
+      console.log("Profile created successfully:");
     },
     onError: (error) => {
       console.error("Error creating profile:", error);
@@ -90,7 +79,7 @@ export default function ProfileForm() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
+    <div className="max-w-lg mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
       {mutation.data?.message && (
         <div className="bg-red-200 text-red-800 p-2 rounded mb-4">
           {mutation.data.message}
@@ -125,7 +114,11 @@ export default function ProfileForm() {
                     type="number"
                     placeholder="Enter image number"
                     {...field}
-                    onChange={(e) => field.onChange(e.target.value ? parseFloat(e.target.value) : '')}
+                    onChange={(e) =>
+                      field.onChange(
+                        e.target.value ? parseFloat(e.target.value) : ""
+                      )
+                    }
                   />
                 </FormControl>
                 <FormMessage />
@@ -133,101 +126,109 @@ export default function ProfileForm() {
             )}
           />
 
-          {/* Start Date Picker */}
+          {/* Start Date Picker with Time */}
           <FormField
-          control={form.control}
-          name="startDate"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel>Date of Start</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
-                      )}
-                    >
-                      {field.value ? (
-                        format(field.value, "PPP")
-                      ) : (
-                        <span>Pick a date</span>
-                      )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                  className="bg-white"
-                    mode="single"
-                    selected={field.value}
-                    onSelect={field.onChange}
-                    disabled={(date) =>
-                       date < new Date()
-                    }
-                    initialFocus
+            control={form.control}
+            name="startDate"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel>Start Date & Time</FormLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={"outline"}
+                        className={cn(
+                          "w-[240px] pl-3 text-left font-normal",
+                          !field.value && "text-muted-foreground"
+                        )}
+                      >
+                        {field.value ? (
+                          format(field.value, "PPP")
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={field.onChange}
+                      disabled={(date) => date < new Date()}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+                {/* Time input */}
+                <Input
+                  type="time"
+                  onChange={(e) => {
+                    const time = e.target.value.split(":");
+                    const newDate = new Date(field.value);
+                    newDate.setHours(parseInt(time[0]), parseInt(time[1]));
+                    field.onChange(newDate);
+                  }}
+                  className="mt-2"
+                />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-                  />
-                </PopoverContent>
-              </Popover>
-             
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-
-
-
-
-          {/* End Date Picker */}
-         
+          {/* End Date Picker with Time */}
           <FormField
-          control={form.control}
-          name="endDate"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel>Date of End</FormLabel>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant={"outline"}
-                      className={cn(
-                        "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
-                      )}
-                    >
-                      {field.value ? (
-                        format(field.value, "PPP")
-                      ) : (
-                        <span>Pick a date</span>
-                      )}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                   className="bg-white"
-                    mode="single"
-                    selected={field.value}
-                    onSelect={field.onChange}
-                    disabled={(date) =>
-                    date < new Date()
-                    }
-                    initialFocus
-                  />
-                </PopoverContent>
-              </Popover>
-             
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+            control={form.control}
+            name="endDate"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel>End Date & Time</FormLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={"outline"}
+                        className={cn(
+                          "w-[240px] pl-3 text-left font-normal",
+                          !field.value && "text-muted-foreground"
+                        )}
+                      >
+                        {field.value ? (
+                          format(field.value, "PPP")
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={field.onChange}
+                      disabled={(date) => date < new Date()}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+                {/* Time input */}
+                <Input
+                  type="time"
+                  onChange={(e) => {
+                    const time = e.target.value.split(":");
+                    const newDate = new Date(field.value);
+                    newDate.setHours(parseInt(time[0]), parseInt(time[1]));
+                    field.onChange(newDate);
+                  }}
+                  className="mt-2"
+                />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
           {/* Game Number Field */}
           <FormField
@@ -241,7 +242,11 @@ export default function ProfileForm() {
                     type="number"
                     placeholder="Enter game number"
                     {...field}
-                    onChange={(e) => field.onChange(e.target.value ? parseFloat(e.target.value) : '')}
+                    onChange={(e) =>
+                      field.onChange(
+                        e.target.value ? parseFloat(e.target.value) : ""
+                      )
+                    }
                   />
                 </FormControl>
                 <FormMessage />
@@ -261,7 +266,11 @@ export default function ProfileForm() {
                     type="number"
                     placeholder="Enter game price"
                     {...field}
-                    onChange={(e) => field.onChange(e.target.value ? parseFloat(e.target.value) : '')}
+                    onChange={(e) =>
+                      field.onChange(
+                        e.target.value ? parseFloat(e.target.value) : ""
+                      )
+                    }
                   />
                 </FormControl>
                 <FormMessage />
@@ -288,7 +297,10 @@ export default function ProfileForm() {
           />
 
           {/* Submit Button */}
-          <Button type="submit" className="w-full bg-blue-600 text-white">
+          <Button
+            type="submit"
+            className="w-full bg-blue-600 text-white hover:bg-blue-700"
+          >
             Create Profile
           </Button>
         </form>
