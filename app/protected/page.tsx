@@ -44,9 +44,9 @@ export default async function ProtectedPage() {
 
   // Centralized card data
   const tabsData: TabsData = {
-    own: activeGames,
+    own: userGames,
     available: activeGames,
-    end: activeGames,
+    end: endedGames,
   };
 
   return (
