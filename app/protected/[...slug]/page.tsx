@@ -18,6 +18,10 @@ import {
 } from '@/components/ui/alert-dialog';
 import { Button } from '@/components/ui/button';
 import Footer from '@/components/footer';
+import { Backend_URL } from '@/lib/Constants';
+import axios from 'axios';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { number } from 'zod';
 
  
 
@@ -27,11 +31,45 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
 
     const [startParam, setStartParam] = useState('')
   // TypeScript type annotation for the function
-  const [tickets, setTickets] = useState<number[]>(Array.from({ length: Number(length) }, (_, i) => i + 1));
+  //back
+
+
+
+
+
+  const queryClient = useQueryClient()
+  const mutation = useMutation({
+
+    mutationFn: (number:number) => {
+     
+     
+      const headers = {
+     
+        "Content-Type": "application/json",
+      };
+
+  return axios.post(Backend_URL+`/tackets`,{chatId,profileId,number}, { headers });
+
+    },
+
+   onSuccess: async () => {
+      console.log("DONE");
+  await  queryClient.invalidateQueries({ queryKey: ['unbuying',profileId] })
+      
+    
+    },
+   
+  });
+
+
+
+
 
   const handleContinueClick = (ticketNumber: number): void => {
 
-    setTickets((prevTickets) => prevTickets.filter((ticket) => ticket !== ticketNumber));
+
+    mutation.mutate(ticketNumber);
+
   };
   
   useEffect(() => {
@@ -45,12 +83,59 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
     initWebApp();
   }, [])
 
+
+
+
+
+
+
+
+
+  const fetchList = async ( chatId: string ) => {
+  
+    
+    const headers = {
+      
+        "Content-Type": "application/json",
+      };
+      //unbuyed ticket
+      const response = await fetch(Backend_URL+`/tackets/${profileId}`, { method: "GET",headers});
+      const data = await response.json();
+      console.log(data)
+      const array1= Array.from({ length: Number(length) }, (_, i) => i + 1);
+      const numbersToRemove =await data.ticket.map((ticket: { number: any; }) => ticket.number);
+      const filteredArray = array1.filter(num => !numbersToRemove.includes(num));
+     
+
+      return filteredArray;
+      
+    }
+
+ const { isPending, isError, data, error } = useQuery({
+   queryKey: ['unbuying',profileId],
+   queryFn: () =>fetchList(chatId),
+ })
+
+ if (isPending) {
+   return <span>Loading...</span>
+
+ }
+
+ if (isError) {
+   return <span>Error: {error.message}</span>
+ }
+
+
+
+
+
+
   return (
     <div className="bg-ethBlack-950 w-full h-full min-h-screen flex flex-col">
       <BackButtonDemo />
       <div className="bg-ethBlack-950 mb-36 pt-8 pb-13 px-4 grid grid-cols-3 gap-1">
         {/* Map over 100 items, treating each as a lottery ticket */}
-        {tickets.map((ticketNumber) =>  (
+        {data.map((ticketNumber) =>  (
             <div className="px-4 mt-4 flex justify-center" key={ticketNumber}>
               <div className="p-4 rounded-full circle-outer">
               
