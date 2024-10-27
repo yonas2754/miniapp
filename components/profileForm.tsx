@@ -125,6 +125,7 @@ export default function ProfileForm() {
                     type="number"
                     placeholder="Enter image number"
                     {...field}
+                    onChange={(e) => field.onChange(e.target.value ? parseFloat(e.target.value) : '')}
                   />
                 </FormControl>
                 <FormMessage />
@@ -244,6 +245,7 @@ export default function ProfileForm() {
                     type="number"
                     placeholder="Enter game number"
                     {...field}
+                    onChange={(e) => field.onChange(e.target.value ? parseFloat(e.target.value) : '')}
                   />
                 </FormControl>
                 <FormMessage />
@@ -263,6 +265,7 @@ export default function ProfileForm() {
                     type="number"
                     placeholder="Enter game price"
                     {...field}
+                    onChange={(e) => field.onChange(e.target.value ? parseFloat(e.target.value) : '')}
                   />
                 </FormControl>
                 <FormMessage />
