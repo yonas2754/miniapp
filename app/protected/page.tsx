@@ -4,6 +4,19 @@ import Posts from '@/components/userinfo'
 import { Backend_URL } from '@/lib/Constants';
 import { getSession } from '@/utils/session';
 import Link from 'next/link';
+import LotteryCard from './lotteryCard';
+type ele ={
+    id: string;
+    gameType: string;
+    imageNum: number;
+    startDate: string;
+    endDate: string;
+    gameNumber: number;
+    gamePrice: number;
+    gameDescription: string;
+    createdAt: string;
+    updatedAt: string;
+  }
 async function page() {
     const session = await getSession();
 
@@ -32,6 +45,12 @@ async function page() {
   <TabsContent value="my">
     Make changes to your account here.
     {JSON.stringify(activeGames)}
+    {activeGames.map((element:ele) => (
+        <div key={element.id}>
+        
+            <LotteryCard element={element}/>
+    
+    </div>))}
     </TabsContent>
   <TabsContent value="tacket">
     Change your password here.
