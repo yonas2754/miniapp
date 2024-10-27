@@ -160,6 +160,7 @@ export default function ProfileForm() {
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">
                   <Calendar
+                  className="bg-white"
                     mode="single"
                     selected={field.value}
                     onSelect={field.onChange}
@@ -167,6 +168,7 @@ export default function ProfileForm() {
                       date > new Date() || date < new Date("1900-01-01")
                     }
                     initialFocus
+
                   />
                 </PopoverContent>
               </Popover>
@@ -211,6 +213,7 @@ export default function ProfileForm() {
                 </PopoverTrigger>
                 <PopoverContent className="w-auto p-0" align="start">
                   <Calendar
+                   className="bg-white"
                     mode="single"
                     selected={field.value}
                     onSelect={field.onChange}
