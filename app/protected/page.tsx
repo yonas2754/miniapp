@@ -35,7 +35,7 @@ async function page() {
 
   return (
     <div>
-    <div className='bg-ethBlack-600 text-white w-full h-full min-h-screen font-bold flex flex-col max-w-xl'>
+    <div className='bg-ethBlack-600 text-white w-full h-full min-h-screen font-bold flex flex-col max-w-xl mb-60'>
           <Posts chatId="7277258087" />
           <div className='flex flex-col rounded-t-[48px] bg-ethBlack-500 border-t-2 shadow-2xl border-ethYellow-500 w-full grow p-8'>
       <Tabs defaultValue="my" className="w-full grow">
