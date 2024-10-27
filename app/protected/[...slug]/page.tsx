@@ -4,6 +4,7 @@ import Coins from '@/components/icons/Coins';
 import Friends from '@/components/icons/Friends';
 import Mine from '@/components/icons/Mine';
 import React, { useEffect, useState } from 'react';
+import { useToast } from "@/hooks/use-toast"
 
 import {
   AlertDialog,
@@ -27,17 +28,17 @@ import { number } from 'zod';
 
 const Page = ({ params }: { params: { slug: string[] } }) => {
   // Destructure chatId and profileId from params.slug
-  const [chatId, profileId,length] = params.slug;
+  const [chatId, profileId,length,price] = params.slug;
 
     const [startParam, setStartParam] = useState('')
   // TypeScript type annotation for the function
   //back
 
-
-
-
-
   const queryClient = useQueryClient()
+  const output :any= queryClient.getQueryData(['username', chatId]);
+
+const balance=output.balance.balance;
+  
   const mutation = useMutation({
 
     mutationFn: (number:number) => {
@@ -55,6 +56,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
    onSuccess: async () => {
       console.log("DONE");
   await  queryClient.invalidateQueries({ queryKey: ['unbuying',profileId] })
+  await  queryClient.invalidateQueries({ queryKey: ['username',chatId] })
       
     
     },
@@ -62,13 +64,23 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
   });
 
 
-
+  const { toast } = useToast()
 
 
   const handleContinueClick = (ticketNumber: number): void => {
+   
+    if(balance<price){
+      toast({
+        title: "Insufficient balance",
+        description: "Please recharge your balance",
+      })
 
+    }else{
+      mutation.mutate(ticketNumber);
+    }
+    
 
-    mutation.mutate(ticketNumber);
+   
 
   };
   
@@ -129,9 +141,9 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
 
 
 
-
   return (
     <div className="bg-ethBlack-950 w-full h-full min-h-screen flex flex-col">
+      
       <BackButtonDemo />
       <div className="bg-ethBlack-950 mb-36 pt-8 pb-13 px-4 grid grid-cols-3 gap-1">
         {/* Map over 100 items, treating each as a lottery ticket */}
