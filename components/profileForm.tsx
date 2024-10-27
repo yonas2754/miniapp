@@ -81,7 +81,7 @@ export default function ProfileForm() {
 
   return (
     <div>
-    <div className="max-w-lg mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+    <div className="max-w-lg mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg mb-48">
       {mutation.data?.message && (
         <div className="bg-red-200 text-red-800 p-2 rounded mb-4">
           {mutation.data.message}
