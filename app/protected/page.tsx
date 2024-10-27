@@ -1,8 +1,24 @@
 import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Posts from '@/components/userinfo'
+import { Backend_URL } from '@/lib/Constants';
+import { getSession } from '@/utils/session';
+import Link from 'next/link';
+async function page() {
+    const session = await getSession();
 
-function page() {
+    const [activeGamesResponse, endedGamesResponse, userGamesResponse] = await Promise.all([
+        fetch(`${Backend_URL}/profiles/activeGames`),
+        fetch(`${Backend_URL}/profiles/endedGames`),
+        fetch(`${Backend_URL}/profiles/${session.user.telegramId}`),
+      ]);
+
+      const activeGames = await activeGamesResponse.json();
+      const endedGames = await endedGamesResponse.json();
+      const userGames = await userGamesResponse.json();
+
+    
+
   return (
     <div className='bg-ethBlack-600 text-white w-full h-full min-h-screen font-bold flex flex-col max-w-xl'>
           <Posts chatId="7277258087" />
@@ -15,6 +31,7 @@ function page() {
   </TabsList>
   <TabsContent value="my">
     Make changes to your account here.
+    {JSON.stringify(activeGames)}
     </TabsContent>
   <TabsContent value="tacket">
     Change your password here.
