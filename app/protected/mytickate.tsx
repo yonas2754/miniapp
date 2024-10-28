@@ -44,7 +44,7 @@ type Ticket = {
   };
 
 
-function Mytickate({profile}:{profile:Profile}) {
+function Mytickate({profile ,session}:{profile:Profile ,session:string}) {
     const emoji = getRandomEmoji(profile.imageNum);
   return (
     <div>

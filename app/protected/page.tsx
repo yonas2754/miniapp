@@ -78,10 +78,10 @@ async function page() {
     </div>))}
     </TabsContent>
   <TabsContent value="tacket">
-  {userGames.profiles?.map((profile:Profile) => (
+  {userGames?.profiles?.map((profile:Profile) => (
         <div key={profile.id}>
            
-    <Mytickate profile={profile} session={session}/>
+           <Mytickate profile={profile} session={session}/>
     </div>))}
 
   </TabsContent>
