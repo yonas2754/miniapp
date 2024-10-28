@@ -22,9 +22,12 @@ const getRandomEmoji = (x: number): string => {
 };
 
 function Mytickate({profile}:any) {
-    const emoji = getRandomEmoji(profile.imageNum);
+  
+    const emoji = getRandomEmoji(profile.profile.imageNum);
   return (
     <div>
+        <h1>{typeof(profile)}</h1>
+        <h1>{profile.profile.imageNum}</h1>
       <h1>{emoji}</h1>
 
     </div>
