@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Mytickate() {
+function Mytickate({profile}:any) {
   return (
     <div>
-      <h1>yonas mulugeta</h1>
+      <h1>{JSON.stringify(profile)}</h1>
     </div>
   )
 }
