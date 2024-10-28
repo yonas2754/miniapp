@@ -80,8 +80,8 @@ async function page() {
   <TabsContent value="tacket">
   {userGames?.profiles?.map((profile:Profile) => (
         <div key={profile.id}>
-          hi 
-          {JSON.stringify(profile)}
+           
+           <Mytickate profile={profile} session={session}/>
     </div>))}
 
   </TabsContent>
