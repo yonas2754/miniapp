@@ -25,7 +25,7 @@ function Mytickate({profile}:any) {
     const emoji = getRandomEmoji(profile.imageNum);
   return (
     <div>
-      <h1>{JSON.stringify(profile)}</h1>
+      <h1>{emoji}</h1>
 
     </div>
   )
