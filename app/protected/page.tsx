@@ -81,7 +81,7 @@ async function page() {
   {userGames?.profiles?.map((profile:any) => (
         <div key={profile.id}>
            
-           <Mytickate profile={profile.profile}/>
+           <Mytickate profile={profile.profile} session={session}/>
     </div>))}
 
   </TabsContent>

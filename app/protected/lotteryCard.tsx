@@ -43,7 +43,7 @@ const LotteryCard = ({ element, session }: { element: ele, session: any }) => {
   // Handle navigation when the button is clicked
   
   return (
-    <button type="button" onClick={() => router.push(`/protected/${session.user.telegramId}/${element.id}/${element.gameNumber}/${element.gamePrice}`)}>
+    <button type="button" onClick={() => router.push(`/protected/lottey/${session.user.telegramId}/${element.id}/${element.gameNumber}/${element.gamePrice}`)}>
   
       <Card className="bg-gradient-to-r from-ethLightBlue-700 to-ethLightBlue-900 text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl duration-300 rounded-2xl">
         <CardHeader className="p-2 text-center">

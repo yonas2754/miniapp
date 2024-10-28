@@ -21,11 +21,12 @@ const getRandomEmoji = (x: number): string => {
   return "🎲"; // Example fallback emoji
 };
 
-function Mytickate({profile}:any) {
+function Mytickate({profile ,session}:any) {
     const emoji = getRandomEmoji(profile.imageNum);
+    const router = useRouter();
   return (
     <div>
- 
+  <button type="button" onClick={() => router.push(`/protected/mytickate/${session.user.telegramId}/${profile.id}`)}>
       <Card className="bg-gradient-to-r from-ethLightBlue-700 to-ethLightBlue-900 text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl duration-300 rounded-2xl">
         <CardHeader className="p-2 text-center">
           <CardTitle className="text-2xl font-bold">
@@ -47,7 +48,7 @@ function Mytickate({profile}:any) {
           <p className="text-sm">Price: <span className="font-bold">{profile.gamePrice}</span></p>
         </CardFooter>
       </Card>
-
+      </button>
     </div>
   )
 }

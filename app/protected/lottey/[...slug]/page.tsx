@@ -66,7 +66,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
   };
 
 
-  const fetchList = async (chatId: string) => {
+  const fetchList = async () => {
     const headers = {
       'Content-Type': 'application/json',
     };
@@ -82,7 +82,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
 
   const { isPending, isError, data, error } = useQuery({
     queryKey: ['unbuying', profileId],
-    queryFn: () => fetchList(chatId),
+    queryFn: () => fetchList(),
   });
 
   if (isPending) {
