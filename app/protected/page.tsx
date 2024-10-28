@@ -54,11 +54,7 @@ async function page() {
     </div>))}
     </TabsContent>
   <TabsContent value="tacket">
-  {userGames.map((element:ele) => (
-        <div key={element.id}>
-            <LotteryCard element={element} session={session} />
-    
-    </div>))}
+ 
 
   </TabsContent>
   <TabsContent value="winner">
