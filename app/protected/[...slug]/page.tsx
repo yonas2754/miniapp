@@ -61,7 +61,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
     
     } else {
       mutation.mutate(ticketNumber);
-      setErrorMessage(null); // Reset error message on successful action
+     // Reset error message on successful action
     }
   };
 
