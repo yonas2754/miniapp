@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import Image from 'next/image';
 import { emojiSet } from '@/lib/Constants';
+import Link from 'next/link';
 
 // Utility function to get a random emoji from the expanded emojiSet
 const getRandomEmoji = (x: number): string => {
@@ -34,11 +35,14 @@ type ele = {
   updatedAt: string;
 };
 
-const LotteryCard = ({ element }: { element: ele }) => {
+const LotteryCard = ({ element ,session}: { element: ele ,session:any}) => {
   // Get the emoji based on imageNum, with fallback handling
   const emoji = getRandomEmoji(element.imageNum);
 
   return (
+    <Link href={`protected/${session.user.telegramId}/${element.id}/${element.gameNumber.toString()}/${element.gamePrice.toString()}`}> 
+      
+
     <Card className="bg-gradient-to-r from-ethLightBlue-700 to-ethLightBlue-900 text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl duration-300 rounded-2xl">
       <CardHeader className="p-2 text-center">
         <CardTitle className="text-2xl font-bold">
@@ -60,6 +64,7 @@ const LotteryCard = ({ element }: { element: ele }) => {
         <p className="text-sm">Price: <span className="font-bold">{element.gamePrice}</span></p>
       </CardFooter>
     </Card>
+    </Link>
   );
 };
 
