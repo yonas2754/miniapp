@@ -6,6 +6,7 @@ import { getSession } from '@/utils/session';
 import Link from 'next/link';
 import LotteryCard from './lotteryCard';
 import Footer from '@/components/footer';
+import Mytickate from './mytickate';
 type ele ={
     id: string;
     gameType: string;
@@ -18,6 +19,29 @@ type ele ={
     createdAt: string;
     updatedAt: string;
   }
+
+  type Ticket = {
+    id: string;
+    number: number;
+    purchaseDate: string;
+    winnerOne: boolean;
+    winnerTwo: boolean;
+    winnerThere: boolean;
+  };
+  
+
+  type Profile = {
+    id: string;
+    gameType: string;
+    imageNum: number;
+    startDate: string;
+    endDate: string;
+    gameNumber: number;
+    gamePrice: number;
+    gameDescription: string;
+    ticket: Ticket[];
+  };
+
 async function page() {
     const session = await getSession();
 
@@ -54,7 +78,11 @@ async function page() {
     </div>))}
     </TabsContent>
   <TabsContent value="tacket">
- 
+  {userGames.profiles?.map((profile:Profile) => (
+        <div key={profile.id}>
+           
+    <Mytickate profile={profile} session={session}/>
+    </div>))}
 
   </TabsContent>
   <TabsContent value="winner">
