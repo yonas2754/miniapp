@@ -49,16 +49,16 @@ async function page() {
 
     {activeGames.map((element:ele) => (
         <div key={element.id}>
-        
-
-      
             <LotteryCard element={element} session={session} />
-         
     
     </div>))}
     </TabsContent>
   <TabsContent value="tacket">
-    Change your password here.
+  {userGames.map((element:ele) => (
+        <div key={element.id}>
+            <LotteryCard element={element} session={session} />
+    
+    </div>))}
 
   </TabsContent>
   <TabsContent value="winner">
