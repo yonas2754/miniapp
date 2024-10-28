@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { format } from "date-fns";
 import {
@@ -10,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import Image from 'next/image';
 import { emojiSet } from '@/lib/Constants';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'
 
 // Utility function to get a random emoji from the expanded emojiSet
 const getRandomEmoji = (x: number): string => {
@@ -40,12 +41,10 @@ const LotteryCard = ({ element, session }: { element: ele, session: any }) => {
   const emoji = getRandomEmoji(element.imageNum);
 
   // Handle navigation when the button is clicked
-  const handleClick = () => {
-    router.push(`/protected/${session.user.telegramId}/${element.id}/${element.gameNumber}/${element.gamePrice}`);
-  };
-
+  
   return (
-    <button onClick={handleClick} className="w-full focus:outline-none">
+    <button type="button" onClick={() => router.push(`/protected/${session.user.telegramId}/${element.id}/${element.gameNumber}/${element.gamePrice}`)}>
+  
       <Card className="bg-gradient-to-r from-ethLightBlue-700 to-ethLightBlue-900 text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl duration-300 rounded-2xl">
         <CardHeader className="p-2 text-center">
           <CardTitle className="text-2xl font-bold">
