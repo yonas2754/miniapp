@@ -4,6 +4,7 @@ import BackButtonDemo from '@/components/backButton';
 import Coins from '@/components/icons/Coins';
 import Friends from '@/components/icons/Friends';
 import Mine from '@/components/icons/Mine';
+import {useShowPopup } from '@vkruglikov/react-telegram-web-app';
 import React, { useEffect, useState } from 'react';
 import {
   AlertDialog,
@@ -27,14 +28,13 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
   // Destructure chatId and profileId from params.slug
   const [chatId, profileId, length, price] = params.slug;
 
-  const [errorMessage, setErrorMessage] = useState<string | null>(null); // State for error message
-  const [successMessage, setSuccessMessage] = useState<string | null>(null); // State for success message
+
 
   const queryClient = useQueryClient();
   const output: any = queryClient.getQueryData(['username', chatId]);
 
   const balance = output.balance.balance;
-
+  const showPopup = useShowPopup();
   const mutation = useMutation({
     mutationFn: (number: number) => {
       const headers = {
@@ -44,7 +44,10 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
       return axios.post(Backend_URL + `/tackets`, { chatId, profileId, number }, { headers });
     },
     onSuccess: async () => {
-      setSuccessMessage('Ticket purchased successfully!');
+      showPopup({
+        message: 'Ticket purchased successfully!',
+      });
+
       await queryClient.invalidateQueries({ queryKey: ['unbuying', profileId] });
       await queryClient.invalidateQueries({ queryKey: ['username', chatId] });
     },
@@ -52,7 +55,10 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
 
   const handleContinueClick = (ticketNumber: number): void => {
     if (balance < Number(price)) {
-      setErrorMessage('Insufficient balance. Please recharge your balance.');
+      showPopup({
+        message: 'Insufficient balance. Please recharge your balance.',
+      });
+    
     } else {
       mutation.mutate(ticketNumber);
       setErrorMessage(null); // Reset error message on successful action
@@ -90,8 +96,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
   return (
     <div className="bg-ethBlack-950 w-full h-full min-h-screen flex flex-col">
       <BackButtonDemo />
-      {errorMessage && <div className="text-red-500 text-center">{errorMessage}</div>}
-      {successMessage && <div className="text-green-500 text-center">{successMessage}</div>}
+    
       <div className="bg-ethBlack-950 mb-36 pt-8 pb-13 px-4 grid grid-cols-3 gap-1">
         {/* Map over available tickets */}
         {data.map((ticketNumber) => (
