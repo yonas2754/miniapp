@@ -81,7 +81,7 @@ async function page() {
   {userGames?.profiles?.map((profile:Profile) => (
         <div key={profile.id}>
            
-          
+          {JSON.stringify(profile)}
     </div>))}
 
   </TabsContent>
