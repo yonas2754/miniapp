@@ -25,8 +25,7 @@ function Mytickate({profile}:any) {
     const emoji = getRandomEmoji(profile.imageNum);
   return (
     <div>
-      <h1>{JSON.stringify(profile)}</h1>
-
+ 
       <Card className="bg-gradient-to-r from-ethLightBlue-700 to-ethLightBlue-900 text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl duration-300 rounded-2xl">
         <CardHeader className="p-2 text-center">
           <CardTitle className="text-2xl font-bold">

@@ -77,7 +77,7 @@ async function page() {
     
     </div>))}
     </TabsContent>
-  <TabsContent value="tacket">
+  <TabsContent value="tacket"  className="pt-4 grid grid-cols-2 gap-4">
   {userGames?.profiles?.map((profile:any) => (
         <div key={profile.id}>
            
