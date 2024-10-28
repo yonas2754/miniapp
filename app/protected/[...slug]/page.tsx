@@ -110,10 +110,10 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
                 </AlertDialogTrigger>
                 <AlertDialogContent className="bg-ethDeepBlue-900 w-full grow mt-[50%] text-white border-t-8 border-ethYellow-600 shadow-2xl shadow-ethYellow-600 rounded-3xl">
                   <AlertDialogHeader>
-                    <AlertDialogTitle>Ticket Number <span className=' text-center font-extrabold  text-ethYellow-500'>{ticketNumber}</span> </AlertDialogTitle>
+                    <AlertDialogTitle>Ticket Number <span className=' text-center font-extrabold  text-ethYellow-500 text-5xl'>{ticketNumber}</span> </AlertDialogTitle>
                     <AlertDialogDescription>
                    
-                      Are you sure you want to proceed with Mela Ticket # {ticketNumber}? 
+                      Are you sure you want to proceed ?
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
