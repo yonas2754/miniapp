@@ -1,5 +1,4 @@
-
-import React, { useMemo } from 'react';
+import React from 'react';
 import { format } from "date-fns";
 import {
   Card,
@@ -13,31 +12,38 @@ import Image from 'next/image';
 import { emojiSet } from '@/lib/Constants';
 
 // Utility function to get a random emoji from the expanded emojiSet
-const getRandomEmoji = (x: number): string => emojiSet[x];
-
-
-type ele ={
-    id: string;
-    gameType: string;
-    imageNum: number;
-    startDate: string;
-    endDate: string;
-    gameNumber: number;
-    gamePrice: number;
-    gameDescription: string;
-    createdAt: string;
-    updatedAt: string;
+const getRandomEmoji = (x: number): string => {
+  // Ensure x is a valid index for emojiSet
+  if (x >= 0 && x < emojiSet.length) {
+    return emojiSet[x];
   }
+  // Fallback emoji in case the index is out of bounds
+  return "🎲"; // Example fallback emoji
+};
 
-const LotteryCard = ({element}:{element:ele}) => {
-  // Memoize the random emoji selection to ensure it doesn't change
-  
+type ele = {
+  id: string;
+  gameType: string;
+  imageNum: number;
+  startDate: string;
+  endDate: string;
+  gameNumber: number;
+  gamePrice: number;
+  gameDescription: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+const LotteryCard = ({ element }: { element: ele }) => {
+  // Get the emoji based on imageNum, with fallback handling
   const emoji = getRandomEmoji(element.imageNum);
 
   return (
     <Card className="bg-gradient-to-r from-ethLightBlue-700 to-ethLightBlue-900 text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl duration-300 rounded-2xl">
       <CardHeader className="p-2 text-center">
-        <CardTitle className="text-2xl font-bold">  {`At ${format(new Date(element.endDate), "PPP, p")}`}</CardTitle>
+        <CardTitle className="text-2xl font-bold">
+          {`At ${format(new Date(element.endDate), "PPP, p")}`}
+        </CardTitle>
         <CardDescription className="mt-2">
           <div className="flex justify-center my-4 text-6xl animate-bounce">
             {emoji}
