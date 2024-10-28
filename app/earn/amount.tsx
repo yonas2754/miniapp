@@ -96,7 +96,7 @@ export function AmountForm({chatId}:{chatId:string}) {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="bg-ethGreen-300 hover:bg-ethGreen-500 active:bg-ethGreen-700">Submit</Button>
       </form>
     </Form>
   )
