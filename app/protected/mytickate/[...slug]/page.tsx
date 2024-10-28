@@ -1,3 +1,4 @@
+'use client';
 import BackButtonDemo from '@/components/backButton';
 import { Backend_URL } from '@/lib/Constants';
 import { useQuery } from '@tanstack/react-query';
