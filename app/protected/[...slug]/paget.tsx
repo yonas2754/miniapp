@@ -26,7 +26,7 @@ import { number } from 'zod';
 const Page = ({ params }: { params: { slug: string[] } }) => {
   // Destructure chatId and profileId from params.slug
   const [chatId, profileId, length, price] = params.slug;
-
+  const [startParam, setStartParam] = useState('');
   const [errorMessage, setErrorMessage] = useState<string | null>(null); // State for error message
   const [successMessage, setSuccessMessage] = useState<string | null>(null); // State for success message
 
@@ -59,6 +59,16 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
     }
   };
 
+  useEffect(() => {
+    const initWebApp = async () => {
+      if (typeof window !== 'undefined') {
+        const WebApp = (await import('@twa-dev/sdk')).default;
+        setStartParam(WebApp.initDataUnsafe.start_param || '');
+      }
+    };
+
+    initWebApp();
+  }, []);
 
   const fetchList = async (chatId: string) => {
     const headers = {
@@ -105,17 +115,17 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
                 </AlertDialogTrigger>
                 <AlertDialogContent className="bg-ethDeepBlue-900 w-full grow mt-[50%] text-white border-t-8 border-ethYellow-600 shadow-2xl shadow-ethYellow-600 rounded-3xl">
                   <AlertDialogHeader>
-                    <AlertDialogTitle>Ticket Number <span className=' text-center font-extrabold  text-ethYellow-500'>{ticketNumber}</span> </AlertDialogTitle>
+                    <AlertDialogTitle>Mela Number #{ticketNumber}</AlertDialogTitle>
                     <AlertDialogDescription>
-                   
-                      Are you sure you want to proceed with Mela Ticket # {ticketNumber}? 
+                      Referral {startParam}
+                      Are you sure you want to proceed with Lottery Ticket # {ticketNumber}? Once confirmed, this action cannot be undone.
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialogCancel className="bg-ethRed-400 rounded-lg">Cancel</AlertDialogCancel>
                     {/* Passing ticket number to the click handler */}
-                    <AlertDialogAction className="bg-ethLightBlue-400 rounded-lg" onClick={() => handleContinueClick(ticketNumber)}>
-                      Confirm 
+                    <AlertDialogAction className="bg-ethGreen-400 rounded-lg" onClick={() => handleContinueClick(ticketNumber)}>
+                      Confirm Mela #{ticketNumber}
                     </AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>
