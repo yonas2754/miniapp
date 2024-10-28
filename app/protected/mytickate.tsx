@@ -45,7 +45,7 @@ type Ticket = {
 
 
 function Mytickate({profile}:{profile:any}) {
-    const emoji = getRandomEmoji(profile.imageNum);
+   
   return (
     <div>
       
@@ -56,7 +56,7 @@ function Mytickate({profile}:{profile:any}) {
           </CardTitle>
           <CardDescription className="mt-2">
             <div className="flex justify-center my-4 text-6xl animate-bounce">
-              {emoji}
+          
             </div>
           </CardDescription>
         </CardHeader>
