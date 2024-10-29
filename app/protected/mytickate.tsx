@@ -27,7 +27,7 @@ function Mytickate({profile ,session}:any) {
   return (
     <div>
   <button type="button" onClick={() => router.push(`/protected/mytickate/${session.user.telegramId}/${profile.id}`)}>
-    <h1>{JSON.stringify(profile.id)} {session.user.telegramId}</h1>
+   
       <Card className="bg-gradient-to-r from-ethLightBlue-700 to-ethLightBlue-900 text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl duration-300 rounded-2xl">
         <CardHeader className="p-2 text-center">
           <CardTitle className="text-2xl font-bold">
