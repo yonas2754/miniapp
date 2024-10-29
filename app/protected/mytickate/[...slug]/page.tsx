@@ -46,7 +46,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
            
         
  
-         <div className="p-4 rounded-full circle-outer">
+         <div className=" rounded-full circle-outer">
        <div className="w-full h-full rounded-full circle-inner">
                     <p className="text-center font-bold text-lg text-ethYellow-600">{ticket.number}</p>
                   </div>
