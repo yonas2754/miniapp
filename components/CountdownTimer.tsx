@@ -55,11 +55,9 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
 
   return (
     <Card className="max-w-sm mx-auto my-4">
-      <CardHeader>
-        <CardTitle>Countdown to {new Date(targetDate).toLocaleString()}</CardTitle>
-      </CardHeader>
+      
       <CardContent>
-        <div className="text-4xl font-bold text-center">
+        <div className="font-bold text-center">
           {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
         </div>
       </CardContent>

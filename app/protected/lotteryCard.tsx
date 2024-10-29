@@ -67,8 +67,8 @@ const LotteryCard = ({ element, session }: { element: ele, session: any }) => {
 
 
 
-        <div className="container mx-auto p-4">
-        <h1 className="text-2xl font-bold mb-4">Lottery Countdown</h1>
+        <div className="container mx-auto p-1">
+       
         <CountdownTimer targetDate={element.endDate} />
       </div>
 
