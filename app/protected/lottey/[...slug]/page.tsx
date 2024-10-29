@@ -97,7 +97,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
     <div className="bg-ethBlack-950 w-full h-full min-h-screen flex flex-col">
       <BackButtonDemo />
     
-      <div className="bg-ethBlack-950 mb-36 pt-8 pb-13 px-4 grid grid-cols-4 gap-1">
+      <div className="bg-ethBlack-950 mb-60 pt-8 pb-13 px-4 grid grid-cols-4 gap-1">
         {/* Map over available tickets */}
         {data.map((ticketNumber) => (
           <div className="px-1 mt-4 flex justify-center" key={ticketNumber}>

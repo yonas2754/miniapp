@@ -42,9 +42,9 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
       <div className="bg-ethBlack-950 mb-36 pt-8 pb-13 px-4 grid grid-cols-3 gap-1">
 
       {data?.map((ticket:any) => (
-        <div key={ticket.id}>
+   
            
-        
+           <div className="px-1 mt-4 flex justify-center" key={ticket.id}>
  
          <div className=" p-1 rounded-full circle-outer">
        <div className="w-full h-full rounded-full circle-inner">
