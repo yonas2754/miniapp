@@ -48,7 +48,7 @@ async function page() {
     const [activeGamesResponse, endedGamesResponse, userGamesResponse] = await Promise.all([
         fetch(`${Backend_URL}/profiles/activeGames`, { cache: 'no-store' }),
         fetch(`${Backend_URL}/profiles/endedGames`, { cache: 'no-store' }),
-        fetch(`${Backend_URL}/profiles/${session.user.telegramId}`, { next: { revalidate: 3600 } }),
+        fetch(`${Backend_URL}/profiles/${session.user.telegramId}`,{ cache: 'no-store' } ),
       ]);
 
       const activeGames = await activeGamesResponse.json();
