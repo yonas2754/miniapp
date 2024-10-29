@@ -63,7 +63,7 @@ const LotteryCard = ({ element, session }: { element: ele, session: any }) => {
             <p className="text-xl font-semibold">{element.gameDescription}</p>
           </div>
         </CardContent>
-        <CardFooter className="flex justify-between p-4 bg-opacity-50 bg-black rounded-b-2xl">
+        <CardFooter className="flex  flex-col  justify-center items-center p-4 bg-opacity-50 bg-black rounded-b-2xl">
 
 
 

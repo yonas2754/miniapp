@@ -45,7 +45,7 @@ function Mytickate({profile ,session}:any) {
             <p className="text-xl font-semibold">{profile.gameDescription}</p>
           </div>
         </CardContent>
-        <CardFooter className="flex flex-col  justify-center items-center p-4 bg-opacity-50 bg-black rounded-b-2xl">
+        <CardFooter className="flex justify-between p-4 bg-opacity-50 bg-black rounded-b-2xl">
           <p className="text-sm">Price: <span className="font-bold">{profile.gamePrice}</span></p>
         </CardFooter>
       </Card>
