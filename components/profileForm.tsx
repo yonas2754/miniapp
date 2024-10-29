@@ -160,7 +160,7 @@ export default function ProfileForm() {
                       mode="single"
                       selected={field.value}
                       onSelect={field.onChange}
-                      disabled={(date) => date <= new Date()}
+                      disabled={(date) => date < new Date()}
                       initialFocus
                     />
                   </PopoverContent>
@@ -213,7 +213,11 @@ export default function ProfileForm() {
                       mode="single"
                       selected={field.value}
                       onSelect={field.onChange}
-                      disabled={(date) => date <= new Date()}
+                      disabled={(date) => {
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0); // Set today's time to midnight
+                        return date < today; // Disable only dates before today
+                      }}
                       initialFocus
                     />
                   </PopoverContent>
