@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
