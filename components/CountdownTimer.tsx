@@ -57,7 +57,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
     <Card className="max-w-sm mx-auto my-4">
       
       <CardContent>
-        <div className="font-bold text-center">
+        <div className=" text-sm font-bold text-center">
           {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
         </div>
       </CardContent>
