@@ -12,6 +12,7 @@ import {
 import Image from 'next/image';
 import { emojiSet } from '@/lib/Constants';
 import { useRouter } from 'next/navigation'
+import CountdownTimer from '@/components/CountdownTimer';
 
 // Utility function to get a random emoji from the expanded emojiSet
 const getRandomEmoji = (x: number): string => {
@@ -63,6 +64,14 @@ const LotteryCard = ({ element, session }: { element: ele, session: any }) => {
           </div>
         </CardContent>
         <CardFooter className="flex justify-between p-4 bg-opacity-50 bg-black rounded-b-2xl">
+
+
+
+        <div className="container mx-auto p-4">
+        <h1 className="text-2xl font-bold mb-4">Lottery Countdown</h1>
+        <CountdownTimer targetDate={element.endDate} />
+      </div>
+
           <p className="text-sm">Price: <span className="font-bold">{element.gamePrice}</span></p>
         </CardFooter>
       </Card>
