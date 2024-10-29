@@ -8,12 +8,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 25vw;
-  height: 25vw;
-  max-width:  25vw;;
-  max-height:  25vw;;
-  min-width:  25vw;
-  min-height:  25vw;;
+  width: 20vw;
+  height: 20vw;
+  max-width:  20vw;;
+  max-height:  20vw;;
+  min-width:  20vw;
+  min-height:  20vw;;
 }
 
 .circle-inner {
