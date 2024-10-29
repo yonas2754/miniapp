@@ -46,9 +46,9 @@ async function page() {
     const session = await getSession();
 
     const [activeGamesResponse, endedGamesResponse, userGamesResponse] = await Promise.all([
-        fetch(`${Backend_URL}/profiles/activeGames`),
-        fetch(`${Backend_URL}/profiles/endedGames`),
-        fetch(`${Backend_URL}/profiles/${session.user.telegramId}`),
+        fetch(`${Backend_URL}/profiles/activeGames`, { next: { revalidate: 3600 } }),
+        fetch(`${Backend_URL}/profiles/endedGames`, { next: { revalidate: 3600 } }),
+        fetch(`${Backend_URL}/profiles/${session.user.telegramId}`, { next: { revalidate: 3600 } }),
       ]);
 
       const activeGames = await activeGamesResponse.json();
