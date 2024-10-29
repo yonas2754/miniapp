@@ -101,7 +101,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
         {/* Map over available tickets */}
         {data.map((ticketNumber) => (
           <div className="px-4 mt-4 flex justify-center" key={ticketNumber}>
-            <div className="p-4 rounded-full circle-outer">
+            <div className="p-1 rounded-full circle-outer">
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <div className="w-full h-full rounded-full circle-inner">
