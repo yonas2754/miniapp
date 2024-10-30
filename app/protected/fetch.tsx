@@ -1,63 +1,98 @@
+'use client'
 import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Posts from '@/components/userinfo'
 import { Backend_URL } from '@/lib/Constants';
 
-import Link from 'next/link';
 import LotteryCard from './lotteryCard';
 import Footer from '@/components/footer';
 import Mytickate from './mytickate';
-type ele ={
-    id: string;
-    gameType: string;
-    imageNum: number;
-    startDate: string;
-    endDate: string;
-    gameNumber: number;
-    gamePrice: number;
-    gameDescription: string;
-    createdAt: string;
-    updatedAt: string;
-  }
+import { useQuery } from '@tanstack/react-query';
+import EndTicket from './endTicket';
 
-  type Ticket = {
-    id: string;
-    number: number;
-    purchaseDate: string;
-    winnerOne: boolean;
-    winnerTwo: boolean;
-    winnerThere: boolean;
-  };
   
 
-  type Profile = {
-    id: string;
-    gameType: string;
-    imageNum: number;
-    startDate: string;
-    endDate: string;
-    gameNumber: number;
-    gamePrice: number;
-    gameDescription: string;
-    ticket: Ticket[];
-  };
 
-async function Fatch({session}:any) {
+
+function Fatch({session}:any) {
+
+
+
+
+
+    const fetchList = async () => {
   
-    const [activeGamesResponse, endedGamesResponse, userGamesResponse] = await Promise.all([
-        fetch(`${Backend_URL}/profiles/activeGames`, { cache: 'no-store' }),
-        fetch(`${Backend_URL}/profiles/endedGames`, { cache: 'no-store' }),
-        fetch(`${Backend_URL}/profiles/${session.user.telegramId}`, { cache: 'no-store' }),
-      ]);
-
-      const activeGames = await activeGamesResponse.json();
-      const endedGames = await endedGamesResponse.json();
-      const userGames = await userGamesResponse.json();
-
-
-      
-
     
+        const headers = {
+          
+            "Content-Type": "application/json",
+          };
+          const response = await fetch(`${Backend_URL}/profiles/activeGames`, { method: "GET",headers});
+          const data = await response.json();
+          console.log(data)
+          return data;
+          
+        }
+
+        const fetchList2 = async () => {
+  
+    
+            const headers = {
+              
+                "Content-Type": "application/json",
+              };
+              const response = await fetch(`${Backend_URL}/profiles/endedGames`, { method: "GET",headers});
+              const data = await response.json();
+              console.log(data)
+              return data;
+            }
+
+
+
+            const fetchList3 = async () => {
+  
+    
+                const headers = {
+                  
+                    "Content-Type": "application/json",
+                  };
+                  const response = await fetch(`${Backend_URL}/profiles/${session.user.telegramId}`, { method: "GET",headers});
+                  const data = await response.json();
+                  console.log(data)
+                  return data;
+                }
+              
+     const activeGames = useQuery({
+       queryKey: ['activeGames'],
+       queryFn: () =>fetchList(),
+     })
+   
+     const endedGames = useQuery({
+        queryKey: ['endedGames'],
+        queryFn: () =>fetchList2(),
+      })
+
+      const userGames = useQuery({
+        queryKey: ['userGames'],
+        queryFn: () =>fetchList3(),
+      })
+
+     if (activeGames.isPending|| endedGames.isPending||userGames.isPending) {
+       return <span>Loading...</span>
+   
+     }
+   
+     if (activeGames.isError) {
+       return <span>Error: {activeGames.error.message}</span>
+     }
+     if (endedGames.isError) {
+        return <span>Error: {endedGames.error.message}</span>
+      }
+
+      if (userGames.isError) {
+        return <span>Error: {userGames.error.message}</span>
+      }  
+   
 
   return (
     <div>
@@ -73,14 +108,14 @@ async function Fatch({session}:any) {
   </TabsList>
   <TabsContent value="my" className="pt-4 grid grid-cols-2 gap-4">
 
-    {activeGames.map((element:ele) => (
+    {activeGames.data.map((element:any) => (
         <div key={element.id}>
             <LotteryCard element={element} session={session} />
     
     </div>))}
     </TabsContent>
   <TabsContent value="tacket"  className="pt-4 grid grid-cols-2 gap-4">
-  {userGames?.profiles?.map((profile:any) => (
+  {userGames.data?.profiles?.map((profile:any) => (
         <div key={profile.id}>
            
            <Mytickate profile={profile.profile} session={session}/>
@@ -88,7 +123,17 @@ async function Fatch({session}:any) {
 
   </TabsContent>
   <TabsContent value="winner">
-    Change your password here.
+  
+
+    {endedGames.data?.profiles?.map((profile:any) => (
+        <div key={profile.id}>
+           
+           <EndTicket profile={profile}/>
+    </div>))}
+
+
+    
+
 
   </TabsContent>
 </Tabs>

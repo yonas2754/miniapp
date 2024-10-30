@@ -6,6 +6,7 @@ import Friends from '@/components/icons/Friends';
 import Mine from '@/components/icons/Mine';
 import {useShowPopup } from '@vkruglikov/react-telegram-web-app';
 import React, { useEffect, useState } from 'react';
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -23,10 +24,12 @@ import { Backend_URL } from '@/lib/Constants';
 import axios from 'axios';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { number } from 'zod';
+import CountdownTimer from '@/components/CountdownTimer2';
 
 const Page = ({ params }: { params: { slug: string[] } }) => {
   // Destructure chatId and profileId from params.slug
-  const [chatId, profileId, length, price] = params.slug;
+  const [chatId, profileId, length, price ,endDate] = params.slug;
+
 
 
 
@@ -47,7 +50,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
       showPopup({
         message: 'Ticket purchased successfully!',
       });
-
+      await queryClient.invalidateQueries({ queryKey: ['userGames'] });
       await queryClient.invalidateQueries({ queryKey: ['unbuying', profileId] });
       await queryClient.invalidateQueries({ queryKey: ['username', chatId] });
     },
@@ -58,8 +61,12 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
       showPopup({
         message: 'Insufficient balance. Please recharge your balance.',
       });
+
+   
+
+      
     
-    } else {
+    } else { 
       mutation.mutate(ticketNumber);
      // Reset error message on successful action
     }
@@ -96,7 +103,10 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
   return (
     <div className="bg-ethBlack-950 w-full h-full min-h-screen flex flex-col">
       <BackButtonDemo />
-    
+    <div className="container mx-auto p-1">
+       
+        <CountdownTimer targetDate={endDate} />
+      </div>
       <div className="bg-ethBlack-950 mb-60 pt-8 pb-13 px-4 grid grid-cols-4 gap-1">
         {/* Map over available tickets */}
         {data.map((ticketNumber) => (

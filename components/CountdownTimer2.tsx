@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { useState, useEffect } from 'react';
 import { Backend_URL } from '@/lib/Constants';
+import { useRouter } from 'next/navigation'
+
 
 // Replace with your backend endpoint for server time, if necessary
 const getServerTime = async () => {
@@ -39,6 +41,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
   const targetTime = new Date(targetDate).getTime(); // Convert target date to milliseconds
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetTime, Date.now()));
   const queryClient = useQueryClient();
+  const router = useRouter()
   const { data: serverTime, status } = useQuery({
     queryKey: ['serverTime'],
     queryFn: getServerTime,
@@ -62,6 +65,9 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
           // Invalidate the query when countdown reaches zero
           await queryClient.invalidateQueries({ queryKey: ['activeGames'] });
           
+          // Refresh the page
+          router.push('/protected')
+          window.location.reload();
         }
       }
     };

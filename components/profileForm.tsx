@@ -66,8 +66,13 @@ export default function ProfileForm() {
       });
       return response.json();
     },
-    onSuccess: () => {
+    onSuccess: async () => {
+   
+  
+      await  queryClient.invalidateQueries({ queryKey: ['activeGames'] })
+      await  queryClient.invalidateQueries({ queryKey: ['endedGames'] })
       form.reset();
+     
       console.log("Profile created successfully:");
     },
     onError: (error) => {
