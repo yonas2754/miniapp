@@ -15,7 +15,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
           'Content-Type': 'application/json',
         };
         // Unbought ticket
-        const response = await fetch(Backend_URL + `/profiles/both/${chatId}/${profileId}`, { method: 'GET', headers });
+        const response = await fetch(Backend_URL+`/profiles/both/${chatId}/${profileId}`, { method: 'GET', headers });
         const data = await response.json();
        
         return data;

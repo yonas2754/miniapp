@@ -73,7 +73,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
     };
 
     checkCountdown();
-  }, [serverTime, status, targetTime, queryClient]);
+  }, [serverTime, status, targetTime, queryClient, router]);
 
   return (
     <Card className="max-w-sm mx-auto my-4 flex items-center justify-center">
