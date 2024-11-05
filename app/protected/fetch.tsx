@@ -125,6 +125,7 @@ function Fatch({session}:any) {
   </TabsContent>
   <TabsContent value="winner"  className="pt-4 grid grid-cols-2 gap-4">
   kl
+  {JSON.stringify(endedGames.data)}
     {endedGames.data?.profiles?.map((profile:any) => (
         <div key={profile.id}>
            {JSON.stringify(profile)}
