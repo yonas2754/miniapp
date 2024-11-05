@@ -8,9 +8,6 @@ import Fetch from './fetch';
 async function page() {
     const session = await getSession();
 
-
-    
-
   return (
   <>
   <Fetch session={session}/>
