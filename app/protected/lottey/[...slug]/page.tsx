@@ -108,7 +108,7 @@ const [timeIsUp ,setTimeIsUp] = useState(false)
        
         <CountdownTimer targetDate={decodeURIComponent(endDate)} setTimeIsUp={setTimeIsUp} />
       </div>
-      {!timeIsUp?(<div>
+      {timeIsUp?(<div>
 
       <div className="bg-ethBlack-950 mb-60 pt-8 pb-13 px-4 grid grid-cols-4 gap-1">
         {/* Map over available tickets */}
@@ -144,7 +144,7 @@ const [timeIsUp ,setTimeIsUp] = useState(false)
       </div>
       </div>):(
       <div>
-        <div className='text-center text-ethRed-500 font-sans font-extrabold'>
+        <div className='text-center text-ethRed-500 font-sans font-extrabold  m-12'>
           <h1>time is up please check other Mela </h1>
         </div>
 
