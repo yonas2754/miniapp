@@ -35,9 +35,10 @@ const calculateTimeLeft = (targetTime: number, serverTime: number) => {
 
 interface CountdownTimerProps {
   targetDate: string; // ISO string of the target date, e.g., '2024-12-31T23:59:59Z'
+  setTimeIsUp: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
+const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate ,setTimeIsUp}) => {
   const targetTime = new Date(targetDate).getTime(); // Convert target date to milliseconds
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(targetTime, Date.now()));
   const queryClient = useQueryClient();
@@ -64,16 +65,15 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
         ) {
           // Invalidate the query when countdown reaches zero
           await queryClient.invalidateQueries({ queryKey: ['activeGames'] });
-          
-          // Refresh the page
-          router.push('/protected')
-          window.location.reload();
+        
+          setTimeIsUp(true)
+       
         }
       }
     };
 
     checkCountdown();
-  }, [serverTime, status, targetTime, queryClient, router]);
+  }, [serverTime, status, targetTime, queryClient, setTimeIsUp]);
 
   return (
     <Card 

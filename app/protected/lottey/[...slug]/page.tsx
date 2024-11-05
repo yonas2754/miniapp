@@ -25,12 +25,13 @@ import axios from 'axios';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { number } from 'zod';
 import CountdownTimer from '@/components/CountdownTimer2';
+import { Divide } from 'lucide-react';
 
 const Page = ({ params }: { params: { slug: string[] } }) => {
   // Destructure chatId and profileId from params.slug
   const [chatId, profileId, length, price ,endDate] = params.slug;
 
-
+const [timeIsUp ,setTimeIsUp] = useState(false)
 
 
   const queryClient = useQueryClient();
@@ -105,8 +106,10 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
       <BackButtonDemo />
     <div className="container mx-auto p-1">
        
-        <CountdownTimer targetDate={decodeURIComponent(endDate)} />
+        <CountdownTimer targetDate={decodeURIComponent(endDate)} setTimeIsUp={setTimeIsUp} />
       </div>
+      {timeIsUp?<div>
+
       <div className="bg-ethBlack-950 mb-60 pt-8 pb-13 px-4 grid grid-cols-4 gap-1">
         {/* Map over available tickets */}
         {data.map((ticketNumber) => (
@@ -139,7 +142,12 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
           </div>
         ))}
       </div>
+      </div>:<div>
+        <div className='text-center text-ethRed-500 font-sans font-extrabold'>
+          <h1>time is up please check other Mela </h1>
+        </div>
 
+        </div>}
       <Footer />
     </div>
   );
