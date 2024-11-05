@@ -37,7 +37,9 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
       }
       
   return (
+    <div> <BackButtonDemo />
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+      
     {winners.length === 0 ? (
       <p>No winners found for this profile.</p>
     ) : (
@@ -51,6 +53,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
         />
       ))
     )}
+    </div>
   </div>
   )
 }
