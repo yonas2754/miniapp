@@ -110,7 +110,7 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
 
 
 
-
+  {JSON.stringify(params.slug)}
 
        {endDate}
       {/*   <CountdownTimer targetDate={endDate} /> */}
