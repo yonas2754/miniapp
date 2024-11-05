@@ -105,7 +105,15 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
       <BackButtonDemo />
     <div className="container mx-auto p-1">
        
-        <CountdownTimer targetDate={endDate} />
+
+
+
+
+
+
+
+       {endDate}
+      {/*   <CountdownTimer targetDate={endDate} /> */}
       </div>
       <div className="bg-ethBlack-950 mb-60 pt-8 pb-13 px-4 grid grid-cols-4 gap-1">
         {/* Map over available tickets */}
