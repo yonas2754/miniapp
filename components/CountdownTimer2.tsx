@@ -57,10 +57,10 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
 
         // Check if the countdown has reached zero
         if (
-          updatedTimeLeft.days === 0 &&
-          updatedTimeLeft.hours === 0 &&
-          updatedTimeLeft.minutes === 0 &&
-          updatedTimeLeft.seconds === 0
+          updatedTimeLeft.days == 0 &&
+          updatedTimeLeft.hours == 0 &&
+          updatedTimeLeft.minutes == 0 &&
+          updatedTimeLeft.seconds == 0
         ) {
           // Invalidate the query when countdown reaches zero
           await queryClient.invalidateQueries({ queryKey: ['activeGames'] });
@@ -76,10 +76,10 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
   }, [serverTime, status, targetTime, queryClient, router]);
 
   return (
-    <Card className="max-w-sm mx-auto my-4 flex items-center justify-center">
+    <Card className="max-w-sm mx-auto my-4 flex items-center justify-center bg-ethLightBlue-500">
       
       <CardContent>
-        <div className=" text-sm font-bold text-center">
+        <div className=" text-sm font-bold text-center text-ethYellow-500">
           {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
         </div>
       </CardContent>
