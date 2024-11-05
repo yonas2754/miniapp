@@ -127,8 +127,8 @@ function Fatch({session}:any) {
   
     {endedGames.data?.map((profile:any) => (
         <div key={profile.id}>
-           {JSON.stringify(profile)}
-         {/*   <EndTicket profile={profile}/> */}
+          
+           <EndTicket profile={profile}/> 
     </div>))}
 
   </TabsContent>
