@@ -77,7 +77,7 @@ const CountdownTimer: React.FC<CountdownTimerProps> = ({ targetDate }) => {
 
   return (
     <Card 
-    className="max-w-sm mx-auto my-4 flex items-center justify-center bg-ethLightBlue-500 fixed inset-0 m-auto"
+    className="w-full h-16 flex items-center justify-center bg-ethLightBlue-500 fixed top-0 left-0 z-50"
   >
     <CardContent>
       <div className="text-sm font-bold text-center text-ethYellow-500">
