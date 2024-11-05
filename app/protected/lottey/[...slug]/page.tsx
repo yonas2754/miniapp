@@ -110,9 +110,9 @@ const Page = ({ params }: { params: { slug: string[] } }) => {
 
 
 
-  {JSON.stringify(params.slug)}
+ <div className='bg-ethLightBlue-400'>{JSON.stringify(params.slug)}
 
-       {endDate}
+       {endDate}</div> 
       {/*   <CountdownTimer targetDate={endDate} /> */}
       </div>
       <div className="bg-ethBlack-950 mb-60 pt-8 pb-13 px-4 grid grid-cols-4 gap-1">
