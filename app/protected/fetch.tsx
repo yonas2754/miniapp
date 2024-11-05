@@ -124,11 +124,11 @@ function Fatch({session}:any) {
 
   </TabsContent>
   <TabsContent value="winner"  className="pt-4 grid grid-cols-2 gap-4">
-  
+  kl
     {endedGames.data?.profiles?.map((profile:any) => (
         <div key={profile.id}>
            {JSON.stringify(profile)}
-           <EndTicket profile={profile}/>
+         {/*   <EndTicket profile={profile}/> */}
     </div>))}
 
   </TabsContent>
