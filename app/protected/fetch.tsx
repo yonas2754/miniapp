@@ -9,6 +9,7 @@ import Footer from '@/components/footer';
 import Mytickate from './mytickate';
 import { useQuery } from '@tanstack/react-query';
 import EndTicket from './endTicket';
+import { json } from 'stream/consumers';
 
   
 
@@ -122,12 +123,12 @@ function Fatch({session}:any) {
     </div>))}
 
   </TabsContent>
-  <TabsContent value="winner">
+  <TabsContent value="winner"  className="pt-4 grid grid-cols-2 gap-4">
   
 
     {endedGames.data?.profiles?.map((profile:any) => (
         <div key={profile.id}>
-           
+           {JSON.stringify(profile)}
            <EndTicket profile={profile}/>
     </div>))}
 
