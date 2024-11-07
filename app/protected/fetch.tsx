@@ -84,14 +84,14 @@ function Fatch({session}:any) {
      }
    
      if (activeGames.isError) {
-       return <span>Error: {activeGames.error.message}</span>
+       return <span>Error: 1{activeGames.error.message}</span>
      }
      if (endedGames.isError) {
-        return <span>Error: {endedGames.error.message}</span>
+        return <span>Error: 2 {endedGames.error.message}</span>
       }
 
       if (userGames.isError) {
-        return <span>Error: {userGames.error.message}</span>
+        return <span>Error:3 {userGames.error.message}</span>
       }  
    
 
