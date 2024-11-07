@@ -1,4 +1,4 @@
-export const Backend_URL = "http://128.140.9.82";
+export const Backend_URL = "https://melamela.yonas.pro.et";
 
 export const emojiSet = [
     // Smileys & Emotion
