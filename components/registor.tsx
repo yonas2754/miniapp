@@ -159,7 +159,7 @@ else{
                 </svg>
               </div>
             )}
-            {mutation.error &&( <div>error</div>)}
+            {mutation.isError &&( <div>{ mutation.error.message}</div>)}
             Submit
           </Button>
         </form>
