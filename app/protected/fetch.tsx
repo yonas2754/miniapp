@@ -109,7 +109,7 @@ function Fatch({session}:any) {
   </TabsList>
   <TabsContent value="my" className="pt-4 grid grid-cols-2 gap-4">
 
-    {activeGames.data.map((element:any) => (
+    {activeGames.data?.map((element:any) => (
         <div key={element.id}>
             <LotteryCard element={element} session={session} />
     
