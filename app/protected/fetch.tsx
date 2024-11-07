@@ -28,7 +28,7 @@ function Fatch({session}:any) {
           
             "Content-Type": "application/json",
           };
-          const response = await fetch(`${Backend_URL}/profiles/activeGames`, { method: "GET",headers});
+          const response = await fetch(`http://128.140.9.82:3000/profiles/activeGames`, { method: "GET",headers});
           const data = await response.json();
           console.log(data)
           return data;
