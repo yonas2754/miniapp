@@ -84,7 +84,7 @@ function Fatch({session}:any) {
      }
    
      if (activeGames.isError) {
-       return <span>Error: 1{activeGames.error.message}</span>
+       return <span>Error: {Backend_URL}/profiles/activeGames 1{activeGames.error.message}</span>
      }
      if (endedGames.isError) {
         return <span>Error: 2 {endedGames.error.message}</span>
