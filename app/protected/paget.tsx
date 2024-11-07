@@ -51,7 +51,7 @@ export default async function ProtectedPage() {
 
   return (
     <div className="bg-ethBlack-600 text-white w-full h-full min-h-screen font-bold flex flex-col max-w-xl">
-      <Posts chatId="7277258087" />
+      <Posts chatId={session.user.telegramId} />
       <div className='flex flex-col rounded-t-[48px] bg-ethBlack-500 border-t-2 shadow-2xl border-ethYellow-500 w-full grow p-8'>
         <Tabs defaultValue="own" className="w-full grow">
           <TabsList className="grid w-full grid-cols-3 bg-ethBlack-400">

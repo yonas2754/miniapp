@@ -25,9 +25,11 @@ import {
 import { AmountForm } from "./amount"
 import { WithdrawForm } from "./withdraw"
 import Footer from "@/components/footer"
+import { getSession } from "@/utils/session"
 
 
-export default function TabsDemo() {
+export default async function TabsDemo() {
+  const session = await getSession();
   return (
     <div>     
     <Tabs defaultValue="Deposit" className="w-[400px]">
@@ -50,7 +52,7 @@ export default function TabsDemo() {
   <AccordionItem value="item-1">
     <AccordionTrigger>Chapa</AccordionTrigger>
     <AccordionContent>
-   <AmountForm chatId="7277258087"/>
+   <AmountForm chatId={session.user.telegramId}/>
 
 
     </AccordionContent>
