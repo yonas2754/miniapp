@@ -11,7 +11,7 @@ const config: Config = {
   	extend: {
 		backgroundImage: {
 			'home-img': "url('/image/lottery_winning3.png')",
-		},,
+		},
   		colors: {
   			ethLightBlue: {
   				'50': '#E0F5FF',
