@@ -89,7 +89,7 @@ export default function TelegramAuth() {
             />
             ) : (<>
                
-                <div className='   bg-black bg-home-img bg-cover bg-center '>
+                <div className=' fixed top-0 left-0 w-full h-screen  bg-black bg-home-img bg-cover bg-center '>
 
 
               
