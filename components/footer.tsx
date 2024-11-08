@@ -20,7 +20,7 @@ function Footer() {
         <div className={`text-center  w-1/5  ${pathname.includes('/bank')  ? ' bg-[#1c1f24] text-ethGray-100' : 'text-[#85827d]'} `}>
         <Link href="/bank">
           <Mine className="w-8 h-8 mx-auto" />
-          <p className="mt-1">Bank</p>
+          <p className="mt-1">Admin</p>
           </Link>
         </div>
         <div className={`text-center  w-1/5  ${pathname.includes('/friends')  ? ' bg-[#1c1f24] text-ethGray-100 ' : 'text-[#85827d]'} `}>
