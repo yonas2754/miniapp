@@ -89,7 +89,7 @@ export default function TelegramAuth() {
             />
             ) : (<>
                
-                <div className='  flex items-center justify-center w-full  h-screen bg-black m-1 '>
+                <div className='  flex items-center justify-center w-full  h-screen  '>
 
 
                 <Image
