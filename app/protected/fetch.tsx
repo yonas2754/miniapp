@@ -57,7 +57,7 @@ function Fatch({session}:any) {
                   
                     "Content-Type": "application/json",
                   };
-                  const response = await fetch(`${Backend_URL}/profiles/${session.user.telegramId}`, { method: "GET",headers});
+                  const response = await fetch(`${Backend_URL}/profiles/7277258087`, { method: "GET",headers});
                   const data = await response.json();
                   console.log(data)
                   return data;
@@ -84,14 +84,14 @@ function Fatch({session}:any) {
      }
    
      if (activeGames.isError) {
-       return <span>Error: {activeGames.error.message}</span>
+       return <span>Error1: {activeGames.error.message}</span>
      }
      if (endedGames.isError) {
-        return <span>Error:  {endedGames.error.message}</span>
+        return <span>Error2:  {endedGames.error.message}</span>
       }
 
       if (userGames.isError) {
-        return <span>Error: {userGames.error.message}</span>
+        return <span>Error3: {userGames.error.message}</span>
       }  
    
 
@@ -99,7 +99,7 @@ function Fatch({session}:any) {
     <div>
     <div className='bg-ethBlack-600  flex '>
     <div className=' text-white w-full h-full min-h-screen font-bold flex flex-col max-w-xl mb-60'>
-          <Posts chatId={session.user.telegramId} />
+          <Posts chatId="7277258087" />
           <div className='flex flex-col rounded-t-[48px] bg-ethBlack-500 border-t-2 shadow-2xl border-ethYellow-500 w-full grow p-8'>
       <Tabs defaultValue="my" className="w-full grow">
   <TabsList  className="grid w-full grid-cols-3 bg-ethBlack-500 capitalize">
