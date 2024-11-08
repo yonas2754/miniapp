@@ -1,19 +1,17 @@
-import React from 'react'
+import React from 'react';
 import { getSession } from '@/utils/session';
 import Fetch from './fetch';
 
- 
-
-
-async function page() {
-    const session = await getSession();
+async function Page() {
+  const session = await getSession();
 
   return (
-  <>
-  <Fetch session={session}/>
-  </>
-    
-  )
+    <>
+      {session?.user && (
+        <Fetch session={session} />
+      )}
+    </>
+  );
 }
 
-export default page
+export default Page;
