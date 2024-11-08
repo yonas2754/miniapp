@@ -11,19 +11,20 @@ interface ReferralSystemProps {
 const ReferralSystem: React.FC<ReferralSystemProps> = ({ userId }) => {
 
   //const INVITE_URL = "https://t.me/MelaOnTelegram_bot/MeleTelegram"
-    const INVITE_URL = "https://t.me/MelaOnTelegram_bot/MeleTelegram"
+    const INVITE_URL = "https://t.me/MelaOnTelegram_bot"
 
 
   const handleInviteFriend = () => {
     const utils = initUtils()
-    const inviteLink = `${INVITE_URL}?startapp=${userId}`
+    const inviteLink = `${INVITE_URL}?start=${userId}`
     const shareText = `Join me mele and become rich!`
     const fullUrl = `https://t.me/share/url?url=${encodeURIComponent(inviteLink)}&text=${encodeURIComponent(shareText)}`
     utils.openTelegramLink(fullUrl)
   }
 
+
   const handleCopyLink = () => {
-    const inviteLink = `${INVITE_URL}?startapp=${userId}`
+    const inviteLink = `${INVITE_URL}?start=${userId}`
     navigator.clipboard.writeText(inviteLink)
     alert('Invite link copied to clipboard!')
   }
