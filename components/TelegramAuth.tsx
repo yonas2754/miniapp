@@ -89,10 +89,20 @@ export default function TelegramAuth() {
             />
             ) : (<>
                
-                <div className=' fixed top-0 left-0 w-full h-screen  bg-black bg-home-img bg-cover bg-center '>
+                <div className='  flex items-center justify-center w-full  h-screen bg-black m-1 '>
 
 
-              
+                <Image
+              alt="Mountains2"
+              src={mountains2}
+              placeholder="blur"
+              quality={100}
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: 'cover',
+              }}
+            />
 
                 </div>
 
