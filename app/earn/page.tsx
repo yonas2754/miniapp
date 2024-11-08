@@ -30,6 +30,7 @@ import { getSession } from "@/utils/session"
 
 export default async function TabsDemo() {
   const session = await getSession();
+  const myId =  session?.user?.telegramId?.toString().trim();
   return (
     <div>     
     <Tabs defaultValue="Deposit" className="w-[400px]">
@@ -52,7 +53,7 @@ export default async function TabsDemo() {
   <AccordionItem value="item-1">
     <AccordionTrigger>Chapa</AccordionTrigger>
     <AccordionContent>
-   <AmountForm chatId={session.user.telegramId}/>
+   <AmountForm chatId={myId}/>
 
 
     </AccordionContent>
@@ -74,7 +75,7 @@ export default async function TabsDemo() {
           </CardHeader>
           <CardContent className="space-y-2">
      
-          <WithdrawForm chatId="7277258087"/>
+          <WithdrawForm chatId={myId}/>
           
           </CardContent>
          
