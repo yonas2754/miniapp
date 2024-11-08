@@ -11,7 +11,7 @@ interface ReferralSystemProps {
 const ReferralSystem: React.FC<ReferralSystemProps> = ({ userId }) => {
 
   //const INVITE_URL = "https://t.me/MelaOnTelegram_bot/MeleTelegram"
-    const INVITE_URL = "https://t.me/MelaOnTelegram_bot"
+    const INVITE_URL = "https://t.me/MelaOnTelegram_bot/MeleTelegram"
 
 
   const handleInviteFriend = () => {
