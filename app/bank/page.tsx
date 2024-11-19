@@ -6,13 +6,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 function page() {
   return (
-    <div>
+    <div >
 
 
-<Tabs defaultValue="account" className="w-[400px]">
-  <TabsList>
-    <TabsTrigger value="create">create</TabsTrigger>
-    <TabsTrigger value="approve">approve</TabsTrigger>
+<Tabs defaultValue="create" className=" bg-ethDeepBlue-800 flex justify-center items-center m-1 ">
+  <TabsList  className=' text-white text-center font-extrabold'>
+    <TabsTrigger value="create">Create</TabsTrigger>
+    <TabsTrigger value="approve">Approve</TabsTrigger>
   </TabsList>
   <TabsContent value="create">
   <div className=' bg-ethLightBlue-950 w-full flex justify-center items-center  h-full '>
