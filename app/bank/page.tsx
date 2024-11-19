@@ -9,7 +9,7 @@ function page() {
     <div >
 
 
-<Tabs defaultValue="create" className=" bg-ethDeepBlue-800 flex justify-center items-center m-1 ">
+<Tabs defaultValue="create" className=" bg-ethDeepBlue-800 ">
   <TabsList  className=' text-white text-center font-extrabold'>
     <TabsTrigger value="create">Create</TabsTrigger>
     <TabsTrigger value="approve">Approve</TabsTrigger>
